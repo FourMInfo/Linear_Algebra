@@ -279,3 +279,13 @@ function intersection_2_implicit_lines(a₁::Number, b₁::Number, c₁::Number,
     # solve the system using left division of the matrix by the vector
     A\b
 end
+
+"""
+    function matrix_orthproj_basis(v::Vector) -> Matrix
+Compute matrix of orthogonal projection of basis vectors on line along vector v
+"""
+function matrix_orthproj_basis(v::Vector)
+    e₁ =[1,0]
+    e₂ = [0,1]
+    [permutedims(orthproj(v, e₁)); permutedims(orthproj(v, e₂))]
+end
