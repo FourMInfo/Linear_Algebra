@@ -81,10 +81,10 @@ end
 
 """
     function reflection(v::Vector, w::Vector) -> Vector
-The projection P from 'w' onto 'v' is the midpoint of the reflection of w around v
+The projection P from 'v'  to the line along [1,2] is the midpoint of the reflection of w around v
 """
-function reflection(v::Vector, w::Vector)
-    P = orthproj(v,w)
+function reflection(v::Vector)
+    P = orthproj([1,2],v)
     (2 * P ) - X
 end
 
