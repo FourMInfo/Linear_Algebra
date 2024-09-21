@@ -81,11 +81,11 @@ end
 
 """
     function reflection(v::Vector, w::Vector) -> Vector
-The projection P from 'w' onto 'v' is the midpoint of the reflection of w around v
+The midpoint of the segment from `v` to the reflection of `v` is the projection P from 'v'  to the line along 'w' 
 """
-function reflection(v::Vector, w::Vector)
-    P = orthproj(v,w)
-    (2 * P ) - X
+function reflection(v::Vector,w::Vector)
+    P = orthproj(w,v)
+    (2 * P ) - w
 end
 
 """
@@ -280,12 +280,3 @@ function intersection_2_implicit_lines(a₁::Number, b₁::Number, c₁::Number,
     A\b
 end
 
-"""
-    function matrix_orthproj_basis(v::Vector) -> Matrix
-Compute matrix of orthogonal projection of basis vectors on line along vector v
-"""
-function matrix_orthproj_basis(v::Vector)
-    e₁ =[1,0]
-    e₂ = [0,1]
-    [permutedims(orthproj(v, e₁)); permutedims(orthproj(v, e₂))]
-end
