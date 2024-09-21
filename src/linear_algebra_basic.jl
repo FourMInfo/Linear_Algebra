@@ -81,11 +81,11 @@ end
 
 """
     function reflection(v::Vector, w::Vector) -> Vector
-The projection P from 'v'  to the line along [1,2] is the midpoint of the reflection of w around v
+The midpoint of the segment from `v` to the reflection of `v` is the projection P from 'v'  to the line along 'w' 
 """
-function reflection(v::Vector)
-    P = orthproj([1,2],v)
-    (2 * P ) - X
+function reflection(v::Vector,w::Vector)
+    P = orthproj(w,v)
+    (2 * P ) - w
 end
 
 """
@@ -279,3 +279,4 @@ function intersection_2_implicit_lines(a₁::Number, b₁::Number, c₁::Number,
     # solve the system using left division of the matrix by the vector
     A\b
 end
+
