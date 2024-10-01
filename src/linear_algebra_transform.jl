@@ -22,6 +22,7 @@ end
 value of Matrix with an actual vector x  
 """
 function projection_matrix(x::Vector)
+    @variables u v
     Symbolics.value.(substitute.(projection_matrix_symbolic(), (Dict(u =>x[1], v=> x[2]), )))
 end
 """
@@ -29,5 +30,6 @@ end
 value of Matrix with an actual value for the angle of the vector
 """
 function projection_matrix_polar(n::Number)
+    @variables u v θ
     Symbolics.value.(substitute.(projection_matrix_symbolic_polar(), θ => deg2rad(n),))
 end
