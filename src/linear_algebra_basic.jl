@@ -81,11 +81,11 @@ end
 
 """
     function reflection(v::Vector, w::Vector) -> Vector
-The midpoint of the segment from `v` to the reflection of `v` is the projection P from 'v'  to the line along 'w' 
+The midpoint of the segment from `v` to the reflection of `v` around 'w', is the projection P from 'v'  to the line along 'w' 
 """
 function reflection(v::Vector,w::Vector)
     P = orthproj(w,v)
-    (2 * P ) - w
+    (2 * P) - v
 end
 
 """
@@ -95,7 +95,7 @@ function rotation(θ::Number, v::Vector) -> Vector
 function rotation(θ::Number, v::Vector)
     x′ = (cos(deg2rad(θ)) * v[1]) - (sin(deg2rad(θ)) * v[2])
     y′ = (sin(deg2rad(θ)) * v[1]) + (cos(deg2rad(θ)) * v[2])
-    [round(x′), round(y′)]
+    [x′, y′]
 end
 
 """
@@ -279,4 +279,10 @@ function intersection_2_implicit_lines(a₁::Number, b₁::Number, c₁::Number,
     # solve the system using left division of the matrix by the vector
     A\b
 end
-
+"""
+    function rationalize(x::Number; sigdigits=16) -> Rational(Number)
+Rationalize a number to a rational number
+"""
+function rationalize(x; sigdigits=16)
+    return Int(round(x * 10^(sigdigits - 1), digits=0)) // 10^(sigdigits - 1)
+end
