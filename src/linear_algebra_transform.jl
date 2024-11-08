@@ -64,6 +64,8 @@ end
 value of rotation Matrix with an actual value for the rotation angle - non symbolic version
 """
 function rotation_matrix_ns(θ::Number)
+    e₁ = [1, 0]
+    e₂ = [0, 1]
     [rotation(θ, e₁) rotation(θ, e₂)]
 end
 
