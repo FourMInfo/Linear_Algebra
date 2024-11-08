@@ -234,13 +234,13 @@ Calculate distance from q to A (foot of the line)
 Calculate area of parallelogram defined by A and B
 """
 function foot_of_line_parallelogram(P::Point, A::Point, B::Point)
-    # calculate the vector from p to B
-    v = Vector(B - p)
-    # calculate the vector from p to A
-    w = Vector(A - p)
+    # calculate the vector from P to B
+    v = Vector(B - P)
+    # calculate the vector from P to A
+    w = Vector(A - P)
     t = dot(v, w) / norm(v)^2
     # calculate foot
-    q = Point(p + t*v)
+    q = Point(P + t*v)
     # calculate distance
     d = dot(v, w) / norm(v)
     # calculate area of parallelogram - distance * base
