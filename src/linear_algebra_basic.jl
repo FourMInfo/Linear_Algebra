@@ -236,6 +236,7 @@ Using original foot_of_line and some additional calculations
 Return point on l closest to A == t[1]
 Return distance from t[1] to A (foot of the line) == t[2]
 Return area of parallelogram defined by A and B
+Return points on the parallelogram
 """
 function foot_of_line(A::Point, B::Point, r::Bool = false)
     # calculate the vector from P to A
