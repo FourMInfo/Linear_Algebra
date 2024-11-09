@@ -206,46 +206,52 @@ function distance_to_parametric_line(p::Point, v::Vector, r::Point)
 end
 
 """
-function foot_of_line(p::Point, v::Vector, r::Point) -> Tuple(Point, Float64)
+function foot_of_line(P::Point, v::Vector, R::Point) -> Tuple(Point, Float64)
 Definition of the line:
-   l = p + tv
-Find point q on l closest to r
-Calculate distance from q to A (foot of the line)
+   l = P + tv
+Return point Q on l closest to R
+Calculate distance from Q to A (foot of the line)
 """
-function foot_of_line(p::Point, v::Vector, r::Point)
-    # calculate the vector from p to r
-    w = Vector(r - p)
+function foot_of_line(P::Point, v::Vector, R::Point,  r::Bool = false )
+    # calculate the vector from P to R
+    w = Vector(R - P)
     t = dot(v, w) / norm(v)^2
     # calculate foot
-    q = Point(p + t*v)
+    Q = Point(P + t*v)
     # calculate distance
     d = dot(v, w) / norm(v)
-    (q, d)
+    if r
+        (round.(Q, digits = 3), round(d, digits=3))
+    else
+        (Q, d)
+    end
 end
 
 """
-    function foot_of_line_parallelogram(P::Point, A::Point, B::Point) -> Tuple(Point, Float64, Float64)
+    function foot_of_line(A::Point, B::Point) -> Tuple(Point, Float64, Float64,Tuple(Point,Point,Point,Point))
 Definition of the line:
-   l = p + tv
+   l = P + tv
 where v is the vector from P to B
-w is the vector from P to A
-Find point q on l closest to A
-Calculate distance from q to A (foot of the line)
-Calculate area of parallelogram defined by A and B
+Using original foot_of_line and some additional calculations
+Return point on l closest to A == t[1]
+Return distance from t[1] to A (foot of the line) == t[2]
+Return area of parallelogram defined by A and B
 """
-function foot_of_line_parallelogram(P::Point, A::Point, B::Point)
-    # calculate the vector from P to B
-    v = Vector(B - P)
+function foot_of_line(A::Point, B::Point, r::Bool = false)
     # calculate the vector from P to A
-    w = Vector(A - P)
-    t = dot(v, w) / norm(v)^2
-    # calculate foot
-    q = Point(P + t*v)
-    # calculate distance
-    d = dot(v, w) / norm(v)
+    v = Vector(B - P)
+    Z = Point{2,Int64}(0,0)
+    t = foot_of_line(Z, v, A, false)
     # calculate area of parallelogram - distance * base
-    a = d * norm(v)
-    (q, d, a)
+    a = t[2] * norm(v)
+    # calculate points of Parallelogram
+    w = Vector(A - P)
+    PL = (Z, A, B, Point{2,Float64}(v + w))
+    if r
+        (round.(t[1], digits = 3), round(t[2], digits = 3), round(a, digits = 3), PL)
+    else
+        (t[1], t[2], a, PL)
+    end
 end
 
 """
