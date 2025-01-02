@@ -41,6 +41,7 @@ See
 function projection_matrix_transpose(u::Vector)
 # equivalent way to calculate the orthogonal projection matrix
     u * transpose(u) ./ (transpose(u) * u)
+    # which is equivalent to: v * transpose(v) ./norm(v)^2
 end
 """
     function rotation_matrix_symbolic() -> Matrix
