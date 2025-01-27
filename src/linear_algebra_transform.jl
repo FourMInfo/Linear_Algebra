@@ -34,7 +34,15 @@ function projection_matrix_polar(n::Number)
     @variables u v θ
     Symbolics.value.(substitute.(projection_matrix_symbolic_polar(), θ => deg2rad(n),))
 end
-
+"""
+    function projection_matrix_transpose(u::Vector) ->  Matrix
+See 
+"""
+function projection_matrix_transpose(u::Vector)
+# equivalent way to calculate the orthogonal projection matrix
+    u * transpose(u) ./ (transpose(u) * u)
+    # which is equivalent to: v * transpose(v) ./norm(v)^2
+end
 """
     function rotation_matrix_symbolic() -> Matrix
 Create symbolic matrix for rotation θ degrees,  using E₁ = [1,0] and E₂ =[0,1] to get first and second column

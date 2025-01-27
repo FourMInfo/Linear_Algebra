@@ -76,7 +76,7 @@ end
 Orthogonol projection of vector `w` onto `v`
 """
 function orthproj(v::Vector, w::Vector)
-    u = (dot(v, w) / dot(v, v)) * v
+    u = (dot(v, w) / norm(v)^2) * v
 end
 
 """
