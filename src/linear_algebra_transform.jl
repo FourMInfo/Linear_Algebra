@@ -1,6 +1,4 @@
-using Symbolics
-include("./linear_algebra_basic.jl")
-
+# the additional package needed for this file is Symbolics
 """
     function projection_matrix_symbolic() -> Matrix
 Create symbolic matrix for projection on [u, v] using E₁ = [1,0] and E₂ =[0,1] to get first and second row

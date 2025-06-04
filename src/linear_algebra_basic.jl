@@ -1,8 +1,3 @@
-using GeometryBasics
-using Plots
-using LinearAlgebra
-using RationalRoots
-
 """
     distance_2_points(p::Point, q::Point) -> Norm(v)
 Distance between two points
