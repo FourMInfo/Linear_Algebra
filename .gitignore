@@ -7,6 +7,7 @@
 /videos
 /plots
 /_research
+/build  # Generated files from documentation or compilation processes
 
 ################################################################################
 #                                    Julia                                     #
