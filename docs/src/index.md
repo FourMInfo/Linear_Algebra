@@ -1,14 +1,13 @@
 # Linear_Algebra
-This is the mandatory `index.md` file that is the homepage of the documentation.
 
-Here the documentation string of a function is expanded:
-```@docs
-dummy_project_function
+This package provides a collection of functions for linear algebra operations and transformations.
+
+## Linear Algebra Functions
+
+This section provides the documentation for all the linear algebra functions.
+
+```@autodocs
+Modules = [Linear_Algebra]
+Order   = [:function, :type]
+Pages   = ["linear_algebra_basic.jl", "linear_algebra_transform.jl"]
 ```
-
-We can link to any subsection name with [Subsection name](@ref).
-
-We can link to documentation strings with [`dummy_project_function`](@ref).
-
-## Subsection name
-Test.
