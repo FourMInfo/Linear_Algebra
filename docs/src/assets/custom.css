@@ -1,0 +1,100 @@
+/* Custom styles for cross-site navigation and branding */
+
+/* Site navigation footer styling */
+.site-navigation {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: var(--documenter-dark-background, #f8f9fa);
+    border-radius: 8px;
+    border: 1px solid var(--documenter-dark-border, #e9ecef);
+}
+
+.site-navigation .nav-section {
+    margin-bottom: 1rem;
+}
+
+.site-navigation .nav-section:last-child {
+    margin-bottom: 0;
+}
+
+.site-navigation h4 {
+    margin: 0 0 0.75rem 0;
+    color: var(--documenter-dark-text, #212529);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.site-navigation ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-navigation ul li {
+    margin: 0.25rem 0;
+}
+
+.site-navigation ul li a {
+    color: var(--documenter-dark-link, #007bff);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.site-navigation ul li a:hover {
+    color: var(--documenter-dark-link-hover, #0056b3);
+    text-decoration: underline;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .site-navigation {
+        background-color: #2b2b2b;
+        border-color: #404040;
+    }
+    
+    .site-navigation h4 {
+        color: #ffffff;
+    }
+    
+    .site-navigation ul li a {
+        color: #58a6ff;
+    }
+    
+    .site-navigation ul li a:hover {
+        color: #79c0ff;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .site-navigation {
+        padding: 1rem;
+    }
+    
+    .site-navigation h4 {
+        font-size: 0.9rem;
+    }
+    
+    .site-navigation ul li a {
+        font-size: 0.85rem;
+    }
+}
+
+/* Integration with Documenter.jl theme */
+html[data-theme="dark"] .site-navigation {
+    background-color: var(--documenter-dark-background);
+    border-color: var(--documenter-dark-border);
+}
+
+html[data-theme="dark"] .site-navigation h4 {
+    color: var(--documenter-dark-text);
+}
+
+html[data-theme="dark"] .site-navigation ul li a {
+    color: var(--documenter-dark-link);
+}
+
+html[data-theme="dark"] .site-navigation ul li a:hover {
+    color: var(--documenter-dark-link-hover);
+}
