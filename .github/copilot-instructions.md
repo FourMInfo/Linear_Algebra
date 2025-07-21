@@ -133,6 +133,7 @@ julia --project=. docs/make.jl
 - Feature branch naming: Use descriptive names like `add-tests-fix-notebook`
 
 ### Pull Request Creation
+- **ALWAYS push changes first**: Use `git push origin BRANCH_NAME` before creating PR
 - **Do NOT use `gh pr create`** - The GitHub CLI command doesn't work properly in this environment
 - **Use GitHub web interface instead**: Create PR links manually with detailed descriptions
 - **PR Link Format**: `https://github.com/FourMInfo/Linear_Algebra/compare/main...BRANCH_NAME`
