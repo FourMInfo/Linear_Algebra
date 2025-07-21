@@ -132,6 +132,13 @@ julia --project=. docs/make.jl
 - Use `git add <specific-file-path>` to stage only the intended files for commit
 - Feature branch naming: Use descriptive names like `add-tests-fix-notebook`
 
+### Pull Request Creation
+- **Do NOT use `gh pr create`** - The GitHub CLI command doesn't work properly in this environment
+- **Use GitHub web interface instead**: Create PR links manually with detailed descriptions
+- **PR Link Format**: `https://github.com/FourMInfo/Linear_Algebra/compare/main...BRANCH_NAME`
+- **Include comprehensive descriptions**: Detail all changes, test coverage, and architectural improvements
+- **Reference issue numbers**: Link to related issues when applicable
+
 ## Azure Integration
 
 - Use Azure Best Practices: When generating code for Azure, running terminal commands for Azure, or performing operations related to Azure, invoke your `azure_development-get_best_practices` tool if available
