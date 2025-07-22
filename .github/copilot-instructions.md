@@ -17,6 +17,7 @@ This is a **Julia linear algebra computing project** using DrWatson for reproduc
 ### Module Structure
 ```julia
 # Main module uses @reexport for clean interface
+using Reexport
 @reexport using GeometryBasics, Plots, LinearAlgebra, RationalRoots, Symbolics
 # Comprehensive exports for all functions
 export distance_2_points, center_of_gravity, barycentric_coord, plot_param_line
@@ -195,6 +196,12 @@ parametric_to_implicit_line(p::Point, v::Vector) -> (Float64, Float64, Float64)
 distance_to_implicit_line(a::Number, b::Number, c::Number, r::Point) -> Float64
 foot_of_line(P::Point, v::Vector, R::Point) -> Tuple(Point, Float64)
 ```
+## Documentation Patterns
+- Use LaTex for all mathematical notation
+- Use Markdown for explanations
+- After creating or editing a markdown document always review and fix all linting issues, unless the document is a configuration file of some kind
+- Follow the pattern of existing function documentation in src directory
+
 ## Communication Patterns
 
 - Avoid being overly obsequious in responses
