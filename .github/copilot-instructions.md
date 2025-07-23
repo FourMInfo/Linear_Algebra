@@ -131,15 +131,37 @@ julia --project=. docs/make.jl
 
 - **Never use `git add .`** - Always stage files explicitly by name to avoid accidentally committing development files, notebooks, or temporary files
 - Use `git add <specific-file-path>` to stage only the intended files for commit
-- Feature branch naming: Use descriptive names like `add-tests-fix-notebook`
+- **Feature branch naming**: Use descriptive, purpose-driven names that enable GitHub auto-suggestions:
+  - ✅ Good: `feature/add-fourm-site-explanation`, `fix/sidebar-center-alignment`, `docs/add-copilot-instructions`
+  - ❌ Avoid: `feature/update-content`, `fix/stuff`, `branch1`
 
 ### Pull Request Creation
 - **ALWAYS push changes first**: Use `git push origin BRANCH_NAME` before creating PR
 - **Do NOT use `gh pr create`** - The GitHub CLI command doesn't work properly in this environment
-- **Use GitHub web interface instead**: Create PR links manually with detailed descriptions
-- **PR Link Format**: `https://github.com/FourMInfo/Linear_Algebra/compare/main...BRANCH_NAME`
+- **Use GitHub web interface with URL parameters**: Create links with embedded title and description for auto-fill
+- **PR Link Format with Parameters**: 
+  ```
+  https://github.com/FourMInfo/Linear_Algebra/compare/main...BRANCH_NAME?title=Your+PR+Title&body=Your+PR+Description
+  ```
+- **Always provide fallback copy-paste content**: Include separate, copyable title and description in case URL parameters don't work
 - **Include comprehensive descriptions**: Detail all changes, test coverage, and architectural improvements
 - **Reference issue numbers**: Link to related issues when applicable
+
+#### PR Creation Template:
+```markdown
+## 🔗 Clickable PR Link:
+[Your PR Title](https://github.com/FourMInfo/Linear_Algebra/compare/main...BRANCH_NAME?title=Your+PR+Title&body=Your+PR+Description)
+
+## 📝 Copy-Paste Title:
+Your PR Title
+
+## 📋 Copy-Paste Description:
+Your comprehensive PR description with:
+- Summary of changes
+- Technical details
+- Testing completed
+- Related issues
+```
 
 ## Azure Integration
 

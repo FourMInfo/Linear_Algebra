@@ -47,14 +47,45 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: julia-actions/setup-julia@v1
+        with:
+          fetch-depth: 0  # Fetch full history for path change detection
+          
+      # Check if documentation-related files have changed
+      - name: Check for documentation changes
+        id: docs-changes
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "Manual trigger - deploying docs"
+            echo "docs_changed=true" >> $GITHUB_OUTPUT
+          else
+            # Check if any documentation-related files changed in the last commit
+            CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD)
+            echo "Changed files: $CHANGED_FILES"
+            
+            if echo "$CHANGED_FILES" | grep -qE '(^src/|^docs/|\.md$|Project\.toml$|Manifest\.toml$)'; then
+              echo "Documentation-related files changed - deploying docs"
+              echo "docs_changed=true" >> $GITHUB_OUTPUT
+            else
+              echo "No documentation-related files changed - skipping docs deployment"
+              echo "docs_changed=false" >> $GITHUB_OUTPUT
+            fi
+          fi
+          
+      - name: Setup Julia
+        if: steps.docs-changes.outputs.docs_changed == 'true'
+        uses: julia-actions/setup-julia@v1
         with:
           version: '1'
           arch: x64
+          
       - uses: julia-actions/cache@v1
+        if: steps.docs-changes.outputs.docs_changed == 'true'
+        
       - uses: julia-actions/julia-buildpkg@v1
+        if: steps.docs-changes.outputs.docs_changed == 'true'
 
       - name: Generate documentation and deploy
+        if: steps.docs-changes.outputs.docs_changed == 'true'
         run: >
           julia --project=. --color=yes docs/make.jl
         env: # needed for pushing to gh-pages branch
