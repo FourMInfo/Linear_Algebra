@@ -62,7 +62,11 @@ jobs:
             CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD)
             echo "Changed files: $CHANGED_FILES"
             
-            if echo "$CHANGED_FILES" | grep -qE '(^src/|^docs/|\.md$|Project\.toml$|Manifest\.toml$)'; then
+            # Filter out .github/ directory files and check for documentation-related changes
+            DOC_CHANGED_FILES=$(echo "$CHANGED_FILES" | grep -v '^\.github/')
+            echo "Non-.github files: $DOC_CHANGED_FILES"
+            
+            if echo "$DOC_CHANGED_FILES" | grep -qE '(^src/|^docs/|\.md$|Project\.toml$|Manifest\.toml$)'; then
               echo "Documentation-related files changed - deploying docs"
               echo "docs_changed=true" >> $GITHUB_OUTPUT
             else
