@@ -40,6 +40,41 @@ jobs:
         run: >
           julia --project=. --color=yes test/runtests.jl
 
+  docs-build:
+    name: Build Documentation
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check for docs/src changes
+        id: docs-changes
+        run: |
+          git fetch origin ${{ github.base_ref }}
+          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
+          echo "Changed files: $CHANGED_FILES"
+          if echo "$CHANGED_FILES" | grep -qE '^(src/|docs/)'; then
+            echo "docs_changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "docs_changed=false" >> $GITHUB_OUTPUT
+          fi
+      - uses: julia-actions/setup-julia@v1
+        if: steps.docs-changes.outputs.docs_changed == 'true'
+        with:
+          version: '1'
+          arch: x64
+      - uses: julia-actions/cache@v1
+        if: steps.docs-changes.outputs.docs_changed == 'true'
+      - uses: julia-actions/julia-buildpkg@v1
+        if: steps.docs-changes.outputs.docs_changed == 'true'
+      - name: Build documentation
+        if: steps.docs-changes.outputs.docs_changed == 'true'
+        run: julia --project=. --color=yes docs/make.jl
+      - name: Skip docs build (no relevant changes)
+        if: steps.docs-changes.outputs.docs_changed == 'false'
+        run: echo "No docs or src changes detected, skipping docs build."
+
   deploy-docs:
     name: Deploy Documentation
     # Only run deployment on pushes to main (after merge) or manual trigger
