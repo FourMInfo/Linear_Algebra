@@ -208,11 +208,12 @@ julia --project=. docs/make.jl
 - **Example Expected Output**: `Precompiling DrWatson... 3 dependencies successfully precompiled in 17 seconds`
 - **Subsequent Runs**: Much faster once cache is built
 - **Don't Cancel Early**: Allow time for compilation phase to complete
+- **IMPORTANT**: This applies to ALL Julia commands including CI testing with `CI=true julia --project=. test/runtests.jl`
 
 ### CI Considerations
 - Tests automatically detect CI environment via ENV variables
-- Plotting tests skip gracefully in headless mode
-- 49 tests in local mode, 47 tests in CI mode (plotting tests reduced)
+- Plotting tests skip gracefully in headless mode  
+- 68 tests pass in both local and CI modes (plotting tests with fallbacks)
 - Test execution time: ~15-16 seconds
 
 ## Git Best Practices
