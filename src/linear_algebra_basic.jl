@@ -14,6 +14,8 @@ Creates center of gravity of points `p` and `q`using parametric equation of a li
 function center_of_gravity(p::Point, q::Point, t)
     v = q - p
     r = p + (t * v)
+    # Ensure we return a Point2f type
+    return Point2f(r)
 end
 
 """
@@ -25,17 +27,32 @@ function barycentric_coord(p::Point, q::Point, r::Point)
 end
 
 """
+    calculate_param_line(p::Point, q::Point, n::Int64) → [Point]
+Creates `n` points on a line defined by `p` and `q`, using the parametric equation of a line.
+Pure computational function - no plotting dependencies.
+"""
+function calculate_param_line(p::Point, q::Point, n::Int64)
+    Ps = Point[]
+    for i = 1:n
+        t = i / n
+        r = center_of_gravity(p, q, t)
+        push!(Ps, r)
+    end
+    Ps
+end
+
+"""
     plot_param_line(p::Point, q::Point, n::Int64) → [Point]
 Creates `n` points on a line defined by `p` and `q`, using the parametric equation of a line, then plot
 """
 
 function plot_param_line(p::Point, q::Point, n::Int64)
-    Ps = Point[]
-    for i = 1:n
-        t = i / n
-        r = center_of_gravity(p, q, t)
-        s = scatter!(r, legend=false)
-        push!(Ps, r)
+    # Use computational function for calculations
+    Ps = calculate_param_line(p, q, n)
+    
+    # Add plotting functionality
+    for point in Ps
+        s = scatter!(point, legend=false)
     end
     s = plot!(Ps, legend=false)
     display(s)
