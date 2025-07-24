@@ -45,7 +45,6 @@ end
     plot_param_line(p::Point, q::Point, n::Int64) → [Point]
 Creates `n` points on a line defined by `p` and `q`, using the parametric equation of a line, then plot
 """
-
 function plot_param_line(p::Point, q::Point, n::Int64)
     # Use computational function for calculations
     Ps = calculate_param_line(p, q, n)
