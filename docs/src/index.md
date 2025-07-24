@@ -19,5 +19,5 @@ This section provides the documentation for linear transformations and related o
 ```@autodocs
 Modules = [Linear_Algebra]
 Order   = [:function, :type]
-Pages   = [""linear_algebra_transform.jl"]
+Pages   = ["linear_algebra_transform.jl"]
 ```
