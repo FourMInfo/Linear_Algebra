@@ -1,10 +1,21 @@
 module Linear_Algebra
 using Reexport
 @reexport using  GeometryBasics, Plots, LinearAlgebra, RationalRoots, Symbolics
-# Set GR as the default plotting backend
-gr()
+
+# Configure plotting for both interactive and headless environments
+if haskey(ENV, "CI") || get(ENV, "GKSwstype", "") == "100"
+    # CI or headless environment - use headless mode
+    ENV["GKSwstype"] = "100"
+    gr(show=false)
+else
+    # Interactive environment - normal plotting
+    gr()
+end
 
 # Exports...
+# Pure computational functions (no plotting dependencies)
+export calculate_param_line
+# Integrated plotting functions (computation + visualization)
 export distance_2_points, center_of_gravity, barycentric_coord, plot_param_line
 export vector_angle_cos, is_orthogonal, polar_unit, orthproj, reflection, rotation
 export point_in_implicit_line, parametric_to_implicit_line, implicit_to_parametric_line, explicit_line

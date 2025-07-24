@@ -19,18 +19,70 @@ This is a **Julia linear algebra computing project** using DrWatson for reproduc
 # Main module uses @reexport for clean interface
 using Reexport
 @reexport using GeometryBasics, Plots, LinearAlgebra, RationalRoots, Symbolics
+
+# Configure plotting for both interactive and headless environments
+if haskey(ENV, "CI") || get(ENV, "GKSwstype", "") == "100"
+    # CI or headless environment - use headless mode
+    ENV["GKSwstype"] = "100"
+    gr(show=false)
+else
+    # Interactive environment - normal plotting
+    gr()
+end
+
 # Comprehensive exports for all functions
+# Pure computational functions (no plotting dependencies)
+export calculate_param_line
+# Integrated plotting functions (computation + visualization)
 export distance_2_points, center_of_gravity, barycentric_coord, plot_param_line
 # ... matrix functions, line functions, etc.
 ```
+
+### Environment-Aware Module Loading
+```julia
+# The module automatically detects CI vs interactive environments
+if haskey(ENV, "CI") || get(ENV, "GKSwstype", "") == "100"
+    ENV["GKSwstype"] = "100"  # Headless plotting
+    gr(show=false)
+end
+```
+
+## Linear_Algebra CI Testing Approach
+
+The superior CI testing strategy (aligned with Math_Foundations) consists of three components:
+
+### 1. Module-Level Headless Detection
+Configure plotting environment in the main module (`Linear_Algebra.jl`) at load time:
+```julia
+# Automatic CI detection and headless configuration
+if haskey(ENV, "CI") || get(ENV, "GKSwstype", "") == "100"
+    ENV["GKSwstype"] = "100"  # Force headless mode
+    gr(show=false)           # Disable plot display
+end
+```
+
+### 2. Manual GKS Configuration in Tests
+Set `ENV["GKSwstype"] = "100"` in test files before loading the module:
+```julia
+# In test files - Configure headless mode before loading module
+ENV["GKSwstype"] = "100"  # Force headless plotting for CI
+using DrWatson, Test
+@quickactivate "Linear_Algebra"
+using Linear_Algebra
+```
+
+### 3. Separated Computational/Plotting Logic with Robust Testing
+- **Pure computational functions** (`calculate_*`): Test mathematical logic directly, no try-catch
+- **Plotting functions** (`plot_*`): Test with try-catch fallback for CI compatibility
+- **Integration testing**: Verify both computation and visualization work together
 
 ### Test Setup (Uses @quickactivate)
 ```julia
 # Tests use DrWatson @quickactivate pattern
 using DrWatson, Test
 @quickactivate "Linear_Algebra"
+# Load the Linear_Algebra package
 using Linear_Algebra
-using GeometryBasics, LinearAlgebra
 ```
 
 ### CI-Compatible Plotting Pattern
@@ -77,18 +129,47 @@ end
 17. Maintain consistency with mathematical notation
 
 ### Testing Patterns
-18. **Comprehensive Coverage**: 49 tests covering ~100% of functions
-19. **CI-Safe**: Plotting tests skip in headless environments
+18. **Comprehensive Coverage**: Test coverage includes all mathematical functions
+19. **CI-Safe**: Plotting tests work in both local and headless environments
 20. **Edge Cases**: Test mathematical edge cases (orthogonal vectors, zero angles, etc.)
 21. **Type Testing**: Verify return types (Point2f, AbstractVector, matrices)
 22. **Numerical Precision**: Use `atol=1e-10` for floating-point comparisons
-23. **Error Handling**: Use try-catch for functions that might fail in CI
+23. **CI-Compatible Testing Pattern**: Separate computational logic from plotting, test math directly without try-catch, only use try-catch for visualization:
+```julia
+# Test computational logic directly (NO try-catch - mathematical errors should fail)
+@testset "Pure Computational Tests" begin
+    points = calculate_param_line(p, q, 3)
+    @test length(points) == 3
+    @test typeof(points) == Vector{Point2f}
+    # Test mathematical correctness without plotting dependencies
+end
+
+# Test integration (plotting + computation) with CI-safe fallback
+@testset "Integration Tests" begin
+    try
+        # Test the plotting function (includes computation + visualization)
+        result = plot_param_line(p, q, 3)
+        @test typeof(result) == Vector{Point2f}
+        @test length(result) == 3
+    catch e
+        # Only catch plotting-related errors, not computational errors
+        if contains(string(e), "display") || contains(string(e), "GKS") || isa(e, ArgumentError)
+            @test hasmethod(plot_param_line, (Point2f, Point2f, Int64))
+        else
+            # Re-throw computational errors - these should fail the test
+            rethrow(e)
+        end
+    end
+end
+```
 
 ### Code Organization
 24. **Two-File Structure**: Basic operations in `linear_algebra_basic.jl`, matrices in `linear_algebra_transform.jl`
 25. **Consistent Naming**: Functions end with descriptive suffixes (`_matrix`, `_line`, `_coord`)
 26. **Symbolic Variants**: Provide `_symbolic` versions for algebraic manipulation
 27. **Export Everything**: All public functions exported from main module
+28. **Testing Structure**: Modular test files (`test_linear_algebra_basic.jl`, `test_linear_algebra_transform.jl`)
+29. **Follow Math_Foundations Pattern**: Separate computational logic from plotting, use three-tier testing approach
 
 ## Dependencies & Performance
 
@@ -120,6 +201,13 @@ CI=true julia --project=. test/runtests.jl
 ```bash
 julia --project=. docs/make.jl
 ```
+
+### Julia Compilation Considerations
+- **Be Patient with First Runs**: Julia often needs to precompile packages and rebuild project cache on first run. when running a Julia command in the CLI for the first time, it may take a while to precompile the packages and build the project cache, so you won't see the results of running the command for a while.
+- **Typical First Run**: May take 15-30 seconds for precompilation before tests actually start
+- **Example Expected Output**: `Precompiling DrWatson... 3 dependencies successfully precompiled in 17 seconds`
+- **Subsequent Runs**: Much faster once cache is built
+- **Don't Cancel Early**: Allow time for compilation phase to complete
 
 ### CI Considerations
 - Tests automatically detect CI environment via ENV variables
@@ -202,6 +290,10 @@ distance_2_points(p::Point, q::Point) -> Float64
 center_of_gravity(p::Point, q::Point, t) -> Point
 vector_angle_cos(p::Vector, q::Vector) -> Float64
 orthproj(v::Vector, w::Vector) -> Vector
+# Pure computational functions (no plotting dependencies)
+calculate_param_line(p::Point, q::Point, n::Int64) -> Vector{Point2f}
+# Integrated plotting functions (computation + visualization)
+plot_param_line(p::Point, q::Point, n::Int64) -> Vector{Point2f}
 ```
 
 ### Matrix Transformations
