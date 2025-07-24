@@ -15,8 +15,7 @@ end
 # Exports...
 # Pure computational functions (no plotting dependencies)
 export calculate_param_line
-# Integrated plotting functions (computation + visualization)
-export distance_2_points, center_of_gravity, barycentric_coord, plot_param_line
+export distance_2_points, center_of_gravity, barycentric_coord
 export vector_angle_cos, is_orthogonal, polar_unit, orthproj, reflection, rotation
 export point_in_implicit_line, parametric_to_implicit_line, implicit_to_parametric_line, explicit_line
 export distance_to_implicit_line, implicit_line_point_normal_form, distance_to_pnf_implicit_line
@@ -26,6 +25,8 @@ export projection_matrix_symbolic, projection_matrix_symbolic_polar, projection_
 export projection_matrix_transpose, rotation_matrix_symbolic, rotation_matrix, rotation_matrix_ns
 export stretch_matrix_symbolic, stretch_matrix
 export reflection_matrix_symbolic, reflection_matrix, reflection_matrix_rational
+# Integrated plotting functions (computation + visualization)
+export plot_param_line
 
 # Re-export the @variables macro
 eval(:(export @variables))
