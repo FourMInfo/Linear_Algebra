@@ -1,5 +1,5 @@
 CI = get(ENV, "CI", nothing) == "true" || get(ENV, "GITHUB_TOKEN", nothing) !== nothing
-using DrWatson, Documenter
+using DrWatson, Documenter, Dates
 using Linear_Algebra
 
 @info "Building Documentation"
@@ -13,8 +13,10 @@ makedocs(;
     format = Documenter.HTML(
         prettyurls = CI,
         edit_link = "main",
-        assets = ["assets/custom.css"]
-    )
+        assets = ["assets/custom.css"],
+        inventory_version = "0.1.0",
+        footer = "Powered by [Documenter.jl](https://documenter.jl) and the [Julia Programming Language](https://julialang.org) generated on $(Dates.format(Dates.now(), "yyyy-mm-dd HH:MM:ss"))"
+    ),
 )
 
 @info "Deploying Documentation"
