@@ -8,7 +8,16 @@ makedocs(;
     sitename = "Linear_Algebra",
     # This argument is only so that the sequence of pages in the sidebar is configured
     # By default all markdown files in `docs/src` are expanded and included.
-    pages = ["index.md", "sites.md"],
+    pages = [
+        "index.md",
+        "Linear Algebra" => [
+            "LinearAlgebra/01 Vectors.md",
+            "LinearAlgebra/02 Lines.md",
+            "LinearAlgebra/03 Linear Transformations.md",
+            "LinearAlgebra/04 Matrices.md",
+        ],
+        "sites.md"
+    ],
     # Don't worry about what `CI` does in this line.
     format = Documenter.HTML(
         prettyurls = CI,
