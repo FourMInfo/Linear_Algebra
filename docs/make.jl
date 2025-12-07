@@ -10,11 +10,11 @@ makedocs(;
     # By default all markdown files in `docs/src` are expanded and included.
     pages = [
         "index.md",
-        "Linear Algebra" => [
-            "LinearAlgebra/01 Vectors.md",
-            "LinearAlgebra/02 Lines.md",
-            "LinearAlgebra/03 Linear Transformations.md",
-            "LinearAlgebra/04 Matrices.md",
+        "Basics" => [
+            "Basics/01 Vectors.md",
+            "Basics/02 Lines.md",
+            "Basics/03 Linear Transformations.md",
+            "Basics/04 Matrices.md",
         ],
         "sites.md"
     ],
