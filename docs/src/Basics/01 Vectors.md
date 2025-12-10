@@ -8,11 +8,27 @@
 
 A [vector](https://mathworld.wolfram.com/Vector.html) can be understood in several equivalent ways:
 
-- **Geometric definition:** An arrow with a specific length (magnitude) and direction
 - **Algebraic definition:** An ordered list of numbers (components)
+- **Geometric definition:** An arrow with a specific length (magnitude) and direction
 - **Physical definition:** A quantity that has both magnitude and direction (e.g., velocity, force)
 
-In $\mathbb{R}^2$ (2D space)?$, a vector is written as: $\mathbf{v} = [v_1, v_2]$ or $\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}$
+In $\mathbb{R}^2$ (2D space), a vector is written as: $\mathbf{v} = [v_1, v_2]$ or $\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}$
+
+### Vector Notation
+
+Vectors can be represented in different notations:
+
+- **Column vector:** $\begin{pmatrix} v_1 \\ v_2 \end{pmatrix}$
+- **Row vector:** $[v_1, v_2]$
+- **Boldface notation:** $\mathbf{v}$ or $\mathbf{u}$ for vectors
+- **Hat notation:** $\hat{\mathbf{v}}$ for unit vectors (magnitude 1)
+
+### Components and Dimensions
+
+A vector's components are its coordinates in a given space. 
+
+- In $\mathbb{R}^2$: $\mathbf{v} = [v_1, v_2]$
+- In $\mathbb{R}^3$: $\mathbf{v} = [v_1, v_2, v_3]$
 
 In $\mathbb{R}^n$ (n-dimensional space): $\mathbf{v} = [v_1, v_2, \ldots, v_n]$
 
