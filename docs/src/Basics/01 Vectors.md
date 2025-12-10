@@ -12,7 +12,7 @@ A [vector](https://mathworld.wolfram.com/Vector.html) can be understood in sever
 - **Algebraic definition:** An ordered list of numbers (components)
 - **Physical definition:** A quantity that has both magnitude and direction (e.g., velocity, force)
 
-In $\mathbb{R}^2$ (2D space), a vector is written as: $\mathbf{v} = [v_1, v_2]$ or $\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}$
+In $\mathbb{R}^2$ (2D space)?$, a vector is written as: $\mathbf{v} = [v_1, v_2]$ or $\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}$
 
 In $\mathbb{R}^n$ (n-dimensional space): $\mathbf{v} = [v_1, v_2, \ldots, v_n]$
 

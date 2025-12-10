@@ -15,6 +15,7 @@ makedocs(;
             "Basics/02 Lines.md",
             "Basics/03 Linear Transformations.md",
             "Basics/04 Matrices.md",
+            "Basics/05 Systems of Equations.md",
         ],
         "sites.md"
     ],
