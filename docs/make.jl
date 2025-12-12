@@ -25,6 +25,14 @@ makedocs(;
         edit_link = "main",
         assets = ["assets/custom.css"],
         inventory_version = "0.1.0",
+        mathengine = Documenter.MathJax3(Dict(
+            :loader => Dict("load" => ["[tex]/physics", "[tex]/ams"]),
+            :tex => Dict(
+                "packages" => ["base", "ams", "mathtools"],
+                "inlineMath" => [["\$", "\$"]],
+                "displayMath" => [["\$\$", "\$\$"], ["\\[", "\\]"]],
+            ),
+        )),
         footer = "Powered by [Documenter.jl](https://documenter.jl) and the [Julia Programming Language](https://julialang.org) generated on $(Dates.format(Dates.now(), "yyyy-mm-dd HH:MM:ss"))"
     ),
 )

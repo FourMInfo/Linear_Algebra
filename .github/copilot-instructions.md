@@ -1,5 +1,7 @@
 # Copilot Instructions for Linear_Algebra
 
+> **Note:** These instructions serve as the canonical basis for other repositories in the Julia Math study project. Documentation patterns, LaTeX conventions, and MathJax3 configuration documented here should be referenced by related repositories.
+
 ## Project Overview
 
 This is a **Julia linear algebra project** using DrWatson for reproducibility, focused on geometric transformations and linear algebra operations with visualization capabilities. The codebase follows a **modular mathematical library pattern** with comprehensive testing and documentation.
@@ -358,9 +360,11 @@ Documentation in `docs/src/` explains general math concepts (not code). Follow t
 
     $$
     ```
-- **Bullet point style**: List items starting with `-` must begin with text, then LaTeX math
+- **Bullet point style**: List items starting with `-` must begin with **text**, then LaTeX math. LaTeX commands immediately after `-` render incorrectly (misaligned or broken formatting)
   - ✅ **CORRECT**: `- The semi-major axis is $a$`
-  - ❌ **WRONG**: `- $a$ is the semi-major axis`
+  - ✅ **CORRECT**: `- stretch the vector: $\lvert c \rvert \gt 1$`
+  - ❌ **WRONG**: `- $a$ is the semi-major axis` (LaTeX immediately after dash)
+  - ❌ **WRONG**: `- $\mathbf{e}_1 = \lbrack 1, 0 \rbrack$ (points along x-axis)` (LaTeX starts the line)
 - **Equation placement style**: Prefer inline equations with "where:" at end of sentence, followed by list
   - ✅ **CORRECT**: `For an ellipse: $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ where:`
   - ❌ **AVOID**: Blank line, then equation block, then blank line, then "where:"
@@ -370,6 +374,35 @@ Documentation in `docs/src/` explains general math concepts (not code). Follow t
 - **Square brackets in LaTeX math**: Use `\lbrack` and `\rbrack` instead of `[` and `]` inside math expressions to avoid markdown link interpretation errors
   - ✅ **CORRECT**: `$\mathbf{v} = \lbrack v_1, v_2 \rbrack$`
   - ❌ **WRONG**: `$\mathbf{v} = [v_1, v_2]$` (markdown interprets `[v_1, v_2]` as a link)
+- **Absolute value notation**: Use `\lvert` and `\rvert` instead of `|` to avoid markdown pipe interpretation
+  - ✅ **CORRECT**: `$\lvert c \rvert > 1$`
+  - ❌ **WRONG**: `$|c| > 1$` (pipe may be interpreted as table delimiter)
+
+**MathJax3 Configuration (Linear_Algebra uses MathJax3 instead of default KaTeX):**
+
+This project uses MathJax3 for math rendering. Key configuration in `docs/make.jl`:
+
+```julia
+mathengine = Documenter.MathJax3(Dict(
+    :loader => Dict("load" => ["[tex]/physics", "[tex]/ams"]),
+    :tex => Dict(
+        "packages" => ["base", "ams", "mathtools"],
+        "inlineMath" => [["\$", "\$"]],
+        "displayMath" => [["\$\$", "\$\$"], ["\\[", "\\]"]],
+    ),
+)),
+```
+
+**Critical**: The `displayMath` array must include **both** `$$...$$` AND `\[...\]` delimiters because:
+- Markdown source uses `$$...$$` for display math
+- Documenter.jl converts some `$$` blocks to `\[...\]` in generated HTML (especially in list items or new paragraphs)
+- Without both delimiters, MathJax won't process `\[...\]` blocks and they render as literal text
+
+**To switch from KaTeX to MathJax3:**
+1. Add `mathengine` parameter to `Documenter.HTML()` in `docs/make.jl`
+2. Include both delimiter styles in `displayMath`
+3. Load desired packages (ams, mathtools, physics) via `:loader` and `"packages"`
+4. Clean rebuild: `rm -rf docs/build && julia --project=. docs/make.jl`
 
 **MathWorld Links:**
 - Link every new mathematical term on first mention

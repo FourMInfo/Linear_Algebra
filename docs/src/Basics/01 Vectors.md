@@ -12,29 +12,29 @@ A [vector](https://mathworld.wolfram.com/Vector.html) can be understood in sever
 - **Geometric definition:** An arrow with a specific length (magnitude) and direction
 - **Physical definition:** A quantity that has both magnitude and direction (e.g., velocity, force)
 
-In $\mathbb{R}^2$ (2D space), a vector is written as: $\mathbf{v} = [v_1, v_2]$ or $\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}$
+In $\mathbb{R}^2$ (2D space), a vector is written as: $\mathbf{v} = \lbrack v_1, v_2 \rbrack$ or $\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}$
 
 ### Vector Notation
 
 Vectors can be represented in different notations:
 
 - **Column vector:** $\begin{pmatrix} v_1 \\ v_2 \end{pmatrix}$
-- **Row vector:** $[v_1, v_2]$
+- **Row vector:** $\lbrack v_1, v_2 \rbrack$
 - **Boldface notation:** $\mathbf{v}$ or $\mathbf{u}$ for vectors
 - **Hat notation:** $\hat{\mathbf{v}}$ for unit vectors (magnitude 1)
 
 ### Components and Dimensions
 
-A vector's components are its coordinates in a given space. 
+A vector's components are its coordinates in a given space.
 
-- In $\mathbb{R}^2$: $\mathbf{v} = [v_1, v_2]$
-- In $\mathbb{R}^3$: $\mathbf{v} = [v_1, v_2, v_3]$
+- In $\mathbb{R}^2$: $\mathbf{v} = \lbrack v_1, v_2 \rbrack$
+- In $\mathbb{R}^3$: $\mathbf{v} = \lbrack v_1, v_2, v_3 \rbrack$
 
-In $\mathbb{R}^n$ (n-dimensional space): $\mathbf{v} = [v_1, v_2, \ldots, v_n]$
+In $\mathbb{R}^n$ (n-dimensional space): $\mathbf{v} = \lbrack v_1, v_2, \ldots, v_n \rbrack$
 
 ### Position Vectors and Free Vectors
 
-- **Position vector:** A vector from the origin to a point $P = [x, y]$
+- **Position vector:** A vector from the origin to a point $P = \lbrack x, y \rbrack$
 - **Free vector:** A vector defined only by its magnitude and direction, not its starting point
 - **Displacement vector:** The vector from point $P$ to point $Q$, given by $\overrightarrow{PQ} = Q - P$
 
@@ -42,7 +42,7 @@ In $\mathbb{R}^n$ (n-dimensional space): $\mathbf{v} = [v_1, v_2, \ldots, v_n]$
 
 ### Vector Addition
 
-Two vectors are added component-wise: $$\mathbf{u} + \mathbf{v} = [u_1 + v_1, u_2 + v_2]$$
+Two vectors are added component-wise: $$\mathbf{u} + \mathbf{v} = \lbrack u_1 + v_1, u_2 + v_2 \rbrack$$
 
 **Geometric interpretation:** Place the tail of $\mathbf{v}$ at the head of $\mathbf{u}$; the sum is the vector from the tail of $\mathbf{u}$ to the head of $\mathbf{v}$ (parallelogram rule).
 
@@ -55,14 +55,14 @@ Two vectors are added component-wise: $$\mathbf{u} + \mathbf{v} = [u_1 + v_1, u_
 
 ### Scalar Multiplication
 
-A vector multiplied by a scalar $c$: $$c\mathbf{v} = [cv_1, cv_2]$$
+A vector multiplied by a scalar $c$: $$c\mathbf{v} = \lbrack cv_1, cv_2 \rbrack$$
 
 **Geometric interpretation:**
 
-- $|c| > 1$: stretches the vector
-- $0 < |c| < 1$: shrinks the vector
-- $c < 0$: reverses direction
-- $c = 0$: produces the zero vector
+- stretch the vector: $\lvert c \rvert \gt 1$
+- shrink the vector: $0 \lt \lvert c \rvert \lt 1$
+- reverse direction: $c \lt 0$
+- produce the zero vector: $c = 0$
 
 **Properties:**
 
@@ -73,7 +73,12 @@ A vector multiplied by a scalar $c$: $$c\mathbf{v} = [cv_1, cv_2]$$
 
 ### Vector Subtraction
 
-$$\mathbf{u} - \mathbf{v} = \mathbf{u} + (-\mathbf{v}) = [u_1 - v_1, u_2 - v_2]$$
+Vector subtraction is defined as adding the negative of a vector:
+
+$$\begin{aligned}
+\mathbf{u} - \mathbf{v} &= \mathbf{u} + (-\mathbf{v}) \\
+&= \lbrack u_1 - v_1, u_2 - v_2 \rbrack
+\end{aligned}$$
 
 ## Vector Magnitude and Direction
 
@@ -91,17 +96,17 @@ A [unit vector](https://mathworld.wolfram.com/UnitVector.html) has magnitude 1. 
 
 **Standard basis unit vectors in $\mathbb{R}^2$:**
 
-- $\mathbf{e}_1 = [1, 0]$ (points along positive x-axis)
-- $\mathbf{e}_2 = [0, 1]$ (points along positive y-axis)
+- The first basis vector: $\mathbf{e}_1 = \lbrack 1, 0 \rbrack$ (points along positive x-axis)
+- The second basis vector: $\mathbf{e}_2 = \lbrack 0, 1 \rbrack$ (points along positive y-axis)
 
 Any vector can be written as: $\mathbf{v} = v_1\mathbf{e}_1 + v_2\mathbf{e}_2$
 
 ### Direction and Polar Form
 
-In 2D, a vector can be expressed in [polar form](https://mathworld.wolfram.com/PolarCoordinates.html): $$\mathbf{v} = r[\cos\theta, \sin\theta]$$ where:
+In 2D, a vector can be expressed in [polar form](https://mathworld.wolfram.com/PolarCoordinates.html): $$\mathbf{v} = r\lbrack\cos\theta, \sin\theta\rbrack$$ where:
 
-- $r = \|\mathbf{v}\|$ is the magnitude
-- $\theta$ is the angle from the positive x-axis
+- The magnitude is $r = \|\mathbf{v}\|$
+- The angle $\theta$ is measured from the positive x-axis
 
 **Converting between forms:**
 
@@ -114,13 +119,13 @@ The [dot product](https://mathworld.wolfram.com/DotProduct.html) (scalar product
 
 ### Geometric Interpretation
 
-$$\mathbf{u} \cdot \mathbf{v} = \|\mathbf{u}\|\|\mathbf{v}\|\cos\theta$$ where $\theta$ is the angle between the vectors.
+The dot product relates to the angle $\theta$ between the vectors: $$\mathbf{u} \cdot \mathbf{v} = \|\mathbf{u}\|\|\mathbf{v}\|\cos\theta$$ where $\theta$ is the angle between the vectors.
 
 **Key insights:**
 
-- $\mathbf{u} \cdot \mathbf{v} > 0$: acute angle ($\theta < 90°$)
-- $\mathbf{u} \cdot \mathbf{v} = 0$: perpendicular ($\theta = 90°$)
-- $\mathbf{u} \cdot \mathbf{v} < 0$: obtuse angle ($\theta > 90°$)
+- Positive: $\mathbf{u} \cdot \mathbf{v} > 0$ indicates an acute angle ($\theta < 90°$)
+- Zero: $\mathbf{u} \cdot \mathbf{v} = 0$ indicates perpendicular vectors ($\theta = 90°$)
+- Negative: $\mathbf{u} \cdot \mathbf{v} < 0$ indicates an obtuse angle ($\theta > 90°$)
 
 ### Properties
 
@@ -175,7 +180,7 @@ Vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_k$ are [linearly indepen
 
 ### Zero Vector
 
-The [zero vector](https://mathworld.wolfram.com/ZeroVector.html) $\mathbf{0} = [0, 0, \ldots, 0]$:
+The [zero vector](https://mathworld.wolfram.com/ZeroVector.html) $\mathbf{0} = \lbrack 0, 0, \ldots, 0 \rbrack$:
 
 - Has magnitude 0
 - Has no defined direction
