@@ -101,18 +101,34 @@ The [magnitude](https://mathworld.wolfram.com/VectorNorm.html) or length of a ve
 
 For $\mathbb{R}^n$: $$\|\mathbf{v}\| = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2} = \sqrt{\sum_{i=1}^{n} v_i^2}$$
 
-This is the [Euclidean norm](https://mathworld.wolfram.com/L2-Norm.html) (also called L2 norm).
+This is the [Euclidean norm](https://mathworld.wolfram.com/L2-Norm.html) (also called $L^2$ norm).
 
 ### Unit Vectors
 
 A [unit vector](https://mathworld.wolfram.com/UnitVector.html) has magnitude 1. To normalize a vector (convert to unit vector): $$\hat{\mathbf{v}} = \frac{\mathbf{v}}{\|\mathbf{v}\|}$$
 
-**Standard basis unit vectors in $\mathbb{R}^2$:**
+### Basis Vectors
+
+[Basis vectors](https://mathworld.wolfram.com/Basis.html) are a set of vectors that can be combined (using addition and scalar multiplication) to create any other vector in a given dimension. The **standard basis** uses unit vectors aligned with each coordinate axis.
+
+**Standard basis in $\mathbb{R}^2$:**
 
 - The first basis vector: $\mathbf{e}_1 = \lbrack 1, 0 \rbrack$ (points along positive x-axis)
 - The second basis vector: $\mathbf{e}_2 = \lbrack 0, 1 \rbrack$ (points along positive y-axis)
 
-Any vector can be written as: $\mathbf{v} = v_1\mathbf{e}_1 + v_2\mathbf{e}_2$
+Any 2D vector can be built from these: $\mathbf{v} = v_1\mathbf{e}_1 + v_2\mathbf{e}_2$
+
+For example, the vector $\lbrack 3, 5 \rbrack = 3\mathbf{e}_1 + 5\mathbf{e}_2$.
+
+**Standard basis in $\mathbb{R}^3$:**
+
+- x-axis: $\mathbf{e}_1 = \lbrack 1, 0, 0 \rbrack$
+- y-axis: $\mathbf{e}_2 = \lbrack 0, 1, 0 \rbrack$
+- z-axis: $\mathbf{e}_3 = \lbrack 0, 0, 1 \rbrack$
+
+Any 3D vector can be expressed as: $\mathbf{v} = v_1\mathbf{e}_1 + v_2\mathbf{e}_2 + v_3\mathbf{e}_3$
+
+Note that all standard basis vectors in any dimension ($\mathbf{e}_1$, $\mathbf{e}_2$, $\mathbf{e}_3$, etc.) are unit vectors.
 
 ### Direction and Polar Form
 
