@@ -12,8 +12,6 @@ A [vector](https://mathworld.wolfram.com/Vector.html) can be understood in sever
 - **Geometric definition:** An arrow with a specific length (magnitude) and direction
 - **Physical definition:** A quantity that has both magnitude and direction (e.g., velocity, force)
 
-In $\mathbb{R}^2$ (2D space), a vector is written as: $\mathbf{v} = \lbrack v_1, v_2 \rbrack$ or $\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}$
-
 ### Vector Notation
 
 Vectors can be represented in different notations:
@@ -22,15 +20,19 @@ Vectors can be represented in different notations:
 - **Row vector:** $\lbrack v_1, v_2 \rbrack$
 - **Boldface notation:** $\mathbf{v}$ or $\mathbf{u}$ for vectors
 - **Hat notation:** $\hat{\mathbf{v}}$ for unit vectors (magnitude 1)
+- **Arrow notation:** $\vec{v}$ to denote vectors
+- **Component form:** $\mathbf{v} = \lbrack v_1, v_2, \ldots, v_n \rbrack$
+- **Index notation:** $v_i$ to denote the $i$-th component of vector $\mathbf{v}$
 
 ### Components and Dimensions
 
-A vector's components are its coordinates in a given space.
+The dimension of a vector equals the number of its components. The notation $\mathbb{R}^n$ represents all vectors with $n$ real-number components, where each component is a coordinate along one of $n$ perpendicular axes. This collection of all such vectors is called an _n-dimensional space_ (or simply $\mathbb{R}^n$).
 
-- In $\mathbb{R}^2$: $\mathbf{v} = \lbrack v_1, v_2 \rbrack$
-- In $\mathbb{R}^3$: $\mathbf{v} = \lbrack v_1, v_2, v_3 \rbrack$
+In $\mathbb{R}^2$ (2D), a vector is written as: $\mathbf{v} = \lbrack v_1, v_2 \rbrack$ or $\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}$
 
-In $\mathbb{R}^n$ (n-dimensional space): $\mathbf{v} = \lbrack v_1, v_2, \ldots, v_n \rbrack$
+In $\mathbb{R}^3$ (3D), a vector is written as: $\mathbf{v} = \lbrack v_1, v_2, v_3 \rbrack$ or $\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \\ v_3 \end{pmatrix}$
+
+In $\mathbb{R}^n$ (n-dimensional), a vector is written as: $\mathbf{v} = \lbrack v_1, v_2, \ldots, v_n \rbrack$ or $\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix}$
 
 ### Position Vectors and Free Vectors
 
@@ -93,6 +95,33 @@ All the above operations extend naturally to n-dimensional vectors in $\mathbb{R
 - **Example:** In $\mathbb{R}^4$, a vector could be $\mathbf{v} = \lbrack 1, 2, 3, 4 \rbrack$.
 - **Computational tools:** Software like Julia, MATLAB, Python (NumPy), and R facilitate operations on high-dimensional vectors efficiently.
 
+### Dot Product
+
+The [dot product](https://mathworld.wolfram.com/DotProduct.html) (scalar product, inner product) of two vectors (in 2D space): $$\mathbf{u} \cdot \mathbf{v} = u_1v_1 + u_2v_2 = \sum_{i=1}^{2} u_iv_i$$
+
+For $\mathbf{u} = \lbrack u_1, u_2, \ldots, u_n \rbrack$ and $\mathbf{v} = \lbrack v_1, v_2, \ldots, v_n \rbrack$ in $\mathbb{R}^n$: $$\mathbf{u} \cdot \mathbf{v} = u_1v_1 + u_2v_2 + \cdots + u_nv_n = \sum_{i=1}^{n} u_iv_i$$
+
+##### Geometric Interpretation
+
+The dot product relates to the angle $\theta$ between the vectors: $$\mathbf{u} \cdot \mathbf{v} = \|\mathbf{u}\|\|\mathbf{v}\|\cos\theta$$ where $\theta$ is the angle between the vectors.
+
+**Key insights:**
+
+- Positive: $\mathbf{u} \cdot \mathbf{v} > 0$ indicates an acute angle ($\theta < 90°$)
+- Zero: $\mathbf{u} \cdot \mathbf{v} = 0$ indicates perpendicular vectors ($\theta = 90°$)
+- Negative: $\mathbf{u} \cdot \mathbf{v} < 0$ indicates an obtuse angle ($\theta > 90°$)
+
+#### Properties
+
+- Commutative: $\mathbf{u} \cdot \mathbf{v} = \mathbf{v} \cdot \mathbf{u}$
+- Distributive: $\mathbf{u} \cdot (\mathbf{v} + \mathbf{w}) = \mathbf{u} \cdot \mathbf{v} + \mathbf{u} \cdot \mathbf{w}$
+- Scalar multiplication: $(c\mathbf{u}) \cdot \mathbf{v} = c(\mathbf{u} \cdot \mathbf{v})$
+- Self dot product: $\mathbf{v} \cdot \mathbf{v} = \|\mathbf{v}\|^2$
+
+#### Angle Between Vectors
+
+The angle $\theta$ between two vectors: $$\cos\theta = \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{u}\|\|\mathbf{v}\|}$$
+
 ## Vector Magnitude and Direction
 
 ### Magnitude (Norm)
@@ -132,6 +161,8 @@ Note that all standard basis vectors in any dimension ($\mathbf{e}_1$, $\mathbf{
 
 ### Direction and Polar Form
 
+The direction of a vector can be described by the angle it makes with a reference axis (usually the positive x-axis).
+
 In 2D, a vector can be expressed in [polar form](https://mathworld.wolfram.com/PolarCoordinates.html): $$\mathbf{v} = r\lbrack\cos\theta, \sin\theta\rbrack$$ where:
 
 - The magnitude is $r = \|\mathbf{v}\|$
@@ -141,31 +172,6 @@ In 2D, a vector can be expressed in [polar form](https://mathworld.wolfram.com/P
 
 - Cartesian to polar: $r = \sqrt{v_1^2 + v_2^2}$, $\theta = \arctan\left(\frac{v_2}{v_1}\right)$
 - Polar to Cartesian: $v_1 = r\cos\theta$, $v_2 = r\sin\theta$
-
-## Dot Product
-
-The [dot product](https://mathworld.wolfram.com/DotProduct.html) (scalar product, inner product) of two vectors: $$\mathbf{u} \cdot \mathbf{v} = u_1v_1 + u_2v_2 = \sum_{i=1}^{n} u_iv_i$$
-
-### Geometric Interpretation
-
-The dot product relates to the angle $\theta$ between the vectors: $$\mathbf{u} \cdot \mathbf{v} = \|\mathbf{u}\|\|\mathbf{v}\|\cos\theta$$ where $\theta$ is the angle between the vectors.
-
-**Key insights:**
-
-- Positive: $\mathbf{u} \cdot \mathbf{v} > 0$ indicates an acute angle ($\theta < 90°$)
-- Zero: $\mathbf{u} \cdot \mathbf{v} = 0$ indicates perpendicular vectors ($\theta = 90°$)
-- Negative: $\mathbf{u} \cdot \mathbf{v} < 0$ indicates an obtuse angle ($\theta > 90°$)
-
-### Properties
-
-- Commutative: $\mathbf{u} \cdot \mathbf{v} = \mathbf{v} \cdot \mathbf{u}$
-- Distributive: $\mathbf{u} \cdot (\mathbf{v} + \mathbf{w}) = \mathbf{u} \cdot \mathbf{v} + \mathbf{u} \cdot \mathbf{w}$
-- Scalar multiplication: $(c\mathbf{u}) \cdot \mathbf{v} = c(\mathbf{u} \cdot \mathbf{v})$
-- Self dot product: $\mathbf{v} \cdot \mathbf{v} = \|\mathbf{v}\|^2$
-
-### Angle Between Vectors
-
-The angle $\theta$ between two vectors: $$\cos\theta = \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{u}\|\|\mathbf{v}\|}$$
 
 ## Orthogonality
 

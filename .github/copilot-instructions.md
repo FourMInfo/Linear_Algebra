@@ -335,6 +335,7 @@ Documentation in `docs/src/` explains general math concepts (not code). Follow t
 
 **Content Style:**
 - **Definitions first**: Clear, precise mathematical definitions with MathWorld links
+- **Define before use**: All terms must be defined before they are used elsewhere in the document. This principle drives the order and structure of sections—ensure logical progression where each concept builds only on previously defined terms.
 - **Build progressively**: Simple concepts → complex relationships → applications
 - **Multiple representations**: Equations, tables, visual aids (SVG diagrams when helpful)
 - **Context matters**: Explain _why_ concepts are important, not just _what_ they are
