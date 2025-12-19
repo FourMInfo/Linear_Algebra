@@ -95,19 +95,12 @@ All the above operations extend naturally to n-dimensional vectors in $\mathbb{R
 - **Example:** In $\mathbb{R}^4$, a vector could be $\mathbf{v} = \lbrack 1, 2, 3, 4 \rbrack$.
 - **Computational tools:** Software like Julia, MATLAB, Python (NumPy), and R facilitate operations on high-dimensional vectors efficiently.
 
-## Vector Magnitude and Direction
-
-### Magnitude (Norm)
-
-The [magnitude](https://mathworld.wolfram.com/VectorNorm.html) or length of a vector is: $$\|\mathbf{v}\| = \sqrt{v_1^2 + v_2^2}$$
-
-For $\mathbb{R}^n$: $$\|\mathbf{v}\| = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2} = \sqrt{\sum_{i=1}^{n} v_i^2}$$
-
-This is the [Euclidean norm](https://mathworld.wolfram.com/L2-Norm.html) (also called $L^2$ norm).
-
 ### Unit Vectors
 
 A [unit vector](https://mathworld.wolfram.com/UnitVector.html) has magnitude 1. To normalize a vector (convert to unit vector): $$\hat{\mathbf{v}} = \frac{\mathbf{v}}{\|\mathbf{v}\|}$$
+
+**Why this works:** Dividing by the magnitude scales the vector by $\frac{1}{\|\mathbf{v}\|}$. The resulting magnitude is: $$\left\|\frac{\mathbf{v}}{\|\mathbf{v}\|}\right\| = \frac{\|\mathbf{v}\|}{\|\mathbf{v}\|} = 1$$
+The direction is preserved because we multiply by a positive scalar.
 
 ### Basis Vectors
 
@@ -118,7 +111,7 @@ A [unit vector](https://mathworld.wolfram.com/UnitVector.html) has magnitude 1. 
 - The first basis vector: $\mathbf{e}_1 = \lbrack 1, 0 \rbrack$ (points along positive x-axis)
 - The second basis vector: $\mathbf{e}_2 = \lbrack 0, 1 \rbrack$ (points along positive y-axis)
 
-Any 2D vector can be built from these: $\mathbf{v} = v_1\mathbf{e}_1 + v_2\mathbf{e}_2$
+Any 2D vector can be built from these using simple vector operations: $\mathbf{v} = v_1\mathbf{e}_1 + v_2\mathbf{e}_2$
 
 For example, the vector $\lbrack 3, 5 \rbrack = 3\mathbf{e}_1 + 5\mathbf{e}_2$.
 
@@ -130,7 +123,24 @@ For example, the vector $\lbrack 3, 5 \rbrack = 3\mathbf{e}_1 + 5\mathbf{e}_2$.
 
 Any 3D vector can be expressed as: $\mathbf{v} = v_1\mathbf{e}_1 + v_2\mathbf{e}_2 + v_3\mathbf{e}_3$
 
-Note that all standard basis vectors in any dimension ($\mathbf{e}_1$, $\mathbf{e}_2$, $\mathbf{e}_3$, etc.) are unit vectors.
+**Extension to $\mathbb{R}^n$:** The pattern continues naturally. In $\mathbb{R}^n$, the standard basis consists of $n$ vectors $\mathbf{e}_1, \mathbf{e}_2, \ldots, \mathbf{e}_n$, where each $\mathbf{e}_i$ has a 1 in the $i$-th position and 0 elsewhere, i.e. is a unit vector. Any vector can then be written as: $$\mathbf{v} = v_1\mathbf{e}_1 + v_2\mathbf{e}_2 + \cdots + v_n\mathbf{e}_n = \sum_{i=1}^{n} v_i\mathbf{e}_i$$
+
+The components of a vector are simply the coefficients (scalars) needed to build it from the standard basis vectors.
+
+## Vector Magnitude and Direction
+
+### Magnitude (Norm)
+
+The [magnitude](https://mathworld.wolfram.com/VectorNorm.html) or length of a vector is: $$\|\mathbf{v}\| = \sqrt{v_1^2 + v_2^2}$$
+
+**Derivation:** A vector $\mathbf{v} = \lbrack v_1, v_2 \rbrack$ forms the hypotenuse of a right triangle with legs of length $v_1$ and $v_2$ along the coordinate axes. By the Pythagorean theorem, the length of the hypotenuse is $\sqrt{v_1^2 + v_2^2}$.
+
+For $\mathbb{R}^n$: $$\|\mathbf{v}\| = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2} = \sqrt{\sum_{i=1}^{n} v_i^2}$$
+
+**Extension to higher dimensions:** This formula follows from recursive application of the Pythagorean theorem. For 3D, first find the distance in the xy-plane: $d_{xy} = \sqrt{v_1^2 + v_2^2}$. This becomes one leg of a new right triangle with $v_3$ as the other leg: $$\|\mathbf{v}\| = \sqrt{d_{xy}^2 + v_3^2} = \sqrt{v_1^2 + v_2^2 + v_3^2}$$
+The same reasoning applies inductively to any dimension—each additional component adds another perpendicular axis.
+
+This is the [Euclidean norm](https://mathworld.wolfram.com/L2-Norm.html) (also called $L^2$ norm).
 
 ### Direction and Polar Form
 
@@ -140,6 +150,8 @@ In 2D, a vector can be expressed in [polar form](https://mathworld.wolfram.com/P
 
 - The magnitude is $r = \|\mathbf{v}\|$
 - The angle $\theta$ is measured from the positive x-axis
+
+**Derivation:** Consider a vector with magnitude $r$ making angle $\theta$ with the positive x-axis. From basic trigonometry, the x-component is the adjacent side ($v_1 = r\cos\theta$) and the y-component is the opposite side ($v_2 = r\sin\theta$). Therefore: $$\mathbf{v} = \lbrack v_1, v_2 \rbrack = \lbrack r\cos\theta, r\sin\theta \rbrack = r\lbrack\cos\theta, \sin\theta\rbrack$$
 
 **Converting between forms:**
 
