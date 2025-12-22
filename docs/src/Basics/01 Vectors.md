@@ -40,6 +40,16 @@ In $\mathbb{R}^n$ (n-dimensional), a vector is written as: $\mathbf{v} = \lbrack
 - **Free vector:** A vector defined only by its magnitude and direction, not its starting point
 - **Displacement vector:** The vector from point $P$ to point $Q$, given by $\overrightarrow{PQ} = Q - P$
 
+### Special Vector Concepts
+
+#### Parallel Vectors
+
+Two vectors are parallel if one is a scalar multiple of the other: $$\mathbf{u} = c\mathbf{v}$$ for some scalar $c$.
+
+#### Distance Between Points
+
+The distance between points $P$ and $Q$ is: $$d(P, Q) = \|Q - P\| = \|\overrightarrow{PQ}\|$$
+
 ## Vector Operations
 
 ### Vector Addition
@@ -95,38 +105,6 @@ All the above operations extend naturally to n-dimensional vectors in $\mathbb{R
 - **Example:** In $\mathbb{R}^4$, a vector could be $\mathbf{v} = \lbrack 1, 2, 3, 4 \rbrack$.
 - **Computational tools:** Software like Julia, MATLAB, Python (NumPy), and R facilitate operations on high-dimensional vectors efficiently.
 
-### Unit Vectors
-
-A [unit vector](https://mathworld.wolfram.com/UnitVector.html) has magnitude 1. To normalize a vector (convert to unit vector): $$\hat{\mathbf{v}} = \frac{\mathbf{v}}{\|\mathbf{v}\|}$$
-
-**Why this works:** Dividing by the magnitude scales the vector by $\frac{1}{\|\mathbf{v}\|}$. The resulting magnitude is: $$\left\|\frac{\mathbf{v}}{\|\mathbf{v}\|}\right\| = \frac{\|\mathbf{v}\|}{\|\mathbf{v}\|} = 1$$
-The direction is preserved because we multiply by a positive scalar.
-
-### Basis Vectors
-
-[Basis vectors](https://mathworld.wolfram.com/Basis.html) are a set of vectors that can be combined (using addition and scalar multiplication) to create any other vector in a given dimension. The **standard basis** uses unit vectors aligned with each coordinate axis.
-
-**Standard basis in $\mathbb{R}^2$:**
-
-- The first basis vector: $\mathbf{e}_1 = \lbrack 1, 0 \rbrack$ (points along positive x-axis)
-- The second basis vector: $\mathbf{e}_2 = \lbrack 0, 1 \rbrack$ (points along positive y-axis)
-
-Any 2D vector can be built from these using simple vector operations: $\mathbf{v} = v_1\mathbf{e}_1 + v_2\mathbf{e}_2$
-
-For example, the vector $\lbrack 3, 5 \rbrack = 3\mathbf{e}_1 + 5\mathbf{e}_2$.
-
-**Standard basis in $\mathbb{R}^3$:**
-
-- x-axis: $\mathbf{e}_1 = \lbrack 1, 0, 0 \rbrack$
-- y-axis: $\mathbf{e}_2 = \lbrack 0, 1, 0 \rbrack$
-- z-axis: $\mathbf{e}_3 = \lbrack 0, 0, 1 \rbrack$
-
-Any 3D vector can be expressed as: $\mathbf{v} = v_1\mathbf{e}_1 + v_2\mathbf{e}_2 + v_3\mathbf{e}_3$
-
-**Extension to $\mathbb{R}^n$:** The pattern continues naturally. In $\mathbb{R}^n$, the standard basis consists of $n$ vectors $\mathbf{e}_1, \mathbf{e}_2, \ldots, \mathbf{e}_n$, where each $\mathbf{e}_i$ has a 1 in the $i$-th position and 0 elsewhere, i.e. is a unit vector. Any vector can then be written as: $$\mathbf{v} = v_1\mathbf{e}_1 + v_2\mathbf{e}_2 + \cdots + v_n\mathbf{e}_n = \sum_{i=1}^{n} v_i\mathbf{e}_i$$
-
-The components of a vector are simply the coefficients (scalars) needed to build it from the standard basis vectors.
-
 ## Vector Magnitude and Direction
 
 ### Magnitude (Norm)
@@ -157,6 +135,37 @@ In 2D, a vector can be expressed in [polar form](https://mathworld.wolfram.com/P
 
 - Cartesian to polar: $r = \sqrt{v_1^2 + v_2^2}$, $\theta = \arctan\left(\frac{v_2}{v_1}\right)$
 - Polar to Cartesian: $v_1 = r\cos\theta$, $v_2 = r\sin\theta$
+
+### Unit Vectors
+
+A [unit vector](https://mathworld.wolfram.com/UnitVector.html) has magnitude 1. To convert to a unit vector: $$\hat{\mathbf{v}} = \frac{\mathbf{v}}{\|\mathbf{v}\|}$$ A unit vector is also called the _normalized vector_, because you divide by the norm (magnitude) to get a vector of length 1 pointing in the same direction.
+
+**Why this works:** Dividing by the magnitude scales the vector by $\frac{1}{\|\mathbf{v}\|}$. The resulting magnitude is: $$\left\|\frac{\mathbf{v}}{\|\mathbf{v}\|}\right\| = \frac{\|\mathbf{v}\|}{\|\mathbf{v}\|} = 1$$ The direction is preserved because we multiply by a positive scalar.
+
+### Basis Vectors
+
+[Basis vectors](https://mathworld.wolfram.com/Basis.html) are a set of vectors that can be combined (using addition and scalar multiplication) to create any other vector in a given dimension. The **standard basis** uses unit vectors aligned with each coordinate axis.
+
+**Standard basis in $\mathbb{R}^2$:**
+
+- The first basis vector: $\mathbf{e}_1 = \lbrack 1, 0 \rbrack$ (points along positive x-axis)
+- The second basis vector: $\mathbf{e}_2 = \lbrack 0, 1 \rbrack$ (points along positive y-axis)
+
+Any 2D vector can be built from these using simple vector operations: $\mathbf{v} = v_1\mathbf{e}_1 + v_2\mathbf{e}_2$
+
+For example, the vector $\lbrack 3, 5 \rbrack = 3\mathbf{e}_1 + 5\mathbf{e}_2$.
+
+**Standard basis in $\mathbb{R}^3$:**
+
+- x-axis: $\mathbf{e}_1 = \lbrack 1, 0, 0 \rbrack$
+- y-axis: $\mathbf{e}_2 = \lbrack 0, 1, 0 \rbrack$
+- z-axis: $\mathbf{e}_3 = \lbrack 0, 0, 1 \rbrack$
+
+Any 3D vector can be expressed as: $\mathbf{v} = v_1\mathbf{e}_1 + v_2\mathbf{e}_2 + v_3\mathbf{e}_3$
+
+**Extension to $\mathbb{R}^n$:** The pattern continues naturally. In $\mathbb{R}^n$, the standard basis consists of $n$ vectors $\mathbf{e}_1, \mathbf{e}_2, \ldots, \mathbf{e}_n$, where each $\mathbf{e}_i$ has a 1 in the $i$-th position and 0 elsewhere, i.e. is a unit vector. Any vector can then be written as: $$\mathbf{v} = v_1\mathbf{e}_1 + v_2\mathbf{e}_2 + \cdots + v_n\mathbf{e}_n = \sum_{i=1}^{n} v_i\mathbf{e}_i$$
+
+The components of a vector are simply the coefficients (scalars) needed to build it from the standard basis vectors.
 
 ### Dot Product
 
@@ -222,24 +231,6 @@ Vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_k$ are [linearly indepen
 
 - Two vectors are linearly independent if they are not parallel
 - Three vectors in $\mathbb{R}^3$ are linearly independent if they don't all lie in the same plane
-
-## Special Vector Concepts
-
-### Zero Vector
-
-The [zero vector](https://mathworld.wolfram.com/ZeroVector.html) $\mathbf{0} = \lbrack 0, 0, \ldots, 0 \rbrack$:
-
-- Has magnitude 0
-- Has no defined direction
-- Is the additive identity: $\mathbf{v} + \mathbf{0} = \mathbf{v}$
-
-### Parallel Vectors
-
-Two vectors are parallel if one is a scalar multiple of the other: $$\mathbf{u} = c\mathbf{v}$$ for some scalar $c$.
-
-### Distance Between Points
-
-The distance between points $P$ and $Q$ is: $$d(P, Q) = \|Q - P\| = \|\overrightarrow{PQ}\|$$
 
 ## Applications
 
