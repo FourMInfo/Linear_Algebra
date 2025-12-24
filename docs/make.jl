@@ -6,8 +6,9 @@ using Linear_Algebra
 makedocs(;
     modules=[Linear_Algebra],  # Specify your module here
     sitename = "Linear_Algebra",
+    # pagesonly=true excludes all markdown files not listed in pages (e.g., Linear Algebra Capacities/)
+    pagesonly = true,
     # This argument is only so that the sequence of pages in the sidebar is configured
-    # By default all markdown files in `docs/src` are expanded and included.
     pages = [
         "index.md",
         "Basics" => [
@@ -16,6 +17,18 @@ makedocs(;
             "Basics/03 Linear Transformations.md",
             "Basics/04 Matrices.md",
             "Basics/05 Systems of Equations.md",
+        ],
+        "Geometry" => [
+            "Geometry/01 Points and Coordinates.md",
+            "Geometry/02 Lines.md",
+            "Geometry/03 Dot Product and Orthogonality.md",
+            "Geometry/04 Projections and Distance.md",
+            "Geometry/05 Line Intersections.md",
+            "Geometry/06 Transformations.md",
+            "Geometry/07 Matrices and Maps.md",
+            "Geometry/08 Linear Systems.md",
+            "Geometry/09 Inverse and Kernel.md",
+            "Geometry/10 3D Geometry.md",
         ],
         "sites.md"
     ],
