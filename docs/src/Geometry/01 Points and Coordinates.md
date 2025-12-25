@@ -33,7 +33,11 @@ To clearly identify $\mathbf{p}$ as a point, the notation $\mathbf{p} \in \mathb
 
 ## Vectors
 
-Suppose the reference point is $\mathbf{p}$, and when moving along a straight path, our target point is $\mathbf{q}$. The direction from $\mathbf{p}$ would be to follow the [vector](https://mathworld.wolfram.com/Vector.html) $\mathbf{v}$. Our notation for a vector is the same as for a point: boldface lowercase letters. To get to $\mathbf{q}$ we say:
+Suppose the reference point is $\mathbf{p}$, and when moving along a straight path, our target point is $\mathbf{q}$. The direction from $\mathbf{p}$ would be to follow the [vector](https://mathworld.wolfram.com/Vector.html) $\mathbf{v}$. Our notation for a vector is the same as for a point: boldface lowercase letters.
+
+For algebraic properties of vector operations (addition, scalar multiplication, dot product), see [Vectors](../Basics/01 Vectors.md).
+
+To get to $\mathbf{q}$ we say:
 
 $$\mathbf{q}=\mathbf{p}+\mathbf{v}$$
 
@@ -74,11 +78,21 @@ The components of $\mathbf{v}$, namely $v_1$ and $v_2$, indicate how many units 
 
 $$\mathbf{v}=\mathbf{q}-\mathbf{p}$$
 
-This defines a vector as a difference of two points which describes a _direction_ and a _distance_, or a _displacement_.
+This defines a vector as a difference of two points which describes a _direction_ and a _distance_, or a _displacement_. The vector $\overrightarrow{PQ} = \mathbf{q} - \mathbf{p}$ is called the [displacement vector](https://mathworld.wolfram.com/DisplacementVector.html) from $\mathbf{p}$ to $\mathbf{q}$.
 
 A vector has a _tail_ and a _head_. The tail is typically displayed positioned at a point, or bound to a point, to indicate the geometric significance of the vector. However, unlike a point, a vector does not define a position. Two vectors are equal if they have the same component values, just as points are equal if they have the same coordinate values. Thus, considering a vector as a difference of two points, there are any number of vectors with the same direction and length.
 
 ![Vectors with same direction and length](assets/image-2.png)
+
+### Position Vectors and Free Vectors
+
+A [position vector](https://mathworld.wolfram.com/PositionVector.html) is a vector from the origin $\mathbf{o}$ to a point $\mathbf{p}$:
+
+$$\overrightarrow{OP} = \mathbf{p} - \mathbf{o} = \mathbf{p}$$
+
+Since the origin has coordinates $\lbrack 0, 0 \rbrack$, the position vector of a point equals the point's coordinates.
+
+A _free vector_ is defined only by its magnitude and direction, not its starting point. As shown above, any number of vectors can have the same direction and length—these are all equal as free vectors. When we write $\mathbf{v} = \lbrack v_1, v_2 \rbrack$, we typically mean a free vector.
 
 ### Special Vectors
 
@@ -90,6 +104,10 @@ $$\mathbf{0}=\left\lbrack\begin{array}{l}
 \end{array}\right\rbrack$$
 
 This vector has no direction or length.
+
+### Parallel Vectors
+
+Two vectors are parallel if one is a scalar multiple of the other: $$\mathbf{u} = c\mathbf{v}$$ for some scalar $c$.
 
 ### Standard Basis
 

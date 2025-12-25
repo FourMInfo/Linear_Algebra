@@ -9,8 +9,10 @@
 A [vector](https://mathworld.wolfram.com/Vector.html) can be understood in several equivalent ways:
 
 - **Algebraic definition:** An ordered list of numbers (components)
-- **Geometric definition:** An arrow with a specific length (magnitude) and direction
-- **Physical definition:** A quantity that has both magnitude and direction (e.g., velocity, force)
+- **Geometric definition:** An arrow in Euclidean space with a specific length (magnitude) and direction
+- **Physical definition:** A physical quantity that has both magnitude and direction (e.g., velocity, force)
+
+In this document, we primarily focus on the algebraic definition of vectors in n-dimensional space, denoted as $\mathbb{R}^n$. For more information about the geometric and physical interpretations, see [Points and Coordinates](../Geometry/01 Points and Coordinates.md).
 
 ### Vector Notation
 
@@ -34,21 +36,9 @@ In $\mathbb{R}^3$ (3D), a vector is written as: $\mathbf{v} = \lbrack v_1, v_2, 
 
 In $\mathbb{R}^n$ (n-dimensional), a vector is written as: $\mathbf{v} = \lbrack v_1, v_2, \ldots, v_n \rbrack$ or $\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix}$
 
-### Position Vectors and Free Vectors
-
-- **Position vector:** A vector from the origin to a point $P = \lbrack x, y \rbrack$
-- **Free vector:** A vector defined only by its magnitude and direction, not its starting point
-- **Displacement vector:** The vector from point $P$ to point $Q$, given by $\overrightarrow{PQ} = Q - P$
-
-### Special Vector Concepts
-
-#### Parallel Vectors
+### Parallel Vectors
 
 Two vectors are parallel if one is a scalar multiple of the other: $$\mathbf{u} = c\mathbf{v}$$ for some scalar $c$.
-
-#### Distance Between Points
-
-The distance between points $P$ and $Q$ is: $$d(P, Q) = \|Q - P\| = \|\overrightarrow{PQ}\|$$
 
 ## Vector Operations
 
@@ -105,108 +95,20 @@ All the above operations extend naturally to n-dimensional vectors in $\mathbb{R
 - **Example:** In $\mathbb{R}^4$, a vector could be $\mathbf{v} = \lbrack 1, 2, 3, 4 \rbrack$.
 - **Computational tools:** Software like Julia, MATLAB, Python (NumPy), and R facilitate operations on high-dimensional vectors efficiently.
 
-## Vector Magnitude and Direction
-
-### Magnitude (Norm)
-
-The [magnitude](https://mathworld.wolfram.com/VectorNorm.html) or length of a vector is: $$\|\mathbf{v}\| = \sqrt{v_1^2 + v_2^2}$$
-
-**Derivation:** A vector $\mathbf{v} = \lbrack v_1, v_2 \rbrack$ forms the hypotenuse of a right triangle with legs of length $v_1$ and $v_2$ along the coordinate axes. By the Pythagorean theorem, the length of the hypotenuse is $\sqrt{v_1^2 + v_2^2}$.
-
-For $\mathbb{R}^n$: $$\|\mathbf{v}\| = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2} = \sqrt{\sum_{i=1}^{n} v_i^2}$$
-
-**Extension to higher dimensions:** This formula follows from recursive application of the Pythagorean theorem. For 3D, first find the distance in the xy-plane: $d_{xy} = \sqrt{v_1^2 + v_2^2}$. This becomes one leg of a new right triangle with $v_3$ as the other leg: $$\|\mathbf{v}\| = \sqrt{d_{xy}^2 + v_3^2} = \sqrt{v_1^2 + v_2^2 + v_3^2}$$
-The same reasoning applies inductively to any dimension—each additional component adds another perpendicular axis.
-
-This is the [Euclidean norm](https://mathworld.wolfram.com/L2-Norm.html) (also called $L^2$ norm).
-
-### Direction and Polar Form
-
-The direction of a vector can be described by the angle it makes with a reference axis (usually the positive x-axis).
-
-In 2D, a vector can be expressed in [polar form](https://mathworld.wolfram.com/PolarCoordinates.html): $$\mathbf{v} = r\lbrack\cos\theta, \sin\theta\rbrack$$ where:
-
-- The magnitude is $r = \|\mathbf{v}\|$
-- The angle $\theta$ is measured from the positive x-axis
-
-**Derivation:** Consider a vector with magnitude $r$ making angle $\theta$ with the positive x-axis. From basic trigonometry, the x-component is the adjacent side ($v_1 = r\cos\theta$) and the y-component is the opposite side ($v_2 = r\sin\theta$). Therefore: $$\mathbf{v} = \lbrack v_1, v_2 \rbrack = \lbrack r\cos\theta, r\sin\theta \rbrack = r\lbrack\cos\theta, \sin\theta\rbrack$$
-
-**Converting between forms:**
-
-- Cartesian to polar: $r = \sqrt{v_1^2 + v_2^2}$, $\theta = \arctan\left(\frac{v_2}{v_1}\right)$
-- Polar to Cartesian: $v_1 = r\cos\theta$, $v_2 = r\sin\theta$
-
-### Unit Vectors
-
-A [unit vector](https://mathworld.wolfram.com/UnitVector.html) has magnitude 1. To convert to a unit vector: $$\hat{\mathbf{v}} = \frac{\mathbf{v}}{\|\mathbf{v}\|}$$ A unit vector is also called the _normalized vector_, because you divide by the norm (magnitude) to get a vector of length 1 pointing in the same direction.
-
-**Why this works:** Dividing by the magnitude scales the vector by $\frac{1}{\|\mathbf{v}\|}$. The resulting magnitude is: $$\left\|\frac{\mathbf{v}}{\|\mathbf{v}\|}\right\| = \frac{\|\mathbf{v}\|}{\|\mathbf{v}\|} = 1$$ The direction is preserved because we multiply by a positive scalar.
-
-### Basis Vectors
-
-[Basis vectors](https://mathworld.wolfram.com/Basis.html) are a set of vectors that can be combined (using addition and scalar multiplication) to create any other vector in a given dimension. The **standard basis** uses unit vectors aligned with each coordinate axis.
-
-**Standard basis in $\mathbb{R}^2$:**
-
-- The first basis vector: $\mathbf{e}_1 = \lbrack 1, 0 \rbrack$ (points along positive x-axis)
-- The second basis vector: $\mathbf{e}_2 = \lbrack 0, 1 \rbrack$ (points along positive y-axis)
-
-Any 2D vector can be built from these using simple vector operations: $\mathbf{v} = v_1\mathbf{e}_1 + v_2\mathbf{e}_2$
-
-For example, the vector $\lbrack 3, 5 \rbrack = 3\mathbf{e}_1 + 5\mathbf{e}_2$.
-
-**Standard basis in $\mathbb{R}^3$:**
-
-- x-axis: $\mathbf{e}_1 = \lbrack 1, 0, 0 \rbrack$
-- y-axis: $\mathbf{e}_2 = \lbrack 0, 1, 0 \rbrack$
-- z-axis: $\mathbf{e}_3 = \lbrack 0, 0, 1 \rbrack$
-
-Any 3D vector can be expressed as: $\mathbf{v} = v_1\mathbf{e}_1 + v_2\mathbf{e}_2 + v_3\mathbf{e}_3$
-
-**Extension to $\mathbb{R}^n$:** The pattern continues naturally. In $\mathbb{R}^n$, the standard basis consists of $n$ vectors $\mathbf{e}_1, \mathbf{e}_2, \ldots, \mathbf{e}_n$, where each $\mathbf{e}_i$ has a 1 in the $i$-th position and 0 elsewhere, i.e. is a unit vector. Any vector can then be written as: $$\mathbf{v} = v_1\mathbf{e}_1 + v_2\mathbf{e}_2 + \cdots + v_n\mathbf{e}_n = \sum_{i=1}^{n} v_i\mathbf{e}_i$$
-
-The components of a vector are simply the coefficients (scalars) needed to build it from the standard basis vectors.
-
-### Dot Product
+## Dot Product
 
 The [dot product](https://mathworld.wolfram.com/DotProduct.html) (scalar product, inner product) of two vectors (in 2D space): $$\mathbf{u} \cdot \mathbf{v} = u_1v_1 + u_2v_2 = \sum_{i=1}^{2} u_iv_i$$
 
 For $\mathbf{u} = \lbrack u_1, u_2, \ldots, u_n \rbrack$ and $\mathbf{v} = \lbrack v_1, v_2, \ldots, v_n \rbrack$ in $\mathbb{R}^n$: $$\mathbf{u} \cdot \mathbf{v} = u_1v_1 + u_2v_2 + \cdots + u_nv_n = \sum_{i=1}^{n} u_iv_i$$
 
-##### Geometric Interpretation
-
-The dot product relates to the angle $\theta$ between the vectors: $$\mathbf{u} \cdot \mathbf{v} = \|\mathbf{u}\|\|\mathbf{v}\|\cos\theta$$ where $\theta$ is the angle between the vectors.
-
-**Key insights:**
-
-- Positive: $\mathbf{u} \cdot \mathbf{v} > 0$ indicates an acute angle ($\theta < 90°$)
-- Zero: $\mathbf{u} \cdot \mathbf{v} = 0$ indicates perpendicular vectors ($\theta = 90°$)
-- Negative: $\mathbf{u} \cdot \mathbf{v} < 0$ indicates an obtuse angle ($\theta > 90°$)
-
-#### Properties
+### Properties
 
 - Commutative: $\mathbf{u} \cdot \mathbf{v} = \mathbf{v} \cdot \mathbf{u}$
 - Distributive: $\mathbf{u} \cdot (\mathbf{v} + \mathbf{w}) = \mathbf{u} \cdot \mathbf{v} + \mathbf{u} \cdot \mathbf{w}$
 - Scalar multiplication: $(c\mathbf{u}) \cdot \mathbf{v} = c(\mathbf{u} \cdot \mathbf{v})$
 - Self dot product: $\mathbf{v} \cdot \mathbf{v} = \|\mathbf{v}\|^2$
 
-#### Angle Between Vectors
-
-The angle $\theta$ between two vectors: $$\cos\theta = \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{u}\|\|\mathbf{v}\|}$$
-
-## Orthogonality
-
-Two vectors are [orthogonal](https://mathworld.wolfram.com/OrthogonalVectors.html) (perpendicular) if: $$\mathbf{u} \cdot \mathbf{v} = 0$$
-
-### Orthogonal Projection
-
-The [orthogonal projection](https://mathworld.wolfram.com/OrthogonalProjection.html) of $\mathbf{w}$ onto $\mathbf{v}$: $$\text{proj}_{\mathbf{v}}\mathbf{w} = \frac{\mathbf{v} \cdot \mathbf{w}}{\|\mathbf{v}\|^2}\mathbf{v} = \frac{\mathbf{v} \cdot \mathbf{w}}{\mathbf{v} \cdot \mathbf{v}}\mathbf{v}$$
-
-**Geometric interpretation:** The projection is the "shadow" of $\mathbf{w}$ onto the line defined by $\mathbf{v}$.
-
-### Orthogonal Decomposition
-
-Any vector $\mathbf{w}$ can be decomposed relative to $\mathbf{v}$: $$\mathbf{w} = \text{proj}_{\mathbf{v}}\mathbf{w} + \mathbf{w}^{\perp}$$ where $\mathbf{w}^{\perp}$ is the component perpendicular to $\mathbf{v}$.
+For geometric interpretation (angles, orthogonality, projections), see [Dot Product and Orthogonality](../Geometry/03 Dot Product and Orthogonality.md).
 
 ## Linear Combinations and Span
 
@@ -253,6 +155,8 @@ Vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_k$ are [linearly indepen
 
 ## See Also
 
+- [Points and Coordinates](../Geometry/01 Points and Coordinates.md) - Points, standard basis, distance, and magnitude
+- [Dot Product and Orthogonality](../Geometry/03 Dot Product and Orthogonality.md) - Geometric interpretation of dot product
 - [Lines](02 Lines.md) - Parametric and implicit representations
 - [Linear Transformations](03 Linear Transformations.md) - How vectors are mapped
 - [Matrices](04 Matrices.md) - Matrix-vector operations
