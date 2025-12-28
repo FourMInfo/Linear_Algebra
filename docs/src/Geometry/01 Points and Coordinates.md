@@ -35,7 +35,7 @@ To clearly identify $\mathbf{p}$ as a point, the notation $\mathbf{p} \in \mathb
 
 Suppose the reference point is $\mathbf{p}$, and when moving along a straight path, our target point is $\mathbf{q}$. The direction from $\mathbf{p}$ would be to follow the [vector](https://mathworld.wolfram.com/Vector.html) $\mathbf{v}$. Our notation for a vector is the same as for a point: boldface lowercase letters.
 
-For algebraic properties of vector operations (addition, scalar multiplication, dot product), see [Vectors](../Basics/01 Vectors.md).
+For algebraic properties of vector operations (addition, scalar multiplication, dot product), see [Vector Operations](../Basics/01 Vectors.md#Vector-Operations) in the Vectors document.
 
 To get to $\mathbf{q}$ we say:
 
@@ -121,7 +121,7 @@ Two vectors $\mathbf{v}$ and $\mathbf{w}$ describe a parallelogram (see parallel
 
 **Example of linear dependence:** The vectors $\mathbf{v} = \lbrack 1, 2 \rbrack$ and $\mathbf{w} = \lbrack 2, 4 \rbrack$ are linearly dependent since $\mathbf{w} = 2\mathbf{v}$. They lie on the same line through the origin and cannot span $\mathbb{R}^2$—for instance, $\mathbf{u} = \lbrack 1, 0 \rbrack$ cannot be written as $r\mathbf{v} + s\mathbf{w}$.
 
-For the algebraic definition and properties of linear independence, see [Vectors](../Basics/01 Vectors.md#linear-independence).
+For the algebraic definition and properties of linear independence, see [Linear Independence](../Basics/01 Vectors.md#Linear-Independence).
 
 ### Standard Basis
 

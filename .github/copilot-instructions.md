@@ -423,6 +423,31 @@ mathengine = Documenter.MathJax3(Dict(
 - Code blocks with language tags: ````julia` for Julia examples
 - Follow the pattern of existing function documentation in src directory
 
+**Cross-Document Section Links (Documenter.jl):**
+
+When linking to a specific section in another document, use standard markdown link syntax with the full file path and section anchor:
+
+```markdown
+[Display Text](../Folder/Document Name.md#Section-Heading)
+```
+
+**CRITICAL rules for section anchors:**
+- Section anchors must **exactly match** the heading text with proper capitalization
+- Spaces in **file names** remain as spaces (not `%20`)
+- Spaces in **section anchors** become hyphens (`-`)
+- Parentheses in section names are preserved in the anchor
+
+**Examples:**
+- ✅ **CORRECT**: `[Coordinate Independent Operations](../Geometry/01 Points and Coordinates.md#Coordinate-Independent-Operations)`
+- ✅ **CORRECT**: `[Linear Independence (Geometric View)](../Geometry/01 Points and Coordinates.md#Linear-Independence-(Geometric-View))`
+- ❌ **WRONG**: `[Section](../Geometry/01%20Points%20and%20Coordinates.md#section)` (wrong: `%20` and lowercase)
+- ❌ **WRONG**: `[Section](@ref "Section Name")` (`@ref` is for docstrings, not cross-document links)
+
+**Best practice for cross-references:**
+- Include context about which document contains the section: "see [Section Name](path#anchor) in Document Name"
+- Verify the section heading spelling and capitalization before creating the link
+- Test the link by building docs (`julia --project=. docs/make.jl`) and clicking in browser
+
 ## Communication Patterns
 
 - Avoid being overly obsequious in responses

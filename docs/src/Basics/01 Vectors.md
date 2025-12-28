@@ -12,7 +12,7 @@ A [vector](https://mathworld.wolfram.com/Vector.html) can be understood in sever
 - **Geometric definition:** An arrow in Euclidean space with a specific length (magnitude) and direction
 - **Physical definition:** A physical quantity that has both magnitude and direction (e.g., velocity, force)
 
-In this document, we primarily focus on the algebraic definition of vectors in n-dimensional space, denoted as $\mathbb{R}^n$. For more information about the geometric and physical interpretations, see [Vectors](../Geometry/01 Points and Coordinates.md#vectors).
+In this document, we primarily focus on the algebraic definition of vectors in n-dimensional space, denoted as $\mathbb{R}^n$. For more information about the geometric and physical interpretations, see [Vectors](../Geometry/01 Points and Coordinates.md#Vectors) in the Points and Coordinates document.
 
 ### Vector Notation
 
@@ -42,7 +42,7 @@ In $\mathbb{R}^n$ (n-dimensional), a vector is written as: $\mathbf{v} = \lbrack
 
 Two vectors are added component-wise: $$\mathbf{u} + \mathbf{v} = \lbrack u_1 + v_1, u_2 + v_2 \rbrack$$
 
-For geometric interpretation (parallelogram rule), see [Coordinate Independent Operations](../Geometry/01 Points and Coordinates.md#coordinate-independent-operations).
+For geometric interpretation (parallelogram rule), see [Coordinate Independent Operations](../Geometry/01 Points and Coordinates.md#Coordinate-Independent-Operations) in the Points and Coordinates document.
 
 **Properties:**
 
@@ -55,7 +55,7 @@ For geometric interpretation (parallelogram rule), see [Coordinate Independent O
 
 A vector multiplied by a scalar $c$: $$c\mathbf{v} = \lbrack cv_1, cv_2 \rbrack$$
 
-For geometric interpretation (scaling, stretching, reversing direction), see [Coordinate Independent Operations](../Geometry/01 Points and Coordinates.md#coordinate-independent-operations).
+For geometric interpretation (scaling, stretching, reversing direction), see [Coordinate Independent Operations](../Geometry/01 Points and Coordinates.md#Coordinate-Independent-Operations) in the Points and Coordinates document.
 
 **Properties:**
 
@@ -98,7 +98,7 @@ For $\mathbf{u} = \lbrack u_1, u_2, \ldots, u_n \rbrack$ and $\mathbf{v} = \lbra
 - Scalar multiplication: $(c\mathbf{u}) \cdot \mathbf{v} = c(\mathbf{u} \cdot \mathbf{v})$
 - Self dot product: $\mathbf{v} \cdot \mathbf{v} = \|\mathbf{v}\|^2$
 
-For geometric interpretation, see [Dot Product and Cosines](../Geometry/03 Dot Product and Orthogonality.md#dot-product-and-cosines) (angles) and [Orthogonal Vectors](../Geometry/03 Dot Product and Orthogonality.md#orthogonal-vectors) (orthogonality).
+For geometric interpretation, see [Dot Product and Cosines](../Geometry/03 Dot Product and Orthogonality.md#Dot-Product-and-Cosines) (angles) and [Orthogonal Vectors](../Geometry/03 Dot Product and Orthogonality.md#Orthogonal-Vectors) (orthogonality) in the Dot Product and Orthogonality document.
 
 ## Linear Combinations and Span
 
@@ -119,7 +119,7 @@ The [span](https://mathworld.wolfram.com/VectorSpaceSpan.html) of a set of vecto
 
 Vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_k$ are [linearly independent](https://mathworld.wolfram.com/LinearlyIndependentVectors.html) if the only solution to: $$c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k = \mathbf{0}$$ is $c_1 = c_2 = \cdots = c_k = 0$.
 
-For geometric interpretation (parallel vectors, zero-area parallelogram), see [Linear Independence (Geometric View)](../Geometry/01 Points and Coordinates.md#linear-independence-geometric-view).
+For geometric interpretation (parallel vectors, zero-area parallelogram), see [Linear Independence (Geometric View)](../Geometry/01 Points and Coordinates.md#Linear-Independence-(Geometric-View)) in the Points and Coordinates document.
 
 ## Applications
 
