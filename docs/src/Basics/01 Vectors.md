@@ -12,7 +12,7 @@ A [vector](https://mathworld.wolfram.com/Vector.html) can be understood in sever
 - **Geometric definition:** An arrow in Euclidean space with a specific length (magnitude) and direction
 - **Physical definition:** A physical quantity that has both magnitude and direction (e.g., velocity, force)
 
-In this document, we primarily focus on the algebraic definition of vectors in n-dimensional space, denoted as $\mathbb{R}^n$. For more information about the geometric and physical interpretations, see [Points and Coordinates](../Geometry/01 Points and Coordinates.md).
+In this document, we primarily focus on the algebraic definition of vectors in n-dimensional space, denoted as $\mathbb{R}^n$. For more information about the geometric and physical interpretations, see [Vectors](../Geometry/01 Points and Coordinates.md#vectors).
 
 ### Vector Notation
 
@@ -36,17 +36,13 @@ In $\mathbb{R}^3$ (3D), a vector is written as: $\mathbf{v} = \lbrack v_1, v_2, 
 
 In $\mathbb{R}^n$ (n-dimensional), a vector is written as: $\mathbf{v} = \lbrack v_1, v_2, \ldots, v_n \rbrack$ or $\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix}$
 
-### Parallel Vectors
-
-Two vectors are parallel if one is a scalar multiple of the other: $$\mathbf{u} = c\mathbf{v}$$ for some scalar $c$.
-
 ## Vector Operations
 
 ### Vector Addition
 
 Two vectors are added component-wise: $$\mathbf{u} + \mathbf{v} = \lbrack u_1 + v_1, u_2 + v_2 \rbrack$$
 
-**Geometric interpretation:** Place the tail of $\mathbf{v}$ at the head of $\mathbf{u}$; the sum is the vector from the tail of $\mathbf{u}$ to the head of $\mathbf{v}$ (parallelogram rule).
+For geometric interpretation (parallelogram rule), see [Coordinate Independent Operations](../Geometry/01 Points and Coordinates.md#coordinate-independent-operations).
 
 **Properties:**
 
@@ -59,12 +55,7 @@ Two vectors are added component-wise: $$\mathbf{u} + \mathbf{v} = \lbrack u_1 + 
 
 A vector multiplied by a scalar $c$: $$c\mathbf{v} = \lbrack cv_1, cv_2 \rbrack$$
 
-**Geometric interpretation:**
-
-- stretch the vector: $\lvert c \rvert \gt 1$
-- shrink the vector: $0 \lt \lvert c \rvert \lt 1$
-- reverse direction: $c \lt 0$
-- produce the zero vector: $c = 0$
+For geometric interpretation (scaling, stretching, reversing direction), see [Coordinate Independent Operations](../Geometry/01 Points and Coordinates.md#coordinate-independent-operations).
 
 **Properties:**
 
@@ -89,7 +80,6 @@ All the above operations extend naturally to n-dimensional vectors in $\mathbb{R
 - **Scalar multiplication:** $$c\mathbf{v} = \lbrack cv_1, cv_2, \ldots, cv_n \rbrack$$
 - **Subtraction:** $$\mathbf{u} - \mathbf{v} = \lbrack u_1 - v_1, u_2 - v_2, \ldots, u_n - v_n \rbrack$$
 - **Properties:** All properties of vector addition and scalar multiplication hold in $\mathbb{R}^n$ as well.
-- **Geometric interpretation:** While visualization becomes challenging beyond 3D, the algebraic definitions remain consistent.
 - **Applications:** Vectors in $\mathbb{R}^n$ are widely used in data science, physics, and engineering to represent multi-dimensional quantities and are essential in fields like machine learning, where data points are often represented as high-dimensional vectors.
 - **Notation:** Vectors in $\mathbb{R}^n$ are often denoted as $\mathbf{v} = \lbrack v_1, v_2, \ldots, v_n \rbrack$ or $\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix}$.
 - **Example:** In $\mathbb{R}^4$, a vector could be $\mathbf{v} = \lbrack 1, 2, 3, 4 \rbrack$.
@@ -108,7 +98,7 @@ For $\mathbf{u} = \lbrack u_1, u_2, \ldots, u_n \rbrack$ and $\mathbf{v} = \lbra
 - Scalar multiplication: $(c\mathbf{u}) \cdot \mathbf{v} = c(\mathbf{u} \cdot \mathbf{v})$
 - Self dot product: $\mathbf{v} \cdot \mathbf{v} = \|\mathbf{v}\|^2$
 
-For geometric interpretation (angles, orthogonality, projections), see [Dot Product and Orthogonality](../Geometry/03 Dot Product and Orthogonality.md).
+For geometric interpretation, see [Dot Product and Cosines](../Geometry/03 Dot Product and Orthogonality.md#dot-product-and-cosines) (angles) and [Orthogonal Vectors](../Geometry/03 Dot Product and Orthogonality.md#orthogonal-vectors) (orthogonality).
 
 ## Linear Combinations and Span
 
@@ -129,10 +119,7 @@ The [span](https://mathworld.wolfram.com/VectorSpaceSpan.html) of a set of vecto
 
 Vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_k$ are [linearly independent](https://mathworld.wolfram.com/LinearlyIndependentVectors.html) if the only solution to: $$c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k = \mathbf{0}$$ is $c_1 = c_2 = \cdots = c_k = 0$.
 
-**Geometric interpretation:**
-
-- Two vectors are linearly independent if they are not parallel
-- Three vectors in $\mathbb{R}^3$ are linearly independent if they don't all lie in the same plane
+For geometric interpretation (parallel vectors, zero-area parallelogram), see [Linear Independence (Geometric View)](../Geometry/01 Points and Coordinates.md#linear-independence-geometric-view).
 
 ## Applications
 

@@ -109,6 +109,20 @@ This vector has no direction or length.
 
 Two vectors are parallel if one is a scalar multiple of the other: $$\mathbf{u} = c\mathbf{v}$$ for some scalar $c$.
 
+### Linear Independence (Geometric View)
+
+Two vectors $\mathbf{v}$ and $\mathbf{w}$ describe a parallelogram (see parallelogram rule below). When this parallelogram has _zero area_, the two vectors are parallel—they satisfy $\mathbf{v} = c\mathbf{w}$ for some scalar $c$. In this case, we call them [linearly dependent](https://mathworld.wolfram.com/LinearlyDependentVectors.html). Otherwise, they are [linearly independent](https://mathworld.wolfram.com/LinearlyIndependentVectors.html).
+
+**Geometric interpretation:**
+
+- Two vectors in $\mathbb{R}^2$ are linearly independent if they are _not parallel_ (form a parallelogram with non-zero area)
+- Two linearly independent vectors can express any other vector as a linear combination
+- Two linearly independent vectors in 2D form a _basis_ for $\mathbb{R}^2$
+
+**Example of linear dependence:** The vectors $\mathbf{v} = \lbrack 1, 2 \rbrack$ and $\mathbf{w} = \lbrack 2, 4 \rbrack$ are linearly dependent since $\mathbf{w} = 2\mathbf{v}$. They lie on the same line through the origin and cannot span $\mathbb{R}^2$—for instance, $\mathbf{u} = \lbrack 1, 0 \rbrack$ cannot be written as $r\mathbf{v} + s\mathbf{w}$.
+
+For the algebraic definition and properties of linear independence, see [Vectors](../Basics/01 Vectors.md#linear-independence).
+
 ### Standard Basis
 
 Other important vectors include the [standard basis](https://mathworld.wolfram.com/StandardBasisVector.html) vectors:
