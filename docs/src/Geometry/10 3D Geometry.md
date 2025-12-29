@@ -263,6 +263,20 @@ Unlike in 2D where a line is defined by one equation, a line in 3D is the inters
 
 $$\begin{cases} a_1x + b_1y + c_1z + d_1 = 0 \\ a_2x + b_2y + c_2z + d_2 = 0 \end{cases}$$
 
+### Skew Lines
+
+In 2D, two lines either intersect at a single point or are parallel. In 3D, a third possibility exists: two lines can be [skew](https://mathworld.wolfram.com/SkewLines.html)—neither parallel nor intersecting. Skew lines do not lie in the same plane.
+
+Given two lines $\mathbf{l}_1(t) = \mathbf{p}_1 + t\mathbf{v}_1$ and $\mathbf{l}_2(s) = \mathbf{p}_2 + s\mathbf{v}_2$:
+
+- **Parallel**: Direction vectors are parallel ($\mathbf{v}_1 = c\mathbf{v}_2$ for some scalar $c$)
+- **Intersecting**: There exist parameters $t, s$ such that $\mathbf{l}_1(t) = \mathbf{l}_2(s)$
+- **Skew**: Neither parallel nor intersecting
+
+The shortest distance between two skew lines is:
+
+$$d = \frac{\lvert(\mathbf{p}_2 - \mathbf{p}_1) \cdot (\mathbf{v}_1 \times \mathbf{v}_2)\rvert}{\lVert\mathbf{v}_1 \times \mathbf{v}_2\rVert}$$
+
 ## Julia Code Examples
 
 ### Vector Operations in 3D

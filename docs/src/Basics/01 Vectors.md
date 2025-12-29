@@ -144,6 +144,6 @@ For geometric interpretation (parallel vectors, zero-area parallelogram), see [L
 
 - [Points and Coordinates](../Geometry/01 Points and Coordinates.md) - Points, standard basis, distance, and magnitude
 - [Dot Product and Orthogonality](../Geometry/03 Dot Product and Orthogonality.md) - Geometric interpretation of dot product
-- [Lines](02 Lines.md) - Parametric and implicit representations
-- [Linear Transformations](03 Linear Transformations.md) - How vectors are mapped
-- [Matrices](04 Matrices.md) - Matrix-vector operations
+- [Lines](../Geometry/02 Lines.md) - Parametric and implicit representations
+- [Linear Transformations](02 Linear Transformations.md) - How vectors are mapped
+- [Matrices](03 Matrices.md) - Matrix-vector operations

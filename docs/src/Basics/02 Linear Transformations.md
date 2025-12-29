@@ -205,5 +205,5 @@ The scalar $\lambda$ is the corresponding [eigenvalue](https://mathworld.wolfram
 ## See Also
 
 - [Vectors](01 Vectors.md) - Vector operations
-- [Lines](02 Lines.md) - How lines transform
-- [Matrices](04 Matrices.md) - Matrix operations and properties
+- [Lines](../Geometry/02 Lines.md) - How lines transform
+- [Matrices](03 Matrices.md) - Matrix operations and properties
