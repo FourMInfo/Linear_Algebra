@@ -418,3 +418,6 @@ $RECYCLE.BIN/
 # Many thanks to `https://gitignore.io/`, written and maintained by Joe Blau, which contributed much material to this gitignore file.
 
 /Manifest.toml
+docs/src/Linear\ Algebra\ Old/
+docs/src/Linear Algebra Capacities/
+
