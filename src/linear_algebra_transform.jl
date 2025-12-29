@@ -22,7 +22,7 @@ value of Matrix with an actual vector x
 """
 function projection_matrix(x::Vector)
     @variables u v
-    Symbolics.value.(substitute.(projection_matrix_symbolic(), (Dict(u =>x[1], v=> x[2]), )))
+    Float64.(Symbolics.value.(substitute.(projection_matrix_symbolic(), (Dict(u =>x[1], v=> x[2]), ); fold=Val{true}())))
 end
 """
     function projection_matrix_polar(θ::Number) -> Matrix
@@ -30,7 +30,7 @@ value of projection polar matrix with an actual value for the angle of the vecto
 """
 function projection_matrix_polar(n::Number)
     @variables u v θ
-    Symbolics.value.(substitute.(projection_matrix_symbolic_polar(), θ => deg2rad(n),))
+    Float64.(Symbolics.value.(substitute.(projection_matrix_symbolic_polar(), θ => deg2rad(n); fold=Val{true}())))
 end
 """
     function projection_matrix_transpose(u::Vector) ->  Matrix
@@ -62,7 +62,7 @@ value of rotation Matrix with an actual value for the rotation angle
 """
 function rotation_matrix(d::Number)
     @variables θ
-    Symbolics.value.(substitute.(rotation_matrix_symbolic(), θ => deg2rad(d),))
+    Float64.(Symbolics.value.(substitute.(rotation_matrix_symbolic(), θ => deg2rad(d); fold=Val{true}())))
 end
 
 """
@@ -89,7 +89,7 @@ value of stretch Matrix with an actual value for the stretch factor
 """
 function stretch_matrix(n::Number)
     @variables λ₁
-    Symbolics.value.(substitute.(stretch_matrix_symbolic(), λ₁ => n))
+    Float64.(Symbolics.value.(substitute.(stretch_matrix_symbolic(), λ₁ => n; fold=Val{true}())))
 end
 """
     function reflection_matrix_symbolic() -> Matrix
@@ -105,7 +105,7 @@ value of reflection Matrix with an actual vector U
 """        
 function reflection_matrix(U::Vector)
     @variables u v
-    Symbolics.value.(substitute.(reflection_matrix_symbolic(), (Dict(u => U[1], v => U[2]), )))
+    Float64.(Symbolics.value.(substitute.(reflection_matrix_symbolic(), (Dict(u => U[1], v => U[2]), ); fold=Val{true}())))
 end
 """
     function reflection_matrix_rational(U::Vector) -> Matrix
