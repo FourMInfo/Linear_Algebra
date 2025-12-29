@@ -98,7 +98,7 @@ For $\mathbf{u} = \lbrack u_1, u_2, \ldots, u_n \rbrack$ and $\mathbf{v} = \lbra
 - Scalar multiplication: $(c\mathbf{u}) \cdot \mathbf{v} = c(\mathbf{u} \cdot \mathbf{v})$
 - Self dot product: $\mathbf{v} \cdot \mathbf{v} = \|\mathbf{v}\|^2$
 
-For geometric interpretation, see [Dot Product and Cosines](../Geometry/03 Dot Product and Orthogonality.md#Dot-Product-and-Cosines) (angles) and [Orthogonal Vectors](../Geometry/03 Dot Product and Orthogonality.md#Orthogonal-Vectors) (orthogonality) in the Dot Product and Orthogonality document.
+<!-- Link to be restored: For geometric interpretation, see Dot Product and Cosines (../Geometry/03 Dot Product and Orthogonality.md#Dot-Product-and-Cosines) (angles) and Orthogonal Vectors (../Geometry/03 Dot Product and Orthogonality.md#Orthogonal-Vectors) (orthogonality) in the Dot Product and Orthogonality document. -->
 
 ## Linear Combinations and Span
 
@@ -143,7 +143,10 @@ For geometric interpretation (parallel vectors, zero-area parallelogram), see [L
 ## See Also
 
 - [Points and Coordinates](../Geometry/01 Points and Coordinates.md) - Points, standard basis, distance, and magnitude
-- [Dot Product and Orthogonality](../Geometry/03 Dot Product and Orthogonality.md) - Geometric interpretation of dot product
-- [Lines](../Geometry/02 Lines.md) - Parametric and implicit representations
-- [Linear Transformations](02 Linear Transformations.md) - How vectors are mapped
-- [Matrices](03 Matrices.md) - Matrix-vector operations
+
+<!-- Links to be restored when additional pages are published:
+- Dot Product and Orthogonality (../Geometry/03 Dot Product and Orthogonality.md) - Geometric interpretation of dot product
+- Lines (../Geometry/02 Lines.md) - Parametric and implicit representations
+- Linear Transformations (02 Linear Transformations.md) - How vectors are mapped
+- Matrices (03 Matrices.md) - Matrix-vector operations
+-->
