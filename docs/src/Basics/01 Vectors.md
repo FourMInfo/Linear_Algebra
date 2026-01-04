@@ -133,7 +133,7 @@ The [span](https://mathworld.wolfram.com/VectorSpaceSpan.html) of a set of vecto
 
 Vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_k$ are [linearly independent](https://mathworld.wolfram.com/LinearlyIndependentVectors.html) if the only solution to: $$c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k = \mathbf{0}$$ is $c_1 = c_2 = \cdots = c_k = 0$.
 
-For geometric interpretation (parallel vectors, zero-area parallelogram), see [Linear Independence (Geometric View)](../Geometry/01 Points and Coordinates.md#Linear-Independence-(Geometric-View)) in the Points and Coordinates document.
+For geometric interpretation (parallel vectors, zero-area parallelogram), see [Linear Independence](../Geometry/01 Points and Coordinates.md#Linear-Independence) in the Points and Coordinates document.
 
 ## Applications
 
@@ -156,11 +156,10 @@ For geometric interpretation (parallel vectors, zero-area parallelogram), see [L
 
 ## See Also
 
-- [Points and Coordinates](../Geometry/01 Points and Coordinates.md) - Points, standard basis, distance, and magnitude
-
-<!-- Links to be restored when additional pages are published:
-- Dot Product and Orthogonality (../Geometry/03 Dot Product and Orthogonality.md) - Geometric interpretation of dot product
-- Lines (../Geometry/02 Lines.md) - Parametric and implicit representations
 - Linear Transformations (02 Linear Transformations.md) - How vectors are mapped
 - Matrices (03 Matrices.md) - Matrix-vector operations
--->
+- [Points and Coordinates](../Geometry/01 Points and Coordinates.md) - Points, standard basis, distance, and magnitude
+- Lines (../Geometry/02 Lines.md) - Parametric and implicit representations
+- Vectors and Geometry (../Geometry/03 Vectors and Geometry.md) - In depth geometric interpretation of vectors
+
+
