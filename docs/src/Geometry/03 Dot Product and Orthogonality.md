@@ -21,6 +21,7 @@ $$\lVert\mathbf{v}\rVert = \sqrt{v_1^2 + v_2^2}$$
 This is also called the _Euclidean norm_. For a point $\mathbf{X} = \lbrack x, y \rbrack^T$, the distance from the origin $\lbrack 0, 0 \rbrack^T$ is $\sqrt{x^2 + y^2}$, and we define this to be the length of the vector, written $\lvert\mathbf{X}\rvert$ or $\lVert\mathbf{X}\rVert$.
 
 **Examples:**
+
 - If $\mathbf{X} = \lbrack 3, 4 \rbrack^T$, then $\lvert\mathbf{X}\rvert = \sqrt{3^2 + 4^2} = 5$
 - The standard basis vector $\mathbf{e}_1 = \lbrack 1, 0 \rbrack^T$ has $\lvert\mathbf{e}_1\rvert = 1$
 - The zero vector has $\lvert\mathbf{0}\rvert = \sqrt{0^2 + 0^2} = 0$

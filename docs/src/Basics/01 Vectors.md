@@ -36,6 +36,20 @@ In $\mathbb{R}^3$ (3D), a vector is written as: $\mathbf{v} = \lbrack v_1, v_2, 
 
 In $\mathbb{R}^n$ (n-dimensional), a vector is written as: $\mathbf{v} = \lbrack v_1, v_2, \ldots, v_n \rbrack$ or $\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix}$
 
+### Magnitude (Length) of a Vector
+
+The [magnitude](https://mathworld.wolfram.com/VectorMagnitude.html) (or length) of a vector $\mathbf{v} = \lbrack v_1, v_2, \ldots, v_n \rbrack$ is given by the formula:$$\|\mathbf{v}\| = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2} = \sqrt{\sum_{i=1}^{n} v_i^2}$$
+
+**Example:** For $\mathbf{v} = \lbrack 3, 4 \rbrack$ in $\mathbb{R}^2$, the magnitude is: $$\|\mathbf{v}\| = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5$$
+
+### Normalization and Unit Vectors
+
+A [unit vector](https://mathworld.wolfram.com/UnitVector.html) is a vector with a magnitude of 1. To _normalize_ a vector $\mathbf{v}$ (i.e., convert it to a unit vector), divide each component by the vector's magnitude: $$\hat{\mathbf{v}} = \frac{\mathbf{v}}{\|\mathbf{v}\|} = \left\lbrack \frac{v_1}{\|\mathbf{v}\|}, \frac{v_2}{\|\mathbf{v}\|}, \ldots, \frac{v_n}{\|\mathbf{v}\|} \right\rbrack$$
+
+**Example:** For $\mathbf{v} = \lbrack 3, 4 \rbrack$, the unit vector is: $$\hat{\mathbf{v}} = \frac{1}{5} \lbrack 3, 4 \rbrack = \lbrack 0.6, 0.8 \rbrack$$
+
+There is a lot more to say about the geometric interpretation of magnitude and normalization. For more details, see [Distance and Magnitude](../Geometry/01 Points and Coordinates.md#Distance-and-Magnitude) in the Points and Coordinates document.
+
 ## Vector Operations
 
 ### Vector Addition

@@ -13,13 +13,13 @@ makedocs(;
         "index.md",
         "Basics" => [
             "Basics/01 Vectors.md",
-            # "Basics/02 Linear Transformations.md",
-            # "Basics/03 Matrices.md",
+            "Basics/02 Linear Transformations.md",
+            "Basics/03 Matrices.md",
             # "Basics/04 Systems of Equations.md",
         ],
         "Geometry" => [
             "Geometry/01 Points and Coordinates.md",
-            # "Geometry/02 Lines.md",
+            "Geometry/02 Lines.md",
             # "Geometry/03 Dot Product and Orthogonality.md",
             # "Geometry/04 Projections and Distance.md",
             # "Geometry/05 Line Intersections.md",

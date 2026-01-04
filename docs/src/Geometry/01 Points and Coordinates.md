@@ -4,19 +4,26 @@ This section introduces the fundamental geometric entities of [points](https://m
 
 ## Euclidean Space and Coordinate Systems
 
-### The Number Line and Coordinates
-
-Suppose $P$ is a point on the number line that is located $x$ units to the right of the origin $O$. Then $x$ is called the _coordinate_ of $P$, and $P$ is called the _graph_ of $x$.
-
-Suppose $Q$ is a point on the number line that is located $x$ units to the left of $O$. Its distance from $O$ is still $x$, but it's not the same point as $P$. In this case, $-x$ is the coordinate of $Q$, and $Q$ is the graph of $-x$.
-
 ### The Cartesian Plane
 
-This idea of relating the set of all points on a line with the real numbers goes back to antiquity, but it was not until the 17th century that mathematicians (notably Descartes and Fermat) developed a clear notion of how to coordinatize a plane: draw two perpendicular coordinatized lines (usually with the same scale on each) that intersect at their common origin. These lines are called the **x-axis** and **y-axis**. You can now uniquely identify every point on the plane using an ordered pair of numbers. If the point $P$ corresponds to the ordered pair $(x, y)$, then $x$ and $y$ are the [coordinates](https://mathworld.wolfram.com/Coordinates.html) of $P$.
+This idea of relating the set of all points on a line to the real numbers goes back to antiquity, but it was not until the 17th century that mathematicians (notably Descartes and Fermat) developed a clear notion of how to coordinatize a plane: draw two perpendicular coordinatized lines (usually with the same scale on each) that intersect at their common origin. These lines are called the **x-axis** and **y-axis**. You can now uniquely identify every point on the plane using an ordered pair of numbers. If the point $P$ corresponds to the ordered pair $(x, y)$, then $x$ and $y$ are the [coordinates](https://mathworld.wolfram.com/Coordinates.html) of $P$.
 
-## Points
+### The Number Line and Coordinates
 
-The most basic geometric entity is the _point_. A [point](https://mathworld.wolfram.com/Point.html) is a reference to a _location_.
+Let's start with the one-dimensional case of a number line, a line labeled with real numbers. Select a point on the line to be the _origin_, denoted as $O$, and choose a direction to be _positive_. The positive direction is typically to the right, while the negative direction is to the left.
+
+Suppose $p$ is a point on the number line that is located $x$ units to the right of the origin $O$. Then $x$ is called the _coordinate_ of $p$, and $p$ is called the _graph_ of $x$.
+
+Suppose $q$ is a point on the number line that is located $x$ units to the left of $O$. Its distance from $O$ is still $x$, but it's not the same point as $p$. In this case, $-x$ is the coordinate of $q$, and $q$ is the graph of $-x$.
+
+## Points in 2D Euclidean Space
+
+Now let's extend this idea to two dimensions (2D). We define a 2D coordinate system by drawing two perpendicular number lines that intersect at their common origin. The horizontal line is called the _x-axis_ or the $\mathbf{e}_1$-axis, and the vertical line is called the _y-axis_ or the $\mathbf{e}_2$-axis. Each axis has its own origin (the same point) and positive direction (right for x-axis, up for y-axis). By Euclid's definition of a plane, these two axes define a 2D Euclidean space, denoted as $\mathbb{E}^2$.
+
+The most basic geometric entity is the _point_. A [point](https://mathworld.wolfram.com/Point.html) $\mathbf{p}$ in 2D Euclidean space $\mathbb{E}^2$ is a reference to a _location_ and can be represented by an ordered pair of coordinates $(p_1, p_2)$, where:
+
+- $p_1$ is the coordinate along the x-axis (horizontal direction)
+- $p_2$ is the coordinate along the y-axis (vertical direction)
 
 The location of $\mathbf{p}$ is $p_1$-units along the $\mathbf{e}_1$-axis and $p_2$-units along the $\mathbf{e}_2$-axis. A point's coordinates, $p_1$ and $p_2$, are dependent upon the location of the coordinate origin, denoted as:
 
@@ -109,11 +116,9 @@ This vector has no direction or length.
 
 Two vectors are parallel if one is a scalar multiple of the other: $$\mathbf{u} = c\mathbf{v}$$ for some scalar $c$.
 
-### Linear Independence (Geometric View)
+### Linear Independence
 
 Two vectors $\mathbf{v}$ and $\mathbf{w}$ describe a parallelogram (see parallelogram rule below). When this parallelogram has _zero area_, the two vectors are parallel—they satisfy $\mathbf{v} = c\mathbf{w}$ for some scalar $c$. In this case, we call them [linearly dependent](https://mathworld.wolfram.com/LinearlyDependentVectors.html). Otherwise, they are [linearly independent](https://mathworld.wolfram.com/LinearlyIndependentVectors.html).
-
-**Geometric interpretation:**
 
 - Two vectors in $\mathbb{R}^2$ are linearly independent if they are _not parallel_ (form a parallelogram with non-zero area)
 - Two linearly independent vectors can express any other vector as a linear combination
@@ -147,7 +152,7 @@ To clearly identify $\mathbf{v}$ as a vector, we write $\mathbf{v} \in \mathbb{R
 
 ## Points vs Vectors
 
-When writing a point or a vector, we use boldface lowercase letters; when programming, we use the same data structure (e.g., arrays). This makes it appear that points and vectors can be treated in the same manner. **Not so!**
+When writing a point or a vector, we use boldface lowercase letters; when programming, we use the same data structure (e.g., arrays). This makes it appear that points and vectors can be treated in the same manner. **_Not so!_**
 
 Points and vectors are different geometric entities. This is reiterated by saying they live in different spaces: $\mathbb{E}^2$ and $\mathbb{R}^2$. For convenience and clarity, elements of Euclidean and linear spaces are typically displayed together.
 
