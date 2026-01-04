@@ -20,7 +20,7 @@ makedocs(;
         "Geometry" => [
             "Geometry/01 Points and Coordinates.md",
             "Geometry/02 Lines.md",
-            # "Geometry/03 Dot Product and Orthogonality.md",
+            "Geometry/03 Vectors and Geometry.md",
             # "Geometry/04 Projections and Distance.md",
             # "Geometry/05 Line Intersections.md",
             # "Geometry/06 Transformations.md",

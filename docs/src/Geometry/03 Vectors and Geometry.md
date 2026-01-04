@@ -1,6 +1,6 @@
-# Dot Product and Orthogonality
+# Vectors and Geometry
 
-The [dot product](https://mathworld.wolfram.com/DotProduct.html) is a fundamental operation in linear algebra that connects algebraic computations with geometric concepts like angles and perpendicularity. This document builds from vector length through to orthogonality, establishing the mathematical foundations needed for projections and transformations.
+We now turn to vector geometry in 2-dimensional space, covering concepts from vector length through to orthogonality, establishing the mathematical foundations needed for projections and transformations.
 
 ## Vector Length (Magnitude)
 
@@ -174,7 +174,7 @@ Then $\mathbf{v} \cdot \mathbf{w} = v_1(-v_2) + v_2v_1 = 0$.
 
 ### Dot Product and Vector Length
 
-The dot product of a vector with itself gives the square of its length:
+The [_dot product_](https://mathworld.wolfram.com/DotProduct.html) is a fundamental operation in linear algebra that connects algebraic computations with geometric concepts like angles and perpendicularity. The dot product of a vector with itself gives the square of its length:
 
 $$\mathbf{X} \cdot \mathbf{X} = \begin{bmatrix} x \\ y \end{bmatrix} \cdot \begin{bmatrix} x \\ y \end{bmatrix} = x^2 + y^2 = \lvert\mathbf{X}\rvert^2$$
 

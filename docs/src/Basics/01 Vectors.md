@@ -36,9 +36,9 @@ In $\mathbb{R}^3$ (3D), a vector is written as: $\mathbf{v} = \lbrack v_1, v_2, 
 
 In $\mathbb{R}^n$ (n-dimensional), a vector is written as: $\mathbf{v} = \lbrack v_1, v_2, \ldots, v_n \rbrack$ or $\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix}$
 
-### Magnitude (Length) of a Vector
+### Length (Magnitude) of a Vector
 
-The [magnitude](https://mathworld.wolfram.com/VectorMagnitude.html) (or length) of a vector $\mathbf{v} = \lbrack v_1, v_2, \ldots, v_n \rbrack$ is given by the formula:$$\|\mathbf{v}\| = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2} = \sqrt{\sum_{i=1}^{n} v_i^2}$$
+The length or [magnitude](https://mathworld.wolfram.com/VectorMagnitude.html)  of a vector $\mathbf{v} = \lbrack v_1, v_2, \ldots, v_n \rbrack$ is given by the formula:$$\|\mathbf{v}\| = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2} = \sqrt{\sum_{i=1}^{n} v_i^2}$$
 
 **Example:** For $\mathbf{v} = \lbrack 3, 4 \rbrack$ in $\mathbb{R}^2$, the magnitude is: $$\|\mathbf{v}\| = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5$$
 
@@ -48,7 +48,7 @@ A [unit vector](https://mathworld.wolfram.com/UnitVector.html) is a vector with 
 
 **Example:** For $\mathbf{v} = \lbrack 3, 4 \rbrack$, the unit vector is: $$\hat{\mathbf{v}} = \frac{1}{5} \lbrack 3, 4 \rbrack = \lbrack 0.6, 0.8 \rbrack$$
 
-There is a lot more to say about the geometric interpretation of magnitude and normalization. For more details, see [Distance and Magnitude](../Geometry/01 Points and Coordinates.md#Distance-and-Magnitude) in the Points and Coordinates document.
+There is a lot more to say about the geometric interpretation of magnitude and normalization. For more details, see [Length (Magnitude)](../Geometry/03 Vectors and Geometry.md#Vector-Length-(Magnitude)) in the Vectors and Geometry document.
 
 ## Vector Operations
 
