@@ -3,13 +3,17 @@ using Reexport
 @reexport using  GeometryBasics, Plots, LinearAlgebra, RationalRoots, Symbolics
 
 # Configure plotting for both interactive and headless environments
-if haskey(ENV, "CI") || get(ENV, "GKSwstype", "") == "100"
-    # CI or headless environment - use headless mode
-    ENV["GKSwstype"] = "100"
-    gr(show=false)
-else
-    # Interactive environment - normal plotting
-    gr()
+# Simplified initialization - avoid async issues in notebooks
+let
+    headless = haskey(ENV, "CI") || get(ENV, "GKSwstype", "") == "100"
+    if headless
+        ENV["GKSwstype"] = "100"
+    end
+    try
+        headless ? gr(show=false) : gr()
+    catch
+        # Silently ignore GR initialization errors - backend will be configured on first plot
+    end
 end
 
 # Exports...
