@@ -156,10 +156,8 @@ For geometric interpretation (parallel vectors, zero-area parallelogram), see [L
 
 ## See Also
 
-- Linear Transformations (02 Linear Transformations.md) - How vectors are mapped
-- Matrices (03 Matrices.md) - Matrix-vector operations
+- [Linear Transformations](02 Linear Transformations.md) - How vectors are mapped
+- [Matrices](03 Matrices.md) - Matrix operations
 - [Points and Coordinates](../Geometry/01 Points and Coordinates.md) - Points, standard basis, distance, and magnitude
-- Lines (../Geometry/02 Lines.md) - Parametric and implicit representations
-- Vectors and Geometry (../Geometry/03 Vectors and Geometry.md) - In depth geometric interpretation of vectors
-
-
+- [Lines](../Geometry/02 Lines.md) - Parametric and implicit representations
+- [Vectors and Geometry](../Geometry/03 Vectors and Geometry.md) - In depth geometric interpretation of vectors
