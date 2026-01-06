@@ -1,6 +1,9 @@
 using DrWatson, Test
 @quickactivate "Linear_Algebra"
 
+# Set headless mode for CI before loading module
+ENV["GKSwstype"] = "100"
+
 # Load the Linear_Algebra package
 using Linear_Algebra
 
