@@ -114,20 +114,11 @@ For $\mathbf{u} = \lbrack u_1, u_2, \ldots, u_n \rbrack$ and $\mathbf{v} = \lbra
 
 <!-- Link to be restored: For geometric interpretation, see Dot Product and Cosines (../Geometry/03 Dot Product and Orthogonality.md#Dot-Product-and-Cosines) (angles) and Orthogonal Vectors (../Geometry/03 Dot Product and Orthogonality.md#Orthogonal-Vectors) (orthogonality) in the Dot Product and Orthogonality document. -->
 
-## Linear Combinations and Span
+## Linear Combinations
 
 ### Linear Combination
 
 A [linear combination](https://mathworld.wolfram.com/LinearCombination.html) of vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_k$ is: $$c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k$$ where $c_1, c_2, \ldots, c_k$ are scalars.
-
-### Span
-
-The [span](https://mathworld.wolfram.com/VectorSpaceSpan.html) of a set of vectors is the set of all possible linear combinations: $$\text{span}\{\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_k\} = \{c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k : c_i \in \mathbb{R}\}$$
-
-**Examples:**
-
-- Span of one non-zero vector: a line through the origin
-- Span of two non-parallel vectors in $\mathbb{R}^2$: the entire plane
 
 ### Linear Independence & Dependence
 
@@ -138,6 +129,20 @@ Vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_k$ are _linearly depende
 Another way to say this is that one of the vectors can be expressed as a linear combination of the others.
 
 For geometric interpretation (parallel vectors, zero-area parallelogram), see [Linear Independence](../Geometry/01 Points and Coordinates.md#Linear-Independence) in the Points and Coordinates document.
+
+### Linear System of Equations
+
+A system of linear equations can be represented using vectors. For example, the system: 
+
+$$\begin{aligned}
+a_{11}x_1 + a_{12}x_2 &= b_1 \\
+a_{21}x_1 + a_{22}x_2 &= b_2
+\end{aligned}$$ can be expressed as: $$x_1\begin{pmatrix} a_{11} \\ a_{21} \end{pmatrix} + x_2\begin{pmatrix} a_{12} \\ a_{22} \end{pmatrix} = \begin{pmatrix} b_1 \\ b_2 \end{pmatrix}$$
+This shows that the solution $(x_1, x_2)$ corresponds to a linear combination of the coefficient vectors equaling the constant vector.
+
+If the coefficient vectors are linearly independent, the system has a unique solution. If they are linearly dependent, the system may have no solution or infinitely many solutions.
+
+if interested, see [Linear Systems](../Geometry/08 Linear Systems.md) for more details.
 
 ## Applications
 

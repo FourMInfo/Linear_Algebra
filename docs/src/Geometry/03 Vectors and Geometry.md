@@ -102,6 +102,7 @@ This representation as a positive scalar multiple of a unit vector is called the
 ![Polar form of a vector](assets/image-20.png)
 
 **Examples:**
+
 - If $\mathbf{X} = \lbrack 3, 0 \rbrack^T$, we have $\mathbf{X} = 3\mathbf{e}_1$, where $\mathbf{e}_1 = \lbrack \cos(0), \sin(0) \rbrack^T$
 - If $\mathbf{X} = \lbrack 1, 1 \rbrack^T$, then $\mathbf{X} = \sqrt{2}\lbrack 1/\sqrt{2}, 1/\sqrt{2} \rbrack^T = \sqrt{2}\lbrack \cos\theta, \sin\theta \rbrack^T$, where $\theta = 45^\circ = \pi/4$
 
@@ -128,6 +129,7 @@ julia> round(acosd(z[1]))
 ## Dot Product (Algebraic Definition)
 
 Given two vectors $\mathbf{v}$ and $\mathbf{w}$, we might ask:
+
 - Are they the _same_ vector?
 - Are they perpendicular to each other?
 - What _angle_ do they form?
@@ -221,7 +223,7 @@ $$\lVert\mathbf{v} - \mathbf{w}\rVert^2 = \lVert\mathbf{v}\rVert^2 + \lVert\math
 
 This generalizes the Pythagorean theorem for triangles with an opposing angle different from $90^\circ$.
 
-### Connecting to the Dot Product
+### Geometric Formula for the Dot Product
 
 We can also write $\lVert\mathbf{v} - \mathbf{w}\rVert^2$ using the dot product:
 

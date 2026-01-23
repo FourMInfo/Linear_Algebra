@@ -128,6 +128,20 @@ Two vectors $\mathbf{v}$ and $\mathbf{w}$ describe a parallelogram (see parallel
 
 For the algebraic definition and properties of linear independence, see [Linear Independence](../Basics/01 Vectors.md#Linear-Independence).
 
+### Span (Geometric View)
+
+The [span](https://mathworld.wolfram.com/VectorSpaceSpan.html) of a set of vectors is the set of all possible linear combinations of those vectors. Geometrically, the span represents all the points that can be "reached" by scaling and adding the vectors together.
+
+**Examples in $\mathbb{R}^2$:**
+
+- The span of one non-zero vector is a _line through the origin_ in the direction of that vector
+- The span of two non-parallel vectors is the _entire plane_ $\mathbb{R}^2$
+- The span of two parallel vectors (linearly dependent) is still just a line—the second vector adds no new directions
+
+**Connection to linear independence:** Two vectors span $\mathbb{R}^2$ if and only if they are linearly independent. This is equivalent to saying their parallelogram has non-zero area.
+
+For the algebraic definition of span, see [Linear Combinations](../Basics/01 Vectors.md#Linear-Combinations) in the Vectors document.
+
 ### Standard Basis
 
 Other important vectors include the [standard basis](https://mathworld.wolfram.com/StandardBasisVector.html) vectors:
