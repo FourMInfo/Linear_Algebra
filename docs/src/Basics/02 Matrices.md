@@ -401,5 +401,5 @@ For an $m \times n$ matrix $A$: $$\text{rank}(A) + \text{nullity}(A) = n$$
 ## See Also
 
 - [Vectors](01 Vectors.md) - Vector operations
-- [Linear Transformations](02 Linear Transformations.md) - Geometric interpretation
+- [Linear Transformations](03 Linear Transformations.md) - Geometric interpretation
 - [Lines](../Geometry/02 Lines.md) - Systems of equations geometrically

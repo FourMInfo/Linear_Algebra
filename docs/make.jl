@@ -13,8 +13,8 @@ makedocs(;
         "index.md",
         "Basics" => [
             "Basics/01 Vectors.md",
-            "Basics/02 Linear Transformations.md",
-            "Basics/03 Matrices.md",
+            "Basics/02 Matrices.md",
+            "Basics/03 Linear Transformations.md",
             "Basics/04 Systems of Equations.md",
         ],
         "Geometry" => [

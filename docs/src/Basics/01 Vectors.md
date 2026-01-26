@@ -112,7 +112,7 @@ For $\mathbf{u} = \lbrack u_1, u_2, \ldots, u_n \rbrack$ and $\mathbf{v} = \lbra
 - Scalar multiplication: $(c\mathbf{u}) \cdot \mathbf{v} = c(\mathbf{u} \cdot \mathbf{v})$
 - Self dot product: $\mathbf{v} \cdot \mathbf{v} = \|\mathbf{v}\|^2$
 
-<!-- Link to be restored: For geometric interpretation, see Dot Product and Cosines (../Geometry/03 Dot Product and Orthogonality.md#Dot-Product-and-Cosines) (angles) and Orthogonal Vectors (../Geometry/03 Dot Product and Orthogonality.md#Orthogonal-Vectors) (orthogonality) in the Dot Product and Orthogonality document. -->
+For geometric interpretation, see [Dot Product and Cosines](../Geometry/03 Vectors and Geometry.md#Dot-Product-and-Cosines) and [Orthogonal Vectors](../Geometry/03 Vectors and Geometry.md#Orthogonal-Vectors) in the [Vectors and Geometry](../Geometry/03 Vectors and Geometry.md) document.
 
 ## Linear Combinations
 
@@ -132,7 +132,7 @@ For geometric interpretation (parallel vectors, zero-area parallelogram), see [L
 
 ### Linear System of Equations
 
-A system of linear equations can be represented using vectors. For example, the system: 
+A system of linear equations can be represented using vectors. For example, the system:
 
 $$\begin{aligned}
 a_{11}x_1 + a_{12}x_2 &= b_1 \\
@@ -165,8 +165,8 @@ if interested, see [Linear Systems](../Geometry/08 Linear Systems.md) for more d
 
 ## See Also
 
-- [Linear Transformations](02 Linear Transformations.md) - How vectors are mapped
-- [Matrices](03 Matrices.md) - Matrix operations
+- [Matrices](02 Matrices.md) - Matrix operations
+- [Linear Transformations](03 Linear Transformations.md) - How vectors are mapped
 - [Points and Coordinates](../Geometry/01 Points and Coordinates.md) - Points, standard basis, distance, and magnitude
 - [Lines](../Geometry/02 Lines.md) - Parametric and implicit representations
 - [Vectors and Geometry](../Geometry/03 Vectors and Geometry.md) - In depth geometric interpretation of vectors

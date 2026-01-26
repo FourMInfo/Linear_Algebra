@@ -75,7 +75,7 @@ x + 2y - z &= 1
 
 **Solution:** $(x, y, z) = \left(\frac{5}{7}, \frac{13}{7}, \frac{24}{7}\right)$
 
-**Note:** For larger systems or more systematic approaches, see [Matrices](03 Matrices.md) for Gaussian elimination and other matrix methods.
+**Note:** For larger systems or more systematic approaches, see [Matrices](02 Matrices.md) for Gaussian elimination and other matrix methods.
 
 ## Nonlinear Systems
 
@@ -181,6 +181,6 @@ A system is **dependent** if the equations are not independent — one equation 
 
 ## See Also
 
-- [Matrices](03 Matrices.md) - Matrix methods for linear systems (Gaussian elimination, Cramer's rule)
+- [Matrices](02 Matrices.md) - Matrix methods for linear systems (Gaussian elimination, Cramer's rule)
 - [Vectors](01 Vectors.md) - Geometric interpretation of solutions
 - [Lines](../Geometry/02 Lines.md) - Two-variable systems as line intersections
