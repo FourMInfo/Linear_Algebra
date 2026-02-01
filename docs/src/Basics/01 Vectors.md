@@ -112,6 +112,14 @@ For $\mathbf{u} = \lbrack u_1, u_2, \ldots, u_n \rbrack$ and $\mathbf{v} = \lbra
 - Scalar multiplication: $(c\mathbf{u}) \cdot \mathbf{v} = c(\mathbf{u} \cdot \mathbf{v})$
 - Self dot product: $\mathbf{v} \cdot \mathbf{v} = \|\mathbf{v}\|^2$
 
+### Orthogonal and Orthonormal Vectors
+
+Two vectors are [orthogonal](https://mathworld.wolfram.com/OrthogonalVectors.html) (perpendicular) if their dot product is zero: $$\mathbf{u} \cdot \mathbf{v} = 0$$
+
+Two vectors are [orthonormal](https://mathworld.wolfram.com/Orthonormal.html) if they are orthogonal _and_ both are unit vectors: $$\mathbf{u} \cdot \mathbf{v} = 0 \quad \text{and} \quad \|\mathbf{u}\| = \|\mathbf{v}\| = 1$$
+
+A set of vectors is orthonormal if every pair is orthogonal and each vector has magnitude 1.
+
 For geometric interpretation, see [Dot Product and Cosines](../Geometry/03 Vectors and Geometry.md#Dot-Product-and-Cosines) and [Orthogonal Vectors](../Geometry/03 Vectors and Geometry.md#Orthogonal-Vectors) in the [Vectors and Geometry](../Geometry/03 Vectors and Geometry.md) document.
 
 ## Linear Combinations

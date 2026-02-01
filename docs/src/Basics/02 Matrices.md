@@ -50,10 +50,10 @@ The [transpose](https://mathworld.wolfram.com/Transpose.html) $A^T$ swaps rows a
 
 **Properties:**
 
-- $(A^T)^T = A$
-- $(A + B)^T = A^T + B^T$
-- $(AB)^T = B^T A^T$
-- $(cA)^T = cA^T$
+- Involution: $(A^T)^T = A$
+- Distributive: $(A + B)^T = A^T + B^T$
+- Reverse order: $(AB)^T = B^T A^T$
+- Scalar multiplication: $(cA)^T = cA^T$
 
 ## Special Matrix Types
 
@@ -80,10 +80,10 @@ An [orthogonal matrix](https://mathworld.wolfram.com/OrthogonalMatrix.html) $Q$ 
 
 **Properties:**
 
-- Columns are orthonormal vectors
-- $Q^{-1} = Q^T$
-- $|\det(Q)| = 1$
-- Preserves lengths and angles
+- Orthonormal columns: Columns are orthonormal vectors
+- Transpose is inverse: $Q^{-1} = Q^T$
+- Unit determinant: $|\det(Q)| = 1$
+- Isometry: Preserves lengths and angles
 
 **Examples:** Rotation matrices, reflection matrices
 
@@ -108,17 +108,17 @@ $$\det\begin{pmatrix} a & b & c \\ d & e & f \\ g & h & i \end{pmatrix} = a(ei -
 
 ### Properties
 
-- $\det(AB) = \det(A)\det(B)$
-- $\det(A^T) = \det(A)$
-- $\det(cA) = c^n\det(A)$ for $n \times n$ matrix
-- $\det(A^{-1}) = \frac{1}{\det(A)}$
-- $A$ is invertible if and only if $\det(A) \neq 0$
+- Multiplicative: $\det(AB) = \det(A)\det(B)$
+- Transpose invariant: $\det(A^T) = \det(A)$
+- Scalar multiplication: $\det(cA) = c^n\det(A)$ for $n \times n$ matrix
+- Inverse: $\det(A^{-1}) = \frac{1}{\det(A)}$
+- Invertibility criterion: $A$ is invertible if and only if $\det(A) \neq 0$
 
 ### Geometric Interpretation
 
-- $|\det(A)|$ is the factor by which areas (2D) or volumes (3D) scale
-- $\det(A) > 0$: orientation preserved
-- $\det(A) < 0$: orientation reversed
+- scaling factor for  areas (2D) or volumes (3D): $|\det(A)|$
+- orientation preserved: $\det(A) > 0$
+- orientation reversed: $\det(A) < 0$
 
 ## Matrix Inverse
 
@@ -130,10 +130,10 @@ $$\begin{pmatrix} a & b \\ c & d \end{pmatrix}^{-1} = \frac{1}{ad - bc}\begin{pm
 
 ### Properties
 
-- $(A^{-1})^{-1} = A$
-- $(AB)^{-1} = B^{-1}A^{-1}$
-- $(A^T)^{-1} = (A^{-1})^T$
-- $(cA)^{-1} = \frac{1}{c}A^{-1}$
+- Involution: $(A^{-1})^{-1} = A$
+- Reverse order: $(AB)^{-1} = B^{-1}A^{-1}$
+- Transpose commutes: $(A^T)^{-1} = (A^{-1})^T$
+- Scalar multiplication: $(cA)^{-1} = \frac{1}{c}A^{-1}$
 
 ### Singular Matrices
 
@@ -183,7 +183,7 @@ can be written as $A\mathbf{x} = \mathbf{b}$ where $A$ is the coefficient matrix
 
 ### Augmented Matrix
 
-The [augmented matrix](https://mathworld.wolfram.com/AugmentedMatrix.html) $[A | \mathbf{b}]$ combines the coefficient matrix and constant vector:
+The [augmented matrix](https://mathworld.wolfram.com/AugmentedMatrix.html) $\left\lbrack A \mid \mathbf{b}\right\rbrack$ combines the coefficient matrix and constant vector:
 
 $$\left[\begin{array}{cccc|c}
 a_{11} & a_{12} & \cdots & a_{1n} & b_1 \\
@@ -196,7 +196,7 @@ a_{m1} & a_{m2} & \cdots & a_{mn} & b_m
 
 **Direct solution (if $A$ is invertible):** $$\mathbf{x} = A^{-1}\mathbf{b}$$
 
-**Gaussian elimination:** Row reduce the augmented matrix $[A | \mathbf{b}]$ to row echelon form, then use back-substitution.
+**Gaussian elimination:** Row reduce the augmented matrix $\left\lbrack A \mid \mathbf{b}\right\rbrack$ to row echelon form, then use back-substitution.
 
 **Gauss-Jordan elimination:** Row reduce to reduced row echelon form; the solution can be read directly.
 
@@ -286,7 +286,7 @@ $$\left[\begin{array}{ccc|c}
 ### Types of Solutions
 
 - **Unique solution:** The coefficient matrix has full rank ($\det(A) \neq 0$ for square systems)
-- **No solution:** System is inconsistent — the augmented matrix has a row $[0, 0, \ldots, 0 | c]$ where $c \neq 0$
+- **No solution:** System is inconsistent — the augmented matrix has a ro\lbrack 0, 0, \ldots, 0 \right| c \rbrack$ where $c \neq 0$
 - **Infinitely many solutions:** System is underdetermined — there are free variables (fewer pivots than unknowns)
 
 **Example (Infinitely Many Solutions):**
