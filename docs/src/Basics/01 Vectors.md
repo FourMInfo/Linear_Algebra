@@ -130,11 +130,19 @@ A [linear combination](https://mathworld.wolfram.com/LinearCombination.html) of 
 
 ### Linear Independence & Dependence
 
-Vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_k$ are [_linearly independent_](https://mathworld.wolfram.com/LinearlyIndependentVectors.html) if the only solution to: $$c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k = \mathbf{0}$$ is $c_1 = c_2 = \cdots = c_k = 0$.
+The vectors $\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n \in \mathbb{R}^n$ are [_linearly independent_](https://mathworld.wolfram.com/LinearlyIndependentVectors.html) if and only if from:
 
-Vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_k$ are _linearly dependent_ if there exist scalars, not all zero, such that: $$c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k = \mathbf{0}$$
+$$c_1\mathbf{x}_1 + c_2\mathbf{x}_2 + \cdots + c_n\mathbf{x}_n = \mathbf{0}$$
 
-Another way to say this is that one of the vectors can be expressed as a linear combination of the others.
+it always follows that:
+
+$$c_1 = c_2 = \cdots = c_n = 0$$
+
+where $\mathbf{0}$ is the zero vector.
+
+On the other hand, the vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_k$ are _linearly dependent_ if there exist scalars $c_1, c_2, \ldots, c_k$, not all zero, such that: $$c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k = \mathbf{0}$$.
+
+In other words, if there is a non-trivial (i.e. some of the coefficients are not zero) linear combination of the vectors that equals the zero vector, then the vectors are linearly dependent. This in turns means (by applying simple algebra) that a set of vectors is linearly dependent if at least one of the vectors can be expressed as a linear combination of the others.
 
 For geometric interpretation (parallel vectors, zero-area parallelogram), see [Linear Independence](../Geometry/01 Points and Coordinates.md#Linear-Independence) in the Points and Coordinates document.
 

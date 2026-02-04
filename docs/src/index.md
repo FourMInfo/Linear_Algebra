@@ -16,7 +16,7 @@ The Geometry section is still a work in progress. I have not yet covered all top
 
 ## Basic Linear Algebra
 
-The code for this can be found in the [linear_algebra_basic.jl](https://github.com/FourMInfo/Linear_Algebra/blob/main/src/linear_algebra_basic.jl) file.
+The code for this can be found in the [linear\_algebra\_basic.jl](https://github.com/FourMInfo/Linear_Algebra/blob/main/src/linear_algebra_basic.jl) file.
 
 ```@autodocs
 Modules = [Linear_Algebra]
@@ -24,9 +24,19 @@ Order   = [:function, :type]
 Pages   = ["linear_algebra_basic.jl"]
 ```
 
+## Geometry Linear Algebra
+
+The code for this can be found in the [linear\_algebra\_geometry.jl](https://github.com/FourMInfo/Linear_Algebra/blob/main/src/linear_algebra_geometry.jl) file.
+
+```@autodocs
+Modules = [Linear_Algebra]
+Order   = [:function, :type]
+Pages   = ["linear_algebra_geometry.jl"]
+```
+
 ## Linear Transformations
 
-The code for this can be found in the [linear_algebra_transform.jl](https://github.com/FourMInfo/Linear_Algebra/blob/main/src/linear_algebra_transform.jl) file.
+The code for this can be found in the [linear\_algebra\_transform.jl](https://github.com/FourMInfo/Linear_Algebra/blob/main/src/linear_algebra_transform.jl) file.
 
 ```@autodocs
 Modules = [Linear_Algebra]
