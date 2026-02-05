@@ -144,6 +144,10 @@ On the other hand, the vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_k
 
 In other words, if there is a non-trivial (i.e. some of the coefficients are not zero) linear combination of the vectors that equals the zero vector, then the vectors are linearly dependent. This in turns means (by applying simple algebra) that a set of vectors is linearly dependent if at least one of the vectors can be expressed as a linear combination of the others.
 
+One last point: If the number of vectors is greater than the dimension of the space, the vectors must be linearly dependent.
+
+**Intuitive view:** Think of $\mathbb{R}^2$ (a plane). You can have at most 2 linearly independent vectors (like $\mathbf{e}_1 = \lbrack 1, 0 \rbrack$ and $\mathbf{e}_2 = \lbrack 0, 1 \rbrack$). Any third vector must be a combination of these two—there's simply "no room" for a third independent direction in a 2D space. Similarly, $\mathbb{R}^3$ can hold at most 3 independent vectors, and $\mathbb{R}^n$ can hold at most $n$.
+
 For geometric interpretation (parallel vectors, zero-area parallelogram), see [Linear Independence](../Geometry/01 Points and Coordinates.md#Linear-Independence) in the Points and Coordinates document.
 
 ### Linear System of Equations
