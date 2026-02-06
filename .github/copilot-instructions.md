@@ -212,6 +212,8 @@ CI=true julia --project=. test/runtests.jl
 julia --project=. docs/make.jl
 ```
 
+**IMPORTANT**: Always run `julia --project=. docs/make.jl` after making changes to documentation files in `docs/src/`. This allows the user to preview changes in the browser immediately without running the build manually.
+
 ### Julia Compilation Considerations
 - **Be Patient with First Runs**: Julia often needs to precompile packages and rebuild project cache on first run. when running a Julia command in the CLI for the first time, it may take a while to precompile the packages and build the project cache, so you won't see the results of running the command for a while.
 - **Typical First Run**: May take 15-30 seconds for precompilation before tests actually start

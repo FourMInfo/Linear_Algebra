@@ -13,7 +13,7 @@ a_{21} & a_{22} & \cdots & a_{2n} \\
 a_{m1} & a_{m2} & \cdots & a_{mn}
 \end{pmatrix}$$
 
-The entry in row $i$ and column $j$ is denoted $a_{ij}$ or $A_{ij}$.
+The entry in row $i$ and column $j$ is denoted $a_{ij}$ or $A_{ij}$. The set of all $m \times n$ real matrices is denoted $\mathbb{R}^{m \times n}$ (or $\mathbb{C}^{m \times n}$ for complex entries). In abstract algebra, the alternative notation $M_{m \times n}(\mathbb{R})$ is used to emphasize the ring of entries.
 
 ### Special Types of Matrices
 
@@ -27,11 +27,41 @@ The entry in row $i$ and column $j$ is denoted $a_{ij}$ or $A_{ij}$.
 
 ### Addition and Subtraction
 
-Matrices of the same dimensions are added element-wise: $$(A + B)_{ij} = a_{ij} + b_{ij}$$
+Matrices of the same dimensions are added (or subtracted) element-wise: $$C = A \pm B \text{ means } c_{ij} = a_{ij} \pm b_{ij}$$
+
+**Important**: Matrices can only be added and subtracted if their row and column numbers match.
+
+**Example:** For two $3 \times 3$ matrices:
+
+$$\begin{pmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33}
+\end{pmatrix} \pm \begin{pmatrix}
+b_{11} & b_{12} & b_{13} \\
+b_{21} & b_{22} & b_{23} \\
+b_{31} & b_{32} & b_{33}
+\end{pmatrix} = \begin{pmatrix}
+a_{11} \pm b_{11} & a_{12} \pm b_{12} & a_{13} \pm b_{13} \\
+a_{21} \pm b_{21} & a_{22} \pm b_{22} & a_{23} \pm b_{23} \\
+a_{31} \pm b_{31} & a_{32} \pm b_{32} & a_{33} \pm b_{33}
+\end{pmatrix}$$
 
 ### Scalar Multiplication
 
-Each entry is multiplied by the scalar: $$(cA)_{ij} = c \cdot a_{ij}$$
+If you multiply a matrix by a real number $\lambda$ i.e. $\lambda \cdot A$ then each element becomes $\lambda \cdot a_{ij}$
+
+**Example:** For scalar $\lambda$ and a $3 \times 3$ matrix:
+
+$$\lambda \begin{pmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33}
+\end{pmatrix} = \begin{pmatrix}
+\lambda a_{11} & \lambda a_{12} & \lambda a_{13} \\
+\lambda a_{21} & \lambda a_{22} & \lambda a_{23} \\
+\lambda a_{31} & \lambda a_{32} & \lambda a_{33}
+\end{pmatrix}$$
 
 ### Matrix Multiplication
 
