@@ -12,19 +12,25 @@ All code uses `@reexport` pattern and exports both computational + plotting func
 using Reexport
 @reexport using GeometryBasics, Plots, LinearAlgebra, RationalRoots, Symbolics
 
-# Configure plotting for both interactive and headless environments
-if haskey(ENV, "CI") || get(ENV, "GKSwstype", "") == "100"
-    ENV["GKSwstype"] = "100"
-    gr(show=false)
-else
-    gr()
-end
-
 # Comprehensive exports for all functions
 # Pure computational functions (no plotting dependencies)
 export calculate_param_line
 # Integrated plotting functions (computation + visualization)
 export distance_2_points, center_of_gravity, barycentric_coord, plot_param_line
+```
+
+## Automatic CI/Interactive Detection
+
+Module auto-configures at load time — no manual intervention needed:
+
+```julia
+# src/Linear_Algebra.jl - Runs on module load
+if haskey(ENV, "CI") || get(ENV, "GKSwstype", "") == "100"
+    ENV["GKSwstype"] = "100"  # Headless plotting
+    gr(show=false)
+else
+    gr()  # Interactive plotting
+end
 ```
 
 ## Julia Coding Standards
@@ -44,6 +50,31 @@ export distance_2_points, center_of_gravity, barycentric_coord, plot_param_line
 - **Line Geometry**: Parametric/implicit conversions, distance calculations, intersections
 - **Matrix Transformations**: Projection, rotation, stretch, reflection matrices
 - **Symbolic Functions**: Provide both symbolic and numeric versions
+
+### Function Design Pattern
+
+```julia
+# Pure computational function (no plotting dependencies)
+function calculate_param_line(p::Point2f, q::Point2f, n::Int64)
+    points = Vector{Point2f}(undef, n)
+    for i in 1:n
+        t = (i - 1) / (n - 1)
+        points[i] = Point2f(p .+ t .* (q .- p))
+    end
+    return points
+end
+
+# Integrated plotting function (computation + visualization)
+function plot_param_line(p::Point2f, q::Point2f, n::Int64)
+    points = calculate_param_line(p, q, n)
+    try
+        scatter!(Tuple.(points), markersize=5)
+    catch e
+        !haskey(ENV, "CI") && @warn "Plotting failed: $e"
+    end
+    return points
+end
+```
 
 ### Documentation & Comments
 - Include detailed comments explaining geometric concepts

@@ -66,6 +66,7 @@ end
 - **Edge Cases**: Test mathematical edge cases (orthogonal vectors, zero angles, etc.)
 - **Type Testing**: Verify return types (Point2f, AbstractVector, matrices)
 - **Numerical Precision**: Use `atol=1e-10` for floating-point comparisons
+- Use `@test_throws` for expected errors, `@test_broken` for known failures
 
 ## CI-Compatible Testing Pattern
 
@@ -107,6 +108,12 @@ end
 - **Type Validation**: Verify return types match expectations
 - **Testing Structure**: Modular test files (`test_linear_algebra_basic.jl`, `test_linear_algebra_transform.jl`)
 
+## Plotting in Tests
+
+- If saving plots, use timestamped paths: `"plots/" * Dates.format(now(),"yyyymmdd-HHMMSS") * "functionname.png"`
+- Ensure `plots/` directory exists before running tests that save plots
+- Use LaTeX titles where appropriate: `title!(L"Plot\ Title")`
+
 ## Running Tests
 
 ```bash
@@ -116,6 +123,13 @@ julia --project=. test/runtests.jl
 # CI mode
 CI=true julia --project=. test/runtests.jl
 ```
+
+## CI/CD Pipeline
+
+- **Tests**: Run on all PRs (`.github/workflows/CI.yml`)
+- **Docs Build**: Test on PR (no deploy)
+- **Docs Deploy**: Auto-deploy to `https://study.fourm.info/linear_algebra/` on merge to `main`
+- **Cross-Repo**: Deploys to `FourMInfo/math_tech_study` subdirectory
 
 ## CI Considerations
 

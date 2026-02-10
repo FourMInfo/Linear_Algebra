@@ -10,7 +10,7 @@ Documentation in `docs/src/` explains general math concepts (not code). Follow t
 **Document Organization:**
 - Start with concept overview and [MathWorld](https://mathworld.wolfram.com/) link in opening paragraph
 - Use hierarchical headings: `##` for major topics, `###` for subtopics
-- Group related concepts logically
+- Group related concepts logically (e.g., by operation type, by geometric meaning)
 - Include real-world applications section
 
 **Content Style:**
@@ -19,7 +19,8 @@ Documentation in `docs/src/` explains general math concepts (not code). Follow t
 - **Build progressively**: Simple concepts → complex relationships → applications
 - **Multiple representations**: Equations, tables, visual aids (SVG diagrams when helpful)
 - **Context matters**: Explain _why_ concepts are important, not just _what_ they are
-- **Derivations**: Show mathematical reasoning step-by-step
+  - Example: "Projections are fundamental to least-squares approximation, computer graphics, and data compression"
+- **Derivations**: Show mathematical reasoning step-by-step (see projection and transformation matrix derivations)
 
 ## Mathematical Notation
 
