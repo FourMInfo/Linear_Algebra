@@ -63,9 +63,43 @@ a_{31} & a_{32} & a_{33}
 \lambda a_{31} & \lambda a_{32} & \lambda a_{33}
 \end{pmatrix}$$
 
+**Key properties:**
+
+If A and B are matrices with m rows and n columns and λ and μ are real numbers, then
+the following rules of arithmetic apply:
+- Commutative: $A + B = B + A$
+- Distributive: $\lambda \cdot (A + B) = \lambda \cdot A + \lambda \cdot B$
+- Distributive: $(\lambda + \mu) \cdot A = \lambda \cdot A + \mu \cdot A$
+
 ### Matrix Multiplication
 
-For $A$ ($m \times n$) and $B$ ($n \times p$), the product $AB$ is an $m \times p$ matrix: $$(AB)_{ij} = \sum_{k=1}^{n} a_{ik}b_{kj}$$
+For $A$ ($m \times n$) and $B$ ($n \times p$), the product $AB$ is an $m \times p$ matrix: $$(AB)_{ij} = \sum_{k=1}^{n} a_{ik}b_{kj}$$. **Important**: Matrix multiplication is only defined when the number of columns $n$ in the first matrix $A$ equals the number of rows in the second matrix $B$.
+
+!!! note "Terminology: "row length" vs "number of rows"
+    The _Foundations of Mathematics_ textbook describe this condition as: the **row length** of $A$ must equal the **column length** of $B$. This means the same thing — the "row length" of a matrix is how many entries are in each row, which is the **number of columns**. Similarly, the "column length" is how many entries are in each column, which is the **number of rows**. Don't confuse "row length" (= number of columns) with "number of rows" — they refer to different dimensions.
+
+**Example:** For $A$ ($3 \times 2$) and $B$ ($2 \times 4$), the number of columns of $A$ equals the number of rows of $B$ (both 2), so the product $AB$ is defined and yields a $3 \times 4$ matrix:
+$$\begin{aligned}
+&\begin{pmatrix}
+a_{11} & a_{12} \\
+a_{21} & a_{22} \\
+a_{31} & a_{32}
+\end{pmatrix} \begin{pmatrix}
+b_{11} & b_{12} & b_{13} & b_{14} \\
+b_{21} & b_{22} & b_{23} & b_{24}
+\end{pmatrix} = \\
+&\begin{pmatrix}
+a_{11}b_{11} + a_{12}b_{21} & a_{11}b_{12} + a_{12}b_{22} & a_{11}b_{13} + a_{12}b_{23} & a_{11}b_{14} + a_{12}b_{24} \\
+a_{21}b_{11} + a_{22}b_{21} & a_{21}b_{12} + a_{22}b_{22} & a_{21}b_{13} + a_{22}b_{23} & a_{21}b_{14} + a_{22}b_{24} \\
+a_{31}b_{11} + a_{32}b_{21} & a_{31}b_{12} + a_{32}b_{22} & a_{31}b_{13} + a_{32}b_{23} & a_{31}b_{14} + a_{32}b_{24}
+\end{pmatrix}
+\end{aligned}$$
+
+Note that $BA$ is _not_ defined here, since the number of columns of $B$ (4) does not equal the number of rows of $A$ (3).
+
+If $\mathbf{x}$ is a vector of the same length as the rows of $A$, then the product $A \cdot \mathbf{x}$ is a vector of the same length as the columns of $A$, and is given by:
+
+$$A \cdot \mathbf{x} = \begin{pmatrix}a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn}\end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} = \begin{pmatrix} a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n \\ a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n \\ \vdots \\ a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n \end{pmatrix}$$
 
 **Key properties:**
 
