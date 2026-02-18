@@ -6,12 +6,12 @@
 
 A [matrix](https://mathworld.wolfram.com/Matrix.html) is a rectangular array of numbers arranged in rows and columns. An $m \times n$ matrix has $m$ rows and $n$ columns:
 
-$$A = \begin{pmatrix}
+$$A_{m \times n} = \begin{pmatrix}
 a_{11} & a_{12} & \cdots & a_{1n} \\
 a_{21} & a_{22} & \cdots & a_{2n} \\
 \vdots & \vdots & \ddots & \vdots \\
 a_{m1} & a_{m2} & \cdots & a_{mn}
-\end{pmatrix}$$
+\end{pmatrix} \in \mathbb{R}^{m \times n}$$
 
 The entry in row $i$ and column $j$ is denoted $a_{ij}$ or $A_{ij}$. The set of all $m \times n$ real matrices is denoted $\mathbb{R}^{m \times n}$ (or $\mathbb{C}^{m \times n}$ for complex entries). In abstract algebra, the alternative notation $M_{m \times n}(\mathbb{R})$ is used to emphasize the ring of entries.
 
@@ -73,7 +73,11 @@ the following rules of arithmetic apply:
 
 ### Matrix Multiplication
 
-For $A$ ($m \times n$) and $B$ ($n \times p$), the product $AB$ is an $m \times p$ matrix: $$(AB)_{ij} = \sum_{k=1}^{n} a_{ik}b_{kj}$$. **Important**: Matrix multiplication is only defined when the number of columns $n$ in the first matrix $A$ equals the number of rows in the second matrix $B$.
+Formally, given $A \in \mathbb{R}^{m \times n}$ and $B \in \mathbb{R}^{n \times p}$, the product $C = AB \in \mathbb{R}^{m \times p}$ is defined by:
+
+$$c_{ij} = \sum_{k=1}^{n} a_{ik}b_{kj}, \quad i = 1, \ldots, m, \quad j = 1, \ldots, p$$
+
+**Important**: Matrix multiplication is only defined when the number of columns of $A$ equals the number of rows of $B$ — that is, both matrices share the inner dimension $n$. The resulting matrix takes its rows from $A$ and its columns from $B$.
 
 !!! note "Terminology: "row length" vs "number of rows"
     The _Foundations of Mathematics_ textbook describe this condition as: the **row length** of $A$ must equal the **column length** of $B$. This means the same thing — the "row length" of a matrix is how many entries are in each row, which is the **number of columns**. Similarly, the "column length" is how many entries are in each column, which is the **number of rows**. Don't confuse "row length" (= number of columns) with "number of rows" — they refer to different dimensions.
@@ -106,7 +110,7 @@ $$A \cdot \mathbf{x} = \begin{pmatrix}a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21
 - Not commutative: $AB \neq BA$ in general
 - Associative: $(AB)C = A(BC)$
 - Distributive: $A(B + C) = AB + AC$
-- Identity: $AI = IA = A$
+- Distributive: $(A + B)C = AC + BC$
 
 ### Transpose
 
@@ -125,12 +129,27 @@ The [transpose](https://mathworld.wolfram.com/Transpose.html) $A^T$ swaps rows a
 
 A [diagonal matrix](https://mathworld.wolfram.com/DiagonalMatrix.html) has non-zero entries only on the main diagonal:
 
-$$D = \begin{pmatrix}
+$$D_{n} = \begin{pmatrix}
 d_1 & 0 & \cdots & 0 \\
 0 & d_2 & \cdots & 0 \\
 \vdots & \vdots & \ddots & \vdots \\
 0 & 0 & \cdots & d_n
-\end{pmatrix}$$
+\end{pmatrix} \in \mathbb{R}^{n \times n}$$
+
+### Identity Matrix
+
+The [identity matrix](https://mathworld.wolfram.com/IdentityMatrix.html) $I_n$ is the $n \times n$ diagonal matrix with 1s on the diagonal and 0s elsewhere:
+
+$$I_n = \begin{pmatrix}
+1 & 0 & \cdots & 0 \\
+0 & 1 & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & 1
+\end{pmatrix} \in \mathbb{R}^{n \times n}$$
+
+**Key Properties:**
+- Identity: $AI = IA = A$
+- Diagonal: $I$ is a diagonal matrix
 
 ### Symmetric Matrix
 
@@ -146,7 +165,7 @@ An [orthogonal matrix](https://mathworld.wolfram.com/OrthogonalMatrix.html) $Q$ 
 
 - Orthonormal columns: Columns are orthonormal vectors
 - Transpose is inverse: $Q^{-1} = Q^T$
-- Unit determinant: $|\det(Q)| = 1$
+- Unit determinant: $|\det(Q)| = 1$ (see determinant section below)
 - Isometry: Preserves lengths and angles
 
 **Examples:** Rotation matrices, reflection matrices
@@ -227,156 +246,6 @@ A matrix is in [reduced row echelon form](https://mathworld.wolfram.com/ReducedR
 
 - Each pivot is 1
 - Each pivot is the only non-zero entry in its column
-
-## Systems of Linear Equations
-
-A system of linear equations can be written as: $$A\mathbf{x} = \mathbf{b}$$
-
-### Matrix Representation
-
-The system:
-
-$$\begin{aligned}
-a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n &= b_1 \\
-a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n &= b_2 \\
-\vdots \\
-a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n &= b_m
-\end{aligned}$$
-
-can be written as $A\mathbf{x} = \mathbf{b}$ where $A$ is the coefficient matrix, $\mathbf{x}$ is the vector of unknowns, and $\mathbf{b}$ is the constant vector.
-
-### Augmented Matrix
-
-The [augmented matrix](https://mathworld.wolfram.com/AugmentedMatrix.html) $\left\lbrack A \mid \mathbf{b}\right\rbrack$ combines the coefficient matrix and constant vector:
-
-$$\left[\begin{array}{cccc|c}
-a_{11} & a_{12} & \cdots & a_{1n} & b_1 \\
-a_{21} & a_{22} & \cdots & a_{2n} & b_2 \\
-\vdots & \vdots & \ddots & \vdots & \vdots \\
-a_{m1} & a_{m2} & \cdots & a_{mn} & b_m
-\end{array}\right]$$
-
-### Solution Methods
-
-**Direct solution (if $A$ is invertible):** $$\mathbf{x} = A^{-1}\mathbf{b}$$
-
-**Gaussian elimination:** Row reduce the augmented matrix $\left\lbrack A \mid \mathbf{b}\right\rbrack$ to row echelon form, then use back-substitution.
-
-**Gauss-Jordan elimination:** Row reduce to reduced row echelon form; the solution can be read directly.
-
-**Cramer's rule:** For $n \times n$ system with $\det(A) \neq 0$: $$x_i = \frac{\det(A_i)}{\det(A)}$$ where $A_i$ has column $i$ replaced by $\mathbf{b}$.
-
-### Cramer's Rule Example
-
-Solve the system:
-
-$$\begin{aligned}
-2x + y &= 5 \\
-x - y &= 1
-\end{aligned}$$
-
-The coefficient matrix and constant vector are: $A = \begin{bmatrix} 2 & 1 \\ 1 & -1 \end{bmatrix}$, $\mathbf{b} = \begin{bmatrix} 5 \\ 1 \end{bmatrix}$
-
-**Step 1:** Calculate $\det(A) = 2(-1) - 1(1) = -3$
-
-**Step 2:** Form $A_x$ by replacing column 1 with $\mathbf{b}$: $A_x = \begin{bmatrix} 5 & 1 \\ 1 & -1 \end{bmatrix}$
-
-$\det(A_x) = 5(-1) - 1(1) = -6$
-
-**Step 3:** Form $A_y$ by replacing column 2 with $\mathbf{b}$: $A_y = \begin{bmatrix} 2 & 5 \\ 1 & 1 \end{bmatrix}$
-
-$\det(A_y) = 2(1) - 5(1) = -3$
-
-**Step 4:** Apply Cramer's rule: $x = \frac{\det(A_x)}{\det(A)} = \frac{-6}{-3} = 2$, $y = \frac{\det(A_y)}{\det(A)} = \frac{-3}{-3} = 1$
-
-**Solution:** $(x, y) = (2, 1)$
-
-### Matrix Inverse Method Example
-
-For the system $A\mathbf{x} = \mathbf{b}$ where $A = \begin{bmatrix} 2 & 1 \\ 1 & -1 \end{bmatrix}$, $\mathbf{b} = \begin{bmatrix} 5 \\ 1 \end{bmatrix}$
-
-**Step 1:** Find $A^{-1}$ using the 2×2 inverse formula
-
-$$A^{-1} = \frac{1}{\det(A)} \begin{bmatrix} -1 & -1 \\ -1 & 2 \end{bmatrix} = \frac{1}{-3} \begin{bmatrix} -1 & -1 \\ -1 & 2 \end{bmatrix} = \begin{bmatrix} \frac{1}{3} & \frac{1}{3} \\ \frac{1}{3} & -\frac{2}{3} \end{bmatrix}$$
-
-**Step 2:** Calculate $\mathbf{x} = A^{-1}\mathbf{b}$
-
-$$\mathbf{x} = \begin{bmatrix} \frac{1}{3} & \frac{1}{3} \\ \frac{1}{3} & -\frac{2}{3} \end{bmatrix} \begin{bmatrix} 5 \\ 1 \end{bmatrix} = \begin{bmatrix} \frac{5}{3} + \frac{1}{3} \\ \frac{5}{3} - \frac{2}{3} \end{bmatrix} = \begin{bmatrix} 2 \\ 1 \end{bmatrix}$$
-
-**Solution:** $(x, y) = (2, 1)$
-
-### Gaussian Elimination Example
-
-Solve the system:
-
-$$\begin{aligned}
-x + 2y + z &= 9 \\
-2x + y - z &= 3 \\
-3x - y + 2z &= 8
-\end{aligned}$$
-
-**Step 1:** Write the augmented matrix
-
-$$\left[\begin{array}{ccc|c}
-1 & 2 & 1 & 9 \\
-2 & 1 & -1 & 3 \\
-3 & -1 & 2 & 8
-\end{array}\right]$$
-
-**Step 2:** Eliminate below the first pivot ($R_2 - 2R_1$, $R_3 - 3R_1$)
-
-$$\left[\begin{array}{ccc|c}
-1 & 2 & 1 & 9 \\
-0 & -3 & -3 & -15 \\
-0 & -7 & -1 & -19
-\end{array}\right]$$
-
-**Step 3:** Eliminate below the second pivot ($R_3 - \frac{7}{3}R_2$)
-
-$$\left[\begin{array}{ccc|c}
-1 & 2 & 1 & 9 \\
-0 & -3 & -3 & -15 \\
-0 & 0 & 6 & 16
-\end{array}\right]$$
-
-**Step 4:** Back-substitution
-
-- From row 3: $6z = 16 \Rightarrow z = \frac{8}{3}$
-- From row 2: $-3y - 3z = -15 \Rightarrow y = 5 - z = \frac{7}{3}$
-- From row 1: $x + 2y + z = 9 \Rightarrow x = 9 - 2y - z = \frac{5}{3}$
-
-**Solution:** $(x, y, z) = \left(\frac{5}{3}, \frac{7}{3}, \frac{8}{3}\right)$
-
-### Types of Solutions
-
-- **Unique solution:** The coefficient matrix has full rank ($\det(A) \neq 0$ for square systems)
-- **No solution:** System is inconsistent — the augmented matrix has a ro\lbrack 0, 0, \ldots, 0 \right| c \rbrack$ where $c \neq 0$
-- **Infinitely many solutions:** System is underdetermined — there are free variables (fewer pivots than unknowns)
-
-**Example (Infinitely Many Solutions):**
-
-$$\begin{aligned}
-x + 2y + z &= 3 \\
-2x + 4y + 2z &= 6
-\end{aligned}$$
-
-The second equation is twice the first, so we have infinitely many solutions: $$\mathbf{x} = \begin{bmatrix} 3 - 2s - t \\ s \\ t \end{bmatrix}$$ where $s$ and $t$ are free parameters.
-
-### Homogeneous Systems
-
-A [homogeneous system](https://mathworld.wolfram.com/HomogeneousLinearSystem.html) has the form $A\mathbf{x} = \mathbf{0}$. Such systems always have at least the trivial solution $\mathbf{x} = \mathbf{0}$.
-
-Non-trivial solutions exist if and only if $\det(A) = 0$ (the matrix is singular), which occurs when the system has free variables.
-
-**Example (Homogeneous System):**
-
-$$\begin{aligned}
-x + 2y - z &= 0 \\
-2x + 4y - 2z &= 0 \\
-x + 2y - z &= 0
-\end{aligned}$$
-
-Since all equations are equivalent, the solution space is: $$\mathbf{x} = \begin{bmatrix} -2s + t \\ s \\ t \end{bmatrix}$$ where $s$ and $t$ are free parameters.
 
 ## Eigenvalues and Eigenvectors
 
@@ -466,4 +335,5 @@ For an $m \times n$ matrix $A$: $$\text{rank}(A) + \text{nullity}(A) = n$$
 
 - [Vectors](01 Vectors.md) - Vector operations
 - [Linear Transformations](03 Linear Transformations.md) - Geometric interpretation
+- [Systems of Equations](04 Systems of Equations.md) - Solving systems using matrix methods
 - [Lines](../Geometry/02 Lines.md) - Systems of equations geometrically
