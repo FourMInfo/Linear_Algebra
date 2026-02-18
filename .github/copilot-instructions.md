@@ -96,6 +96,7 @@ Your comprehensive PR description with:
     - Summarize the current understanding of the issue before discussing potential solutions
     - Document any assumptions made during the analysis
     - Identify any knowledge gaps or areas requiring further investigation
+- Notify user immediately if you cannot read a file they provided (e.g., PDFs, binary files) instead of silently substituting other files or faking understanding of the content
 - If you are unsure about a solution, clearly state that more information is needed or that further investigation is required
 - When providing code examples, ensure they are clear, concise, and directly relevant to the problem at hand
     - Avoid unnecessary complexity in code examples
