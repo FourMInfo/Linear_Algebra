@@ -162,7 +162,7 @@ This shows that the solution $(x_1, x_2)$ corresponds to a linear combination of
 
 If the coefficient vectors are linearly independent, the system has a unique solution. If they are linearly dependent, the system may have no solution or infinitely many solutions.
 
-if interested, see [Linear Systems](../Geometry/08 Linear Systems.md) for more details.
+if interested, see [Systems of Equations](../Basics/03 Systems of Equations.md) and [Linear Systems](../Geometry/08 Linear Systems.md) for more details.
 
 ## Applications
 
@@ -186,7 +186,8 @@ if interested, see [Linear Systems](../Geometry/08 Linear Systems.md) for more d
 ## See Also
 
 - [Matrices](02 Matrices.md) - Matrix operations
-- [Linear Transformations](03 Linear Transformations.md) - How vectors are mapped
+- [Systems of Equations](../Basics/03 Systems of Equations.md) - Solving systems using vectors
+- [Analytic Geometry](04 Analytic Geometry.md) - Vectors in coordinate systems, planes, and linear transformations
 - [Points and Coordinates](../Geometry/01 Points and Coordinates.md) - Points, standard basis, distance, and magnitude
 - [Lines](../Geometry/02 Lines.md) - Parametric and implicit representations
 - [Vectors and Geometry](../Geometry/03 Vectors and Geometry.md) - In depth geometric interpretation of vectors

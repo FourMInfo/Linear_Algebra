@@ -222,90 +222,6 @@ $$\begin{pmatrix} a & b \\ c & d \end{pmatrix}^{-1} = \frac{1}{ad - bc}\begin{pm
 
 A matrix is [singular](https://mathworld.wolfram.com/SingularMatrix.html) (non-invertible) if $\det(A) = 0$.
 
-## Row Operations
-
-[Elementary row operations](https://mathworld.wolfram.com/ElementaryRowOperation.html) are the fundamental tools for solving systems of linear equations. There are three types:
-
-1. **Row swapping:** $R_i \leftrightarrow R_j$ — exchange two rows
-2. **Row scaling:** $kR_i \rightarrow R_i$ (where $k \neq 0$) — multiply a row by a non-zero scalar
-3. **Row addition:** $R_i + kR_j \rightarrow R_i$ — add a multiple of one row to another
-
-These operations do not change the solution set of the system.
-
-### Row Echelon Form
-
-A matrix is in [row echelon form](https://mathworld.wolfram.com/RowEchelonForm.html) (REF) if:
-
-- All zero rows are at the bottom
-- The leading entry (pivot) of each non-zero row is to the right of the pivot above it
-- All entries below a pivot are zero
-
-### Reduced Row Echelon Form
-
-A matrix is in [reduced row echelon form](https://mathworld.wolfram.com/ReducedRowEchelonForm.html) (RREF) if it is in REF and additionally:
-
-- Each pivot is 1
-- Each pivot is the only non-zero entry in its column
-
-## Eigenvalues and Eigenvectors
-
-An [eigenvector](https://mathworld.wolfram.com/Eigenvector.html) $\mathbf{v}$ of matrix $A$ satisfies: $$A\mathbf{v} = \lambda\mathbf{v}$$ where $\lambda$ is the [eigenvalue](https://mathworld.wolfram.com/Eigenvalue.html).
-
-### Finding Eigenvalues
-
-Eigenvalues are roots of the [characteristic polynomial](https://mathworld.wolfram.com/CharacteristicPolynomial.html): $$\det(A - \lambda I) = 0$$
-
-### Properties
-
-- Sum of eigenvalues = trace of $A$ = $\sum a_{ii}$
-- Product of eigenvalues = $\det(A)$
-- Symmetric matrices have real eigenvalues
-- Orthogonal matrices have eigenvalues with $|\lambda| = 1$
-
-### Diagonalization
-
-A matrix $A$ is [diagonalizable](https://mathworld.wolfram.com/MatrixDiagonalization.html) if: $$A = PDP^{-1}$$
-
-where $D$ is diagonal (eigenvalues) and $P$ has eigenvectors as columns.
-
-## Matrix Decompositions
-
-### LU Decomposition
-
-$$A = LU$$
-
-where $L$ is lower triangular and $U$ is upper triangular.
-
-### QR Decomposition
-
-$$A = QR$$
-
-where $Q$ is orthogonal and $R$ is upper triangular.
-
-### Singular Value Decomposition (SVD)
-
-$$A = U\Sigma V^T$$
-
-where $U$ and $V$ are orthogonal and $\Sigma$ is diagonal with [singular values](https://mathworld.wolfram.com/SingularValue.html).
-
-## Rank and Nullity
-
-### Rank
-
-The [rank](https://mathworld.wolfram.com/MatrixRank.html) of a matrix is:
-
-- Number of linearly independent rows (= number of linearly independent columns)
-- Dimension of the column space (image)
-- Number of non-zero rows in row echelon form
-
-### Nullity
-
-The [nullity](https://mathworld.wolfram.com/Nullity.html) is the dimension of the null space (kernel).
-
-### Rank-Nullity Theorem
-
-For an $m \times n$ matrix $A$: $$\text{rank}(A) + \text{nullity}(A) = n$$
-
 ## Applications
 
 ### Computer Graphics
@@ -334,6 +250,6 @@ For an $m \times n$ matrix $A$: $$\text{rank}(A) + \text{nullity}(A) = n$$
 ## See Also
 
 - [Vectors](01 Vectors.md) - Vector operations
-- [Linear Transformations](03 Linear Transformations.md) - Geometric interpretation
-- [Systems of Equations](04 Systems of Equations.md) - Solving systems using matrix methods
+- [Analytic Geometry](04 Analytic Geometry.md) - Geometric interpretation and linear transformations
+- [Systems of Equations](03 Systems of Equations.md) - Solving systems using matrix methods
 - [Lines](../Geometry/02 Lines.md) - Systems of equations geometrically

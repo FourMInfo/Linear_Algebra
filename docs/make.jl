@@ -14,8 +14,8 @@ makedocs(;
         "Basics" => [
             "Basics/01 Vectors.md",
             "Basics/02 Matrices.md",
-            "Basics/03 Linear Transformations.md",
-            "Basics/04 Systems of Equations.md",
+            "Basics/03 Systems of Equations.md",
+            "Basics/04 Analytic Geometry.md",
         ],
         "Geometry" => [
             "Geometry/01 Points and Coordinates.md",

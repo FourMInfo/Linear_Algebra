@@ -107,11 +107,34 @@ a_{21} & a_{22} & \cdots & a_{2n} & b_2 \\
 a_{m1} & a_{m2} & \cdots & a_{mn} & b_m
 \end{array}\right]$$
 
+### Row Operations
+
+[Elementary row operations](https://mathworld.wolfram.com/ElementaryRowOperation.html) are the fundamental tools for solving systems of linear equations. These operations transform the augmented matrix without changing the solution set of the system. There are three types:
+
+1. **Row swapping:** $R_i \leftrightarrow R_j$ — exchange two rows
+2. **Row scaling:** $kR_i \rightarrow R_i$ (where $k \neq 0$) — multiply a row by a non-zero scalar
+3. **Row addition:** $R_i + kR_j \rightarrow R_i$ — add a multiple of one row to another
+
+#### Row Echelon Form
+
+A matrix is in [row echelon form](https://mathworld.wolfram.com/RowEchelonForm.html) (REF) if:
+
+- All zero rows are at the bottom
+- The leading entry (pivot) of each non-zero row is to the right of the pivot above it
+- All entries below a pivot are zero
+
+#### Reduced Row Echelon Form
+
+A matrix is in [reduced row echelon form](https://mathworld.wolfram.com/ReducedRowEchelonForm.html) (RREF) if it is in REF and additionally:
+
+- Each pivot is 1
+- Each pivot is the only non-zero entry in its column
+
 ### Solution Methods
 
 **Direct solution (if $A$ is invertible):** $$\mathbf{x} = A^{-1}\mathbf{b}$$
 
-**Gaussian elimination:** Row reduce the augmented matrix $\left\lbrack A \mid \mathbf{b}\right\rbrack$ to row echelon form, then use back-substitution. See [Row Operations](02 Matrices.md#row-operations) for details on row echelon form.
+**Gaussian elimination:** Row reduce the augmented matrix $\left\lbrack A \mid \mathbf{b}\right\rbrack$ to row echelon form using the row operations above, then use back-substitution.
 
 **Gauss-Jordan elimination:** Row reduce to reduced row echelon form; the solution can be read directly.
 
@@ -299,6 +322,30 @@ x + 2y - z &= 0
 
 Since all equations are equivalent, the solution space is: $$\mathbf{x} = \begin{bmatrix} -2s + t \\ s \\ t \end{bmatrix}$$ where $s$ and $t$ are free parameters.
 
+## Rank and Nullity
+
+The concepts of rank and nullity formalize _why_ systems have the solution types described above.
+
+### Rank
+
+The [rank](https://mathworld.wolfram.com/MatrixRank.html) of a matrix is:
+
+- The number of linearly independent rows (= number of linearly independent columns)
+- The dimension of the column space (image)
+- The number of non-zero rows (pivots) in row echelon form
+
+The rank determines the nature of the solution: a system $A\mathbf{x} = \mathbf{b}$ with $n$ unknowns has a unique solution when $\text{rank}(A) = n$, infinitely many solutions when $\text{rank}(A) < n$ and the system is consistent, and no solution when the augmented matrix has higher rank than $A$.
+
+### Nullity
+
+The [nullity](https://mathworld.wolfram.com/Nullity.html) is the dimension of the null space (kernel) — the number of free parameters in the solution.
+
+### Rank-Nullity Theorem
+
+For an $m \times n$ matrix $A$: $$\text{rank}(A) + \text{nullity}(A) = n$$
+
+This means: the number of pivot variables plus the number of free variables always equals the total number of unknowns.
+
 ## Applications
 
 ### Physics
@@ -328,5 +375,6 @@ Since all equations are equivalent, the solution space is: $$\mathbf{x} = \begin
 ## See Also
 
 - [Matrices](02 Matrices.md) - Matrix operations, determinants, and inverses
+- [Analytic Geometry](04 Analytic Geometry.md) - Plane equations and linear transformations
 - [Vectors](01 Vectors.md) - Geometric interpretation of solutions
 - [Lines](../Geometry/02 Lines.md) - Two-variable systems as line intersections
