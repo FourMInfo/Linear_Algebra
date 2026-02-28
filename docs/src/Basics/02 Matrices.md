@@ -15,14 +15,6 @@ a_{m1} & a_{m2} & \cdots & a_{mn}
 
 The entry in row $i$ and column $j$ is denoted $a_{ij}$ or $A_{ij}$. The set of all $m \times n$ real matrices is denoted $\mathbb{R}^{m \times n}$ (or $\mathbb{C}^{m \times n}$ for complex entries). In abstract algebra, the alternative notation $M_{m \times n}(\mathbb{R})$ is used to emphasize the ring of entries.
 
-### Special Types of Matrices
-
-- **Square matrix:** $m = n$ (same number of rows and columns)
-- **Row vector:** $1 \times n$ matrix
-- **Column vector:** $m \times 1$ matrix
-- **Zero matrix:** All entries are 0
-- **Identity matrix:** Square matrix with 1s on diagonal, 0s elsewhere: $I_n$
-
 ## Matrix Operations
 
 ### Addition and Subtraction
@@ -116,6 +108,12 @@ $$A \cdot \mathbf{x} = \begin{pmatrix}a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21
 
 The [transpose](https://mathworld.wolfram.com/Transpose.html) $A^T$ swaps rows and columns: $$(A^T)_{ij} = a_{ji}$$
 
+**Example:** For a $3 \times 2$ matrix:
+$$\begin{pmatrix}a_{11} & a_{12} \\
+a_{21} & a_{22} \\
+a_{31} & a_{32}\end{pmatrix}^T = \begin{pmatrix}a_{11} & a_{21} & a_{31} \\
+a_{12} & a_{22} & a_{32}\end{pmatrix}$$
+
 **Properties:**
 
 - Involution: $(A^T)^T = A$
@@ -125,9 +123,28 @@ The [transpose](https://mathworld.wolfram.com/Transpose.html) $A^T$ swaps rows a
 
 ## Special Matrix Types
 
+### Special Types of Matrices
+
+There are many special types of matrices with unique properties. Some common ones include:
+
+- **Row vector:** $1 \times n$ matrix
+- **Column vector:** $m \times 1$ matrix
+- **Zero matrix:** All entries are 0
+
+Below are more details about some important special types of matrices that are frequently encountered.
+
+### Square Matrix
+
+A [square matrix](https://mathworld.wolfram.com/SquareMatrix.html) has the same number of rows and columns: $m = n$. Square matrices are important for many reasons, including the ability to define determinants and inverses.
+
+$$A_{n} = \begin{pmatrix}a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}\end{pmatrix} \in \mathbb{R}^{n \times n}$$
+
 ### Diagonal Matrix
 
-A [diagonal matrix](https://mathworld.wolfram.com/DiagonalMatrix.html) has non-zero entries only on the main diagonal:
+A [diagonal matrix](https://mathworld.wolfram.com/DiagonalMatrix.html) is a square matrix that has non-zero entries only on the main diagonal:
 
 $$D_{n} = \begin{pmatrix}
 d_1 & 0 & \cdots & 0 \\
@@ -157,9 +174,19 @@ A [symmetric matrix](https://mathworld.wolfram.com/SymmetricMatrix.html) equals 
 
 This means $a_{ij} = a_{ji}$ for all $i, j$.
 
+**Example:**
+
+$$\begin{pmatrix}1 & 2 & 3 \\
+2 & 4 & 5 \\
+3 & 5 & 6\end{pmatrix}$$
+
 ### Orthogonal Matrix
 
 An [orthogonal matrix](https://mathworld.wolfram.com/OrthogonalMatrix.html) $Q$ satisfies: $$Q^TQ = QQ^T = I$$
+
+**Example:**
+$$\begin{pmatrix}\cos \theta & -\sin \theta \\
+\sin \theta & \cos \theta\end{pmatrix}$$
 
 **Properties:**
 
@@ -207,6 +234,10 @@ $$\det\begin{pmatrix} a & b & c \\ d & e & f \\ g & h & i \end{pmatrix} = a(ei -
 
 The [inverse](https://mathworld.wolfram.com/MatrixInverse.html) of a square matrix $A$ (if it exists) is the matrix $A^{-1}$ such that: $$AA^{-1} = A^{-1}A = I$$
 
+In simple multiplication we can solve for $x$ in $ax = b$ by dividing both sides by $a$: $x = \frac{b}{a}$. In matrix multiplication, we want something equivalent to $\frac{b}{a}$, and this is where inverse matrices play a role. We can solve for $X$ in $AX = B$ by multiplying both sides by the inverse of $A$: $X = A^{-1}B$. This is only possible if $A$ is invertible.
+
+The matrix $A$ is invertible (non-singular) if and only if the $\det(A) \neq 0$. A matrix is [singular](https://mathworld.wolfram.com/SingularMatrix.html) (non-invertible) if $\det(A) = 0$.
+
 ### 2×2 Inverse
 
 $$\begin{pmatrix} a & b \\ c & d \end{pmatrix}^{-1} = \frac{1}{ad - bc}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix}$$
@@ -217,10 +248,6 @@ $$\begin{pmatrix} a & b \\ c & d \end{pmatrix}^{-1} = \frac{1}{ad - bc}\begin{pm
 - Reverse order: $(AB)^{-1} = B^{-1}A^{-1}$
 - Transpose commutes: $(A^T)^{-1} = (A^{-1})^T$
 - Scalar multiplication: $(cA)^{-1} = \frac{1}{c}A^{-1}$
-
-### Singular Matrices
-
-A matrix is [singular](https://mathworld.wolfram.com/SingularMatrix.html) (non-invertible) if $\det(A) = 0$.
 
 ## Applications
 
