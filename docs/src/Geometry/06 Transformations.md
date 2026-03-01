@@ -179,7 +179,7 @@ $$R_\theta(\mathbf{X}) = \lvert\mathbf{X}\rvert \begin{bmatrix} \cos(\phi + \the
 
 ### Verification via Dot Product
 
-We can verify that $R$ rotates by angle $\alpha$ using the dot product formula from [Dot Product and Orthogonality](03 Dot Product and Orthogonality.md):
+We can verify that $R$ rotates by angle $\alpha$ using the [geometric formula for the dot product](03 Vectors and Geometry.md#Geometric-Formula-for-the-Dot-Products):
 
 $$\mathbf{v} \cdot \mathbf{v}' = \lVert\mathbf{v}\rVert^2 \cos\alpha$$
 

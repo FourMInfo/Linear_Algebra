@@ -36,6 +36,20 @@ In $\mathbb{R}^3$ (3D), a vector is written as: $\mathbf{v} = \lbrack v_1, v_2, 
 
 In $\mathbb{R}^n$ (n-dimensional), a vector is written as: $\mathbf{v} = \lbrack v_1, v_2, \ldots, v_n \rbrack$ or $\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix}$
 
+### Length (Magnitude) of a Vector
+
+The length or [magnitude](https://mathworld.wolfram.com/VectorMagnitude.html)  of a vector $\mathbf{v} = \lbrack v_1, v_2, \ldots, v_n \rbrack$ is given by the formula:$$\|\mathbf{v}\| = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2} = \sqrt{\sum_{i=1}^{n} v_i^2}$$
+
+**Example:** For $\mathbf{v} = \lbrack 3, 4 \rbrack$ in $\mathbb{R}^2$, the magnitude is: $$\|\mathbf{v}\| = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5$$
+
+### Normalization and Unit Vectors
+
+A [unit vector](https://mathworld.wolfram.com/UnitVector.html) is a vector with a magnitude of 1. To _normalize_ a vector $\mathbf{v}$ (i.e., convert it to a unit vector), divide each component by the vector's magnitude: $$\hat{\mathbf{v}} = \frac{\mathbf{v}}{\|\mathbf{v}\|} = \left\lbrack \frac{v_1}{\|\mathbf{v}\|}, \frac{v_2}{\|\mathbf{v}\|}, \ldots, \frac{v_n}{\|\mathbf{v}\|} \right\rbrack$$
+
+**Example:** For $\mathbf{v} = \lbrack 3, 4 \rbrack$, the unit vector is: $$\hat{\mathbf{v}} = \frac{1}{5} \lbrack 3, 4 \rbrack = \lbrack 0.6, 0.8 \rbrack$$
+
+There is a lot more to say about the geometric interpretation of magnitude and normalization. For more details, see [Length (Magnitude)](../Geometry/03 Vectors and Geometry.md#Vector-Length-(Magnitude)) in the Vectors and Geometry document.
+
 ## Vector Operations
 
 ### Vector Addition
@@ -98,28 +112,57 @@ For $\mathbf{u} = \lbrack u_1, u_2, \ldots, u_n \rbrack$ and $\mathbf{v} = \lbra
 - Scalar multiplication: $(c\mathbf{u}) \cdot \mathbf{v} = c(\mathbf{u} \cdot \mathbf{v})$
 - Self dot product: $\mathbf{v} \cdot \mathbf{v} = \|\mathbf{v}\|^2$
 
-<!-- Link to be restored: For geometric interpretation, see Dot Product and Cosines (../Geometry/03 Dot Product and Orthogonality.md#Dot-Product-and-Cosines) (angles) and Orthogonal Vectors (../Geometry/03 Dot Product and Orthogonality.md#Orthogonal-Vectors) (orthogonality) in the Dot Product and Orthogonality document. -->
+### Orthogonal and Orthonormal Vectors
 
-## Linear Combinations and Span
+Two vectors are [orthogonal](https://mathworld.wolfram.com/OrthogonalVectors.html) (perpendicular) if their dot product is zero: $$\mathbf{u} \cdot \mathbf{v} = 0$$
+
+Two vectors are [orthonormal](https://mathworld.wolfram.com/Orthonormal.html) if they are orthogonal _and_ both are unit vectors: $$\mathbf{u} \cdot \mathbf{v} = 0 \quad \text{and} \quad \|\mathbf{u}\| = \|\mathbf{v}\| = 1$$
+
+A set of vectors is orthonormal if every pair is orthogonal and each vector has magnitude 1.
+
+For geometric interpretation, see [Dot Product and Cosines](../Geometry/03 Vectors and Geometry.md#Dot-Product-and-Cosines) and [Orthogonal Vectors](../Geometry/03 Vectors and Geometry.md#Orthogonal-Vectors) in the [Vectors and Geometry](../Geometry/03 Vectors and Geometry.md) document.
+
+## Linear Combinations
 
 ### Linear Combination
 
 A [linear combination](https://mathworld.wolfram.com/LinearCombination.html) of vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_k$ is: $$c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k$$ where $c_1, c_2, \ldots, c_k$ are scalars.
 
-### Span
+### Linear Independence & Dependence
 
-The [span](https://mathworld.wolfram.com/VectorSpaceSpan.html) of a set of vectors is the set of all possible linear combinations: $$\text{span}\{\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_k\} = \{c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k : c_i \in \mathbb{R}\}$$
+The vectors $\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n \in \mathbb{R}^n$ are [_linearly independent_](https://mathworld.wolfram.com/LinearlyIndependentVectors.html) if and only if from:
 
-**Examples:**
+$$c_1\mathbf{x}_1 + c_2\mathbf{x}_2 + \cdots + c_n\mathbf{x}_n = \mathbf{0}$$
 
-- Span of one non-zero vector: a line through the origin
-- Span of two non-parallel vectors in $\mathbb{R}^2$: the entire plane
+it always follows that:
 
-### Linear Independence
+$$c_1 = c_2 = \cdots = c_n = 0$$
 
-Vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_k$ are [linearly independent](https://mathworld.wolfram.com/LinearlyIndependentVectors.html) if the only solution to: $$c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k = \mathbf{0}$$ is $c_1 = c_2 = \cdots = c_k = 0$.
+where $\mathbf{0}$ is the zero vector.
 
-For geometric interpretation (parallel vectors, zero-area parallelogram), see [Linear Independence (Geometric View)](../Geometry/01 Points and Coordinates.md#Linear-Independence-(Geometric-View)) in the Points and Coordinates document.
+On the other hand, the vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_k$ are _linearly dependent_ if there exist scalars $c_1, c_2, \ldots, c_k$, not all zero, such that: $$c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k = \mathbf{0}$$.
+
+In other words, if there is a non-trivial (i.e. some of the coefficients are not zero) linear combination of the vectors that equals the zero vector, then the vectors are linearly dependent. This in turns means (by applying simple algebra) that a set of vectors is linearly dependent if at least one of the vectors can be expressed as a linear combination of the others.
+
+One last point: If the number of vectors is greater than the dimension of the space, the vectors must be linearly dependent.
+
+**Intuitive view:** Think of $\mathbb{R}^2$ (a plane). You can have at most 2 linearly independent vectors (like $\mathbf{e}_1 = \lbrack 1, 0 \rbrack$ and $\mathbf{e}_2 = \lbrack 0, 1 \rbrack$). Any third vector must be a combination of these two—there's simply "no room" for a third independent direction in a 2D space. Similarly, $\mathbb{R}^3$ can hold at most 3 independent vectors, and $\mathbb{R}^n$ can hold at most $n$.
+
+For geometric interpretation (parallel vectors, zero-area parallelogram), see [Linear Independence](../Geometry/01 Points and Coordinates.md#Linear-Independence) in the Points and Coordinates document.
+
+### Linear System of Equations
+
+A system of linear equations can be represented using vectors. For example, the system:
+
+$$\begin{aligned}
+a_{11}x_1 + a_{12}x_2 &= b_1 \\
+a_{21}x_1 + a_{22}x_2 &= b_2
+\end{aligned}$$ can be expressed as: $$x_1\begin{pmatrix} a_{11} \\ a_{21} \end{pmatrix} + x_2\begin{pmatrix} a_{12} \\ a_{22} \end{pmatrix} = \begin{pmatrix} b_1 \\ b_2 \end{pmatrix}$$
+This shows that the solution $(x_1, x_2)$ corresponds to a linear combination of the coefficient vectors equaling the constant vector.
+
+If the coefficient vectors are linearly independent, the system has a unique solution. If they are linearly dependent, the system may have no solution or infinitely many solutions.
+
+if interested, see [Systems of Equations](../Basics/03 Systems of Equations.md) and [Linear Systems](../Geometry/08 Linear Systems.md) for more details.
 
 ## Applications
 
@@ -142,11 +185,9 @@ For geometric interpretation (parallel vectors, zero-area parallelogram), see [L
 
 ## See Also
 
+- [Matrices](02 Matrices.md) - Matrix operations
+- [Systems of Equations](../Basics/03 Systems of Equations.md) - Solving systems using vectors
+- [Analytic Geometry](04 Analytic Geometry.md) - Vectors in coordinate systems, planes, and linear transformations
 - [Points and Coordinates](../Geometry/01 Points and Coordinates.md) - Points, standard basis, distance, and magnitude
-
-<!-- Links to be restored when additional pages are published:
-- Dot Product and Orthogonality (../Geometry/03 Dot Product and Orthogonality.md) - Geometric interpretation of dot product
-- Lines (../Geometry/02 Lines.md) - Parametric and implicit representations
-- Linear Transformations (02 Linear Transformations.md) - How vectors are mapped
-- Matrices (03 Matrices.md) - Matrix-vector operations
--->
+- [Lines](../Geometry/02 Lines.md) - Parametric and implicit representations
+- [Vectors and Geometry](../Geometry/03 Vectors and Geometry.md) - In depth geometric interpretation of vectors

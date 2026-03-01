@@ -12,7 +12,7 @@ The projection of $\mathbf{w}$ onto $\mathbf{v}$ creates a "footprint" of length
 
 $$\mathbf{u} = \left(\lVert\mathbf{w}\rVert \cos(\theta)\right) \frac{\mathbf{v}}{\lVert\mathbf{v}\rVert} = \frac{\mathbf{v} \cdot \mathbf{w}}{\lVert\mathbf{v}\rVert^2} \mathbf{v}$$
 
-This result follows from the relationship between the [dot product and cosine](03 Dot Product and Orthogonality.md) established earlier.
+This result follows from the relationship between the [dot product and cosine](03 Vectors and Geometry.md#Geometric-Interpretation-and-the-Law-of-Cosines) established earlier.
 
 ![Orthogonal projection of w onto v](assets/image-22.png)
 
@@ -349,7 +349,7 @@ We need to find $t$. From the geometry, with $\mathbf{w} = \mathbf{r} - \mathbf{
 
 $$\cos(\theta) = \frac{\lVert t\mathbf{v}\rVert}{\lVert\mathbf{w}\rVert}$$
 
-Using the [dot product formula for cosine](03 Dot Product and Orthogonality.md):
+Using the [dot product formula for cosine](03 Vectors and Geometry.md#Geometric-Interpretation-and-the-Law-of-Cosines):
 
 $$\cos(\theta) = \frac{\mathbf{v} \cdot \mathbf{w}}{\lVert\mathbf{v}\rVert\lVert\mathbf{w}\rVert}$$
 

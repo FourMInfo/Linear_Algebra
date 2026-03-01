@@ -1,6 +1,6 @@
-# Dot Product and Orthogonality
+# Vectors and Geometry
 
-The [dot product](https://mathworld.wolfram.com/DotProduct.html) is a fundamental operation in linear algebra that connects algebraic computations with geometric concepts like angles and perpendicularity. This document builds from vector length through to orthogonality, establishing the mathematical foundations needed for projections and transformations.
+We now turn to vector geometry in 2-dimensional space, covering concepts from vector length through to orthogonality, establishing the mathematical foundations needed for projections and transformations.
 
 ## Vector Length (Magnitude)
 
@@ -21,6 +21,7 @@ $$\lVert\mathbf{v}\rVert = \sqrt{v_1^2 + v_2^2}$$
 This is also called the _Euclidean norm_. For a point $\mathbf{X} = \lbrack x, y \rbrack^T$, the distance from the origin $\lbrack 0, 0 \rbrack^T$ is $\sqrt{x^2 + y^2}$, and we define this to be the length of the vector, written $\lvert\mathbf{X}\rvert$ or $\lVert\mathbf{X}\rVert$.
 
 **Examples:**
+
 - If $\mathbf{X} = \lbrack 3, 4 \rbrack^T$, then $\lvert\mathbf{X}\rvert = \sqrt{3^2 + 4^2} = 5$
 - The standard basis vector $\mathbf{e}_1 = \lbrack 1, 0 \rbrack^T$ has $\lvert\mathbf{e}_1\rvert = 1$
 - The zero vector has $\lvert\mathbf{0}\rvert = \sqrt{0^2 + 0^2} = 0$
@@ -101,6 +102,7 @@ This representation as a positive scalar multiple of a unit vector is called the
 ![Polar form of a vector](assets/image-20.png)
 
 **Examples:**
+
 - If $\mathbf{X} = \lbrack 3, 0 \rbrack^T$, we have $\mathbf{X} = 3\mathbf{e}_1$, where $\mathbf{e}_1 = \lbrack \cos(0), \sin(0) \rbrack^T$
 - If $\mathbf{X} = \lbrack 1, 1 \rbrack^T$, then $\mathbf{X} = \sqrt{2}\lbrack 1/\sqrt{2}, 1/\sqrt{2} \rbrack^T = \sqrt{2}\lbrack \cos\theta, \sin\theta \rbrack^T$, where $\theta = 45^\circ = \pi/4$
 
@@ -127,6 +129,7 @@ julia> round(acosd(z[1]))
 ## Dot Product (Algebraic Definition)
 
 Given two vectors $\mathbf{v}$ and $\mathbf{w}$, we might ask:
+
 - Are they the _same_ vector?
 - Are they perpendicular to each other?
 - What _angle_ do they form?
@@ -173,7 +176,7 @@ Then $\mathbf{v} \cdot \mathbf{w} = v_1(-v_2) + v_2v_1 = 0$.
 
 ### Dot Product and Vector Length
 
-The dot product of a vector with itself gives the square of its length:
+The [_dot product_](https://mathworld.wolfram.com/DotProduct.html) is a fundamental operation in linear algebra that connects algebraic computations with geometric concepts like angles and perpendicularity. The dot product of a vector with itself gives the square of its length:
 
 $$\mathbf{X} \cdot \mathbf{X} = \begin{bmatrix} x \\ y \end{bmatrix} \cdot \begin{bmatrix} x \\ y \end{bmatrix} = x^2 + y^2 = \lvert\mathbf{X}\rvert^2$$
 
@@ -220,7 +223,7 @@ $$\lVert\mathbf{v} - \mathbf{w}\rVert^2 = \lVert\mathbf{v}\rVert^2 + \lVert\math
 
 This generalizes the Pythagorean theorem for triangles with an opposing angle different from $90^\circ$.
 
-### Connecting to the Dot Product
+### Geometric Formula for the Dot Product
 
 We can also write $\lVert\mathbf{v} - \mathbf{w}\rVert^2$ using the dot product:
 

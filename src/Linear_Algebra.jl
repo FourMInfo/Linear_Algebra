@@ -2,18 +2,12 @@ module Linear_Algebra
 using Reexport
 @reexport using  GeometryBasics, Plots, LinearAlgebra, RationalRoots, Symbolics
 
-# Configure plotting for both interactive and headless environments
-if haskey(ENV, "CI") || get(ENV, "GKSwstype", "") == "100"
-    # CI or headless environment - use headless mode
-    ENV["GKSwstype"] = "100"
-    gr(show=false)
-else
-    # Interactive environment - normal plotting
-    gr()
-end
+# GR backend is set explicitly in plotting functions
+# For CI headless mode: set ENV["GKSwstype"] = "100" in test/runtests.jl BEFORE loading this module
 
 # Exports...
 # Pure computational functions (no plotting dependencies)
+export lin_ind_vec
 export calculate_param_line
 export distance_2_points, center_of_gravity, barycentric_coord
 export vector_angle_cos, is_orthogonal, polar_unit, orthproj, reflection, rotation
@@ -32,6 +26,7 @@ export plot_param_line
 eval(:(export @variables))
 
 include("linear_algebra_basic.jl")
+include("linear_algebra_geometry.jl")
 include("linear_algebra_transform.jl")
 
 end # module
