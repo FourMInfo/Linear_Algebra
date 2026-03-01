@@ -206,15 +206,11 @@ $$\text{Upper: } \begin{pmatrix} a & b & c \\ 0 & d & e \\ 0 & 0 & f \end{pmatri
 
 ## Determinant
 
-The [determinant](https://mathworld.wolfram.com/Determinant.html) is a scalar value associated with square matrices.
+The [determinant](https://mathworld.wolfram.com/Determinant.html) is a scalar value associated with square matrices. The determinant provides important information about the matrix, such as whether it is invertible and how it scales volumes.
 
-### 2×2 Determinant
+**Example: 2×2 Determinant**
 
 $$\det\begin{pmatrix} a & b \\ c & d \end{pmatrix} = ad - bc$$
-
-### 3×3 Determinant (Sarrus' Rule or Cofactor Expansion)
-
-$$\det\begin{pmatrix} a & b & c \\ d & e & f \\ g & h & i \end{pmatrix} = a(ei - fh) - b(di - fg) + c(dh - eg)$$
 
 ### Properties
 
@@ -237,10 +233,6 @@ The [inverse](https://mathworld.wolfram.com/MatrixInverse.html) of a square matr
 In simple multiplication we can solve for $x$ in $ax = b$ by dividing both sides by $a$: $x = \frac{b}{a}$. In matrix multiplication, we want something equivalent to $\frac{b}{a}$, and this is where inverse matrices play a role. We can solve for $X$ in $AX = B$ by multiplying both sides by the inverse of $A$: $X = A^{-1}B$. This is only possible if $A$ is invertible.
 
 The matrix $A$ is invertible (non-singular) if and only if the $\det(A) \neq 0$. A matrix is [singular](https://mathworld.wolfram.com/SingularMatrix.html) (non-invertible) if $\det(A) = 0$.
-
-### 2×2 Inverse
-
-$$\begin{pmatrix} a & b \\ c & d \end{pmatrix}^{-1} = \frac{1}{ad - bc}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix}$$
 
 ### Properties
 
