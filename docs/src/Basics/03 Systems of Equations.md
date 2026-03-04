@@ -1,10 +1,25 @@
-# Systems of Equations
+# Linear Systems of Equations
 
-[Systems of equations](https://mathworld.wolfram.com/SystemofEquations.html) involve multiple equations with multiple unknowns. The solution is the set of values that satisfy all equations simultaneously.
+The system consisting of $m$ linear equations with $n$ unknowns $x_1, \ldots, x_n$:
+
+$$\begin{aligned}
+a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n &= b_1 \\
+a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n &= b_2 \\
+&\vdots \\
+a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n &= b_m
+\end{aligned}$$
+
+where the numbers $a_{ij}$ and $b_i$ are known, is called a [linear system of equations](https://mathworld.wolfram.com/LinearSystemofEquations.html). With the coefficient matrix $A$, the right-side vector $\mathbf{b}$, and the unknown vector $\mathbf{x}$:
+
+$$A = \begin{bmatrix}a_{11} & \cdots & a_{1n} \\ a_{21} & \cdots & a_{2n} \\ \vdots & \ddots & \vdots \\ a_{m1} & \cdots & a_{mn}\end{bmatrix}, \quad
+\mathbf{b} = \begin{bmatrix}b_1 \\ b_2 \\ \vdots \\ b_m\end{bmatrix}, \quad
+\mathbf{x} = \begin{bmatrix}x_1 \\ x_2 \\ \vdots \\ x_n\end{bmatrix}$$
+
+one writes the system compactly as $A\mathbf{x} = \mathbf{b}$.
 
 ## Linear Systems: Algebraic Methods
 
-Linear systems consist of linear equations with multiple variables. Before using matrix methods, basic algebraic techniques provide intuition and work well for small systems.
+Before using matrix methods to solve linear systems of equations, basic algebraic techniques provide intuition and work well for small systems.
 
 ### Substitution Method
 
@@ -25,7 +40,11 @@ x - y &= 2
 
 ### Elimination Method
 
-Add or subtract equations to eliminate one variable.
+Add or subtract equations to eliminate one variable. The solution set of a linear system of equations is not changed by the following operations:
+
+ - Multiplication of an equation by a non-zero number (including negative numbers).
+ - Adding a multiple of one equation to another (including negative multiples).
+ - Swapping two equations.
 
 **Example:** Solve the system:
 
@@ -132,54 +151,45 @@ A matrix is in [reduced row echelon form](https://mathworld.wolfram.com/ReducedR
 
 ### Solution Methods
 
-**Direct solution (if $A$ is invertible):** $$\mathbf{x} = A^{-1}\mathbf{b}$$
-
 **Gaussian elimination:** Row reduce the augmented matrix $\left\lbrack A \mid \mathbf{b}\right\rbrack$ to row echelon form using the row operations above, then use back-substitution.
 
 **Gauss-Jordan elimination:** Row reduce to reduced row echelon form; the solution can be read directly.
 
 **Cramer's rule:** For $n \times n$ system with $\det(A) \neq 0$: $$x_i = \frac{\det(A_i)}{\det(A)}$$ where $A_i$ has column $i$ replaced by $\mathbf{b}$.
 
-### Cramer's Rule Example
+**Direct solution (if $A$ is invertible):** $$\mathbf{x} = A^{-1}\mathbf{b}$$
 
-Solve the system:
+### Gaussian Elimination
 
-$$\begin{aligned}
-2x + y &= 5 \\
-x - y &= 1
-\end{aligned}$$
+#### Method
 
-The coefficient matrix and constant vector are: $A = \begin{bmatrix} 2 & 1 \\ 1 & -1 \end{bmatrix}$, $\mathbf{b} = \begin{bmatrix} 5 \\ 1 \end{bmatrix}$
+Let $A\mathbf{x} = \mathbf{b}$ be a linear system of $n$ equations with $n$ unknowns that has a unique solution. We start with the augmented matrix:
 
-**Step 1:** Calculate $\det(A) = 2(-1) - 1(1) = -3$
+$$\left[\begin{array}{cccc|c}
+a_{11} & \cdots & a_{1n} & b_1 \\
+a_{21} & \cdots & a_{2n} & b_2 \\
+\vdots & & \vdots & \vdots \\
+a_{n1} & \cdots & a_{nn} & b_n
+\end{array}\right]$$
 
-**Step 2:** Form $A_x$ by replacing column 1 with $\mathbf{b}$: $A_x = \begin{bmatrix} 5 & 1 \\ 1 & -1 \end{bmatrix}$
+in which the coefficients of the system and the right-hand side are listed. Then perform the following steps:
 
-$\det(A_x) = 5(-1) - 1(1) = -6$
+1. If $a_{11} = 0$, find a row whose first element is non-zero, swap it with the first row, and rename it. In any case, $a_{11} \neq 0$ is then valid.
+2. Subtract a suitable multiple of the first row from the second, third, $\ldots$, last row so that those rows each start with zero. The new matrix then has only zeros in the first column below $a_{11}$.
+3. Subtract a suitable multiple of the second row from the third, $\ldots$, last row so that those rows start with zero and also have a zero in the second position. The new matrix then has only zeros in the first column below $a_{11}$ and in the second column below $a_{22}$.
+4. Repeat this procedure for the following columns until there are only zeros below the main diagonal elements.
+5. Divide the last row by its last non-zero coefficient so that there is a $1$ at the end of the main diagonal. Then proceed with row transformations from bottom to top so that the matrix reaches the following form:
 
-**Step 3:** Form $A_y$ by replacing column 2 with $\mathbf{b}$: $A_y = \begin{bmatrix} 2 & 5 \\ 1 & 1 \end{bmatrix}$
+$$\left[\begin{array}{cccc|c}
+1 & 0 & \cdots & 0 & x_1 \\
+0 & 1 & \cdots & 0 & x_2 \\
+\vdots & & \ddots & \vdots & \vdots \\
+0 & \cdots & 0 & 1 & x_n
+\end{array}\right]$$
 
-$\det(A_y) = 2(1) - 5(1) = -3$
+The last column contains the solution of the linear system of equations. If this procedure does not lead to this form, the linear system does not have a unique solution.
 
-**Step 4:** Apply Cramer's rule: $x = \frac{\det(A_x)}{\det(A)} = \frac{-6}{-3} = 2$, $y = \frac{\det(A_y)}{\det(A)} = \frac{-3}{-3} = 1$
-
-**Solution:** $(x, y) = (2, 1)$
-
-### Matrix Inverse Method Example
-
-For the system $A\mathbf{x} = \mathbf{b}$ where $A = \begin{bmatrix} 2 & 1 \\ 1 & -1 \end{bmatrix}$, $\mathbf{b} = \begin{bmatrix} 5 \\ 1 \end{bmatrix}$
-
-**Step 1:** Find $A^{-1}$ using the 2×2 inverse formula
-
-$$A^{-1} = \frac{1}{\det(A)} \begin{bmatrix} -1 & -1 \\ -1 & 2 \end{bmatrix} = \frac{1}{-3} \begin{bmatrix} -1 & -1 \\ -1 & 2 \end{bmatrix} = \begin{bmatrix} \frac{1}{3} & \frac{1}{3} \\ \frac{1}{3} & -\frac{2}{3} \end{bmatrix}$$
-
-**Step 2:** Calculate $\mathbf{x} = A^{-1}\mathbf{b}$
-
-$$\mathbf{x} = \begin{bmatrix} \frac{1}{3} & \frac{1}{3} \\ \frac{1}{3} & -\frac{2}{3} \end{bmatrix} \begin{bmatrix} 5 \\ 1 \end{bmatrix} = \begin{bmatrix} \frac{5}{3} + \frac{1}{3} \\ \frac{5}{3} - \frac{2}{3} \end{bmatrix} = \begin{bmatrix} 2 \\ 1 \end{bmatrix}$$
-
-**Solution:** $(x, y) = (2, 1)$
-
-### Gaussian Elimination Example
+#### Example
 
 Solve the system:
 
@@ -220,6 +230,45 @@ $$\left[\begin{array}{ccc|c}
 - From row 1: $x + 2y + z = 9 \Rightarrow x = 9 - 2y - z = \frac{5}{3}$
 
 **Solution:** $(x, y, z) = \left(\frac{5}{3}, \frac{7}{3}, \frac{8}{3}\right)$
+
+### Cramer's Rule Example
+
+Solve the system:
+
+$$\begin{aligned}
+2x + y &= 5 \\
+x - y &= 1
+\end{aligned}$$
+
+The coefficient matrix and constant vector are: $A = \begin{bmatrix} 2 & 1 \\ 1 & -1 \end{bmatrix}$, $\mathbf{b} = \begin{bmatrix} 5 \\ 1 \end{bmatrix}$
+
+**Step 1:** Calculate $\det(A) = 2(-1) - 1(1) = -3$
+
+**Step 2:** Form $A_x$ by replacing column 1 with $\mathbf{b}$: $A_x = \begin{bmatrix} 5 & 1 \\ 1 & -1 \end{bmatrix}$
+
+$\det(A_x) = 5(-1) - 1(1) = -6$
+
+**Step 3:** Form $A_y$ by replacing column 2 with $\mathbf{b}$: $A_y = \begin{bmatrix} 2 & 5 \\ 1 & 1 \end{bmatrix}$
+
+$\det(A_y) = 2(1) - 5(1) = -3$
+
+**Step 4:** Apply Cramer's rule: $x = \frac{\det(A_x)}{\det(A)} = \frac{-6}{-3} = 2$, $y = \frac{\det(A_y)}{\det(A)} = \frac{-3}{-3} = 1$
+
+**Solution:** $(x, y) = (2, 1)$
+
+### Matrix Inverse Method Example
+
+For the system $A\mathbf{x} = \mathbf{b}$ where $A = \begin{bmatrix} 2 & 1 \\ 1 & -1 \end{bmatrix}$, $\mathbf{b} = \begin{bmatrix} 5 \\ 1 \end{bmatrix}$
+
+**Step 1:** Find $A^{-1}$ using the 2×2 inverse formula
+
+$$A^{-1} = \frac{1}{\det(A)} \begin{bmatrix} -1 & -1 \\ -1 & 2 \end{bmatrix} = \frac{1}{-3} \begin{bmatrix} -1 & -1 \\ -1 & 2 \end{bmatrix} = \begin{bmatrix} \frac{1}{3} & \frac{1}{3} \\ \frac{1}{3} & -\frac{2}{3} \end{bmatrix}$$
+
+**Step 2:** Calculate $\mathbf{x} = A^{-1}\mathbf{b}$
+
+$$\mathbf{x} = \begin{bmatrix} \frac{1}{3} & \frac{1}{3} \\ \frac{1}{3} & -\frac{2}{3} \end{bmatrix} \begin{bmatrix} 5 \\ 1 \end{bmatrix} = \begin{bmatrix} \frac{5}{3} + \frac{1}{3} \\ \frac{5}{3} - \frac{2}{3} \end{bmatrix} = \begin{bmatrix} 2 \\ 1 \end{bmatrix}$$
+
+**Solution:** $(x, y) = (2, 1)$
 
 ## Nonlinear Systems
 
