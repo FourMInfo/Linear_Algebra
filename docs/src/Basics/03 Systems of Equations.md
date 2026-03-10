@@ -223,7 +223,39 @@ $$\left[\begin{array}{ccc|c}
 0 & 0 & 6 & 16
 \end{array}\right]$$
 
-**Step 4:** Back-substitution
+**Step 4:** Divide the last row by 6 to get a pivot of 1 ($R_3 \div 6$)
+
+$$\left[\begin{array}{ccc|c}
+1 & 2 & 1 & 9 \\
+0 & -3 & -3 & -15 \\
+0 & 0 & 1 & \frac{8}{3}
+\end{array}\right]$$
+
+**Step 5:** Eliminate above the third pivot ($R_2 + 3R_3$, $R_1 - R_3$)
+
+$$\left[\begin{array}{ccc|c}
+1 & 2 & 0 & \frac{19}{3} \\
+0 & -3 & 0 & -7 \\
+0 & 0 & 1 & \frac{8}{3}
+\end{array}\right]$$
+
+**Step 6:** Divide the second row by -3 to get a pivot of 1 ($R_2 \div -3$)
+
+$$\left[\begin{array}{ccc|c}
+1 & 2 & 0 & \frac{19}{3} \\
+0 & 1 & 0 & \frac{7}{3} \\
+0 & 0 & 1 & \frac{8}{3}
+\end{array}\right]$$
+
+**Step 7:** Eliminate above the second pivot ($R_1 - 2R_2$)
+
+$$\left[\begin{array}{ccc|c}
+1 & 0 & 0 & \frac{5}{3} \\
+0 & 1 & 0 & \frac{7}{3} \\
+0 & 0 & 1 & \frac{8}{3}
+\end{array}\right]$$
+
+**Alternative Step 4:** Instead of fully row reducing, we can stop at step 4 and perform  Back-substitution
 
 - From row 3: $6z = 16 \Rightarrow z = \frac{8}{3}$
 - From row 2: $-3y - 3z = -15 \Rightarrow y = 5 - z = \frac{7}{3}$
@@ -269,61 +301,6 @@ $$A^{-1} = \frac{1}{\det(A)} \begin{bmatrix} -1 & -1 \\ -1 & 2 \end{bmatrix} = \
 $$\mathbf{x} = \begin{bmatrix} \frac{1}{3} & \frac{1}{3} \\ \frac{1}{3} & -\frac{2}{3} \end{bmatrix} \begin{bmatrix} 5 \\ 1 \end{bmatrix} = \begin{bmatrix} \frac{5}{3} + \frac{1}{3} \\ \frac{5}{3} - \frac{2}{3} \end{bmatrix} = \begin{bmatrix} 2 \\ 1 \end{bmatrix}$$
 
 **Solution:** $(x, y) = (2, 1)$
-
-## Nonlinear Systems
-
-[Nonlinear systems](https://mathworld.wolfram.com/NonlinearSystem.html) contain at least one equation that is not linear (e.g., contains powers, products of variables, trigonometric functions, etc.).
-
-### Substitution Method for Nonlinear Systems
-
-When one equation is linear (or can be easily solved for one variable), substitution is often effective.
-
-**Example:** Solve the system:
-
-$$\begin{aligned}
-x^2 + y^2 &= 25 \\
-x + y &= 7
-\end{aligned}$$
-
-1. From the second equation: $y = 7 - x$
-2. Substitute into the first: $x^2 + (7 - x)^2 = 25$
-3. Expand: $x^2 + 49 - 14x + x^2 = 25$
-4. Simplify: $2x^2 - 14x + 24 = 0 \Rightarrow x^2 - 7x + 12 = 0$
-5. Factor: $(x - 3)(x - 4) = 0$
-6. **Solutions:** $(x, y) = (3, 4)$ or $(x, y) = (4, 3)$
-
-**Geometric interpretation:** This finds the intersection of a circle ($x^2 + y^2 = 25$) and a line ($x + y = 7$).
-
-### Elimination in Nonlinear Systems
-
-Sometimes variables or terms can be eliminated by adding/subtracting equations.
-
-**Example:** Solve the system:
-
-$$\begin{aligned}
-x^2 + y^2 &= 13 \\
-x^2 - y^2 &= 5
-\end{aligned}$$
-
-1. Add the equations: $2x^2 = 18 \Rightarrow x^2 = 9 \Rightarrow x = \pm 3$
-2. Subtract the equations: $2y^2 = 8 \Rightarrow y^2 = 4 \Rightarrow y = \pm 2$
-3. **Solutions:** $(x, y) = (3, 2), (3, -2), (-3, 2), (-3, -2)$
-
-### Graphical Methods
-
-Plotting the equations and finding intersection points provides geometric insight into the solution.
-
-- **Circle and line:** 0, 1, or 2 intersection points
-- **Two circles:** 0, 1, 2, or infinitely many intersection points
-- **Parabola and line:** 0, 1, or 2 intersection points
-
-### Numerical Methods
-
-For complex nonlinear systems without closed-form solutions:
-
-- **Newton-Raphson method** for systems (multivariate Newton's method)
-- **Fixed-point iteration**
-- **Computational software** (for complex or large systems)
 
 ## Types of Solutions
 
