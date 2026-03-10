@@ -159,7 +159,7 @@ A matrix is in [reduced row echelon form](https://mathworld.wolfram.com/ReducedR
 
 **Direct solution (if $A$ is invertible):** $$\mathbf{x} = A^{-1}\mathbf{b}$$
 
-### Gaussian Elimination
+### Gaussian Elimination and Gauss-Jordan Elimination
 
 #### Method
 
@@ -174,11 +174,18 @@ a_{n1} & \cdots & a_{nn} & b_n
 
 in which the coefficients of the system and the right-hand side are listed. Then perform the following steps:
 
+**Phase 1 — Forward elimination** (identical for both methods):
+
 1. If $a_{11} = 0$, find a row whose first element is non-zero, swap it with the first row, and rename it. In any case, $a_{11} \neq 0$ is then valid.
 2. Subtract a suitable multiple of the first row from the second, third, $\ldots$, last row so that those rows each start with zero. The new matrix then has only zeros in the first column below $a_{11}$.
 3. Subtract a suitable multiple of the second row from the third, $\ldots$, last row so that those rows start with zero and also have a zero in the second position. The new matrix then has only zeros in the first column below $a_{11}$ and in the second column below $a_{22}$.
-4. Repeat this procedure for the following columns until there are only zeros below the main diagonal elements.
-5. Divide the last row by its last non-zero coefficient so that there is a $1$ at the end of the main diagonal. Then proceed with row transformations from bottom to top so that the matrix reaches the following form:
+4. Repeat this procedure for the following columns until there are only zeros below the main diagonal elements. The matrix is now in **row echelon form (REF)**.
+
+**Phase 2 — Solving** (the two methods diverge here):
+
+- **Gaussian elimination:** Apply **back-substitution** — solve the last equation directly for the last variable, substitute that value into the second-to-last equation, and work upward row by row until all unknowns are found. No further row operations are needed.
+
+- **Gauss-Jordan elimination:** Continue with **upward elimination** — divide the last row by its pivot so it equals 1, then use row operations to eliminate all entries _above_ each pivot, working from the bottom pivot upward. Repeat for each preceding pivot (dividing the row to get a 1, then clearing above) until the matrix is in **reduced row echelon form (RREF)**:
 
 $$\left[\begin{array}{cccc|c}
 1 & 0 & \cdots & 0 & x_1 \\
@@ -187,7 +194,7 @@ $$\left[\begin{array}{cccc|c}
 0 & \cdots & 0 & 1 & x_n
 \end{array}\right]$$
 
-The last column contains the solution of the linear system of equations. If this procedure does not lead to this form, the linear system does not have a unique solution.
+The last column then contains the solution directly — no further algebra required.
 
 #### Example
 
@@ -198,6 +205,8 @@ x + 2y + z &= 9 \\
 2x + y - z &= 3 \\
 3x - y + 2z &= 8
 \end{aligned}$$
+
+**Using Gaussian elimination:**
 
 **Step 1:** Write the augmented matrix
 
@@ -222,6 +231,15 @@ $$\left[\begin{array}{ccc|c}
 0 & -3 & -3 & -15 \\
 0 & 0 & 6 & 16
 \end{array}\right]$$
+
+**Step 4:** Instead of fully row reducing, we can stop at step 4 and perform  back-substitution
+
+- From row 3: $6z = 16 \Rightarrow z = \frac{8}{3}$
+- From row 2: $-3y - 3z = -15 \Rightarrow y = 5 - z = \frac{7}{3}$
+- From row 1: $x + 2y + z = 9 \Rightarrow x = 9 - 2y - z = \frac{5}{3}$
+**Solution:** $(x, y, z) = \left(\frac{5}{3}, \frac{7}{3}, \frac{8}{3}\right)$
+
+**Using Gauss-Jordan elimination:**
 
 **Step 4:** Divide the last row by 6 to get a pivot of 1 ($R_3 \div 6$)
 
@@ -255,13 +273,19 @@ $$\left[\begin{array}{ccc|c}
 0 & 0 & 1 & \frac{8}{3}
 \end{array}\right]$$
 
-**Alternative Step 4:** Instead of fully row reducing, we can stop at step 4 and perform  Back-substitution
-
-- From row 3: $6z = 16 \Rightarrow z = \frac{8}{3}$
-- From row 2: $-3y - 3z = -15 \Rightarrow y = 5 - z = \frac{7}{3}$
-- From row 1: $x + 2y + z = 9 \Rightarrow x = 9 - 2y - z = \frac{5}{3}$
-
 **Solution:** $(x, y, z) = \left(\frac{5}{3}, \frac{7}{3}, \frac{8}{3}\right)$
+
+#### Types of Solutions for Gaussian Elimination and Gaussian-Jordan Elimination
+
+During forward elimination (the phase common to both methods), the row operations may produce one or more rows with all-zero coefficients. The augmented entry in such a row determines the solution type:
+
+- **No solution (inconsistent):** A row of the form $\left[0, 0, \ldots, 0 \mid c\right]$ with $c \neq 0$ appears. The corresponding equation $0 = c$ is a contradiction, so the system has no solution. No further row reduction is meaningful.
+
+- **Unique solution:** No all-zero coefficient rows arise and the number of pivots equals $n$ (the number of unknowns). The REF last row has a non-zero leading entry. Back-substitution (Gaussian) or continued upward elimination (Gauss-Jordan) then yields a single solution.
+
+- **Infinitely many solutions:** One or more rows reduce to $\left[0, 0, \ldots, 0 \mid 0\right]$ (consistent but redundant equations). The number of pivots is less than $n$, leaving $n - \text{pivots}$ free variables. The solution is a family parameterised by those free variables.
+
+These three outcomes can be read off from the augmented matrix in REF before any back-substitution or upward elimination takes place, making them detectable at the same intermediate stage regardless of which method is being used.
 
 ### Cramer's Rule Example
 
