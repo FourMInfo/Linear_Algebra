@@ -161,8 +161,6 @@ A matrix is in [reduced row echelon form](https://mathworld.wolfram.com/ReducedR
 
 ### Gaussian Elimination and Gauss-Jordan Elimination
 
-#### Method
-
 Let $A\mathbf{x} = \mathbf{b}$ be a linear system of $n$ equations with $n$ unknowns that has a unique solution. We start with the augmented matrix:
 
 $$\left[\begin{array}{cccc|c}
@@ -275,17 +273,17 @@ $$\left[\begin{array}{ccc|c}
 
 **Solution:** $(x, y, z) = \left(\frac{5}{3}, \frac{7}{3}, \frac{8}{3}\right)$
 
-#### Types of Solutions for Gaussian Elimination and Gaussian-Jordan Elimination
+#### Is there a solution? If so, how many?
 
 During forward elimination (the phase common to both methods), the row operations may produce one or more rows with all-zero coefficients. The augmented entry in such a row determines the solution type:
 
-- **No solution (inconsistent):** A row of the form $\left[0, 0, \ldots, 0 \mid c\right]$ with $c \neq 0$ appears. The corresponding equation $0 = c$ is a contradiction, so the system has no solution. No further row reduction is meaningful.
+- **No solution:** A row of the form $\left\lbrack 0, 0, \ldots, 0 \mid c \right\rbrack$ with $c \neq 0$ appears. The corresponding equation $0 = c$ is a contradiction, so the system has no solution. No further row reduction is meaningful.
 
 - **Unique solution:** No all-zero coefficient rows arise and the number of pivots equals $n$ (the number of unknowns). The REF last row has a non-zero leading entry. Back-substitution (Gaussian) or continued upward elimination (Gauss-Jordan) then yields a single solution.
 
-- **Infinitely many solutions:** One or more rows reduce to $\left[0, 0, \ldots, 0 \mid 0\right]$ (consistent but redundant equations). The number of pivots is less than $n$, leaving $n - \text{pivots}$ free variables. The solution is a family parameterised by those free variables.
+- **Infinitely many solutions:** One or more rows reduce to $\left\lbrack 0, 0, \ldots, 0 \mid 0 \right\rbrack$ (consistent but redundant equations). The number of pivots is less than $n$, leaving $n - \text{pivots}$ free variables. The solution is a family parameterised by those free variables.
 
-These three outcomes can be read off from the augmented matrix in REF before any back-substitution or upward elimination takes place, making them detectable at the same intermediate stage regardless of which method is being used.
+These three outcomes can be read off from the augmented matrix in REF before any back-substitution or upward elimination takes place, making them detectable at the same intermediate stage regardless of which method is being used. See [Types of Solutions](#types-of-solutions) below for more detail.
 
 ### Cramer's Rule Example
 
