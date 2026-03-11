@@ -208,9 +208,47 @@ $$\text{Upper: } \begin{pmatrix} a & b & c \\ 0 & d & e \\ 0 & 0 & f \end{pmatri
 
 The [determinant](https://mathworld.wolfram.com/Determinant.html) is a scalar value associated with square matrices. The determinant provides important information about the matrix, such as whether it is invertible and how it scales volumes.
 
-**Example: 2×2 Determinant**
+### 2×2 Determinant
 
-$$\det\begin{pmatrix} a & b \\ c & d \end{pmatrix} = ad - bc$$
+For a 2×2 matrix $A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$, the determinant is:
+
+$$\det(A) = \begin{vmatrix} a & b \\ c & d \end{vmatrix} = ad - bc$$
+
+The result is the product of the main diagonal minus the product of the anti-diagonal.
+
+Recall that a set of vectors (or rows/columns of a matrix) is [linearly dependent](01 Vectors.md#Linear-Independence-and-Dependence) if one vector can be expressed as a linear combination of the others. In terms of matrices, this means if the rows (or columns) are linearly dependent, it leads to a determinant of zero.
+
+**Linearly Dependent Example:**
+
+For the matrix $A = \begin{bmatrix} 1 & 2 \\ 2 & 4 \end{bmatrix}$, the rows are linearly dependent because the second row can be expressed as a linear combination of the first row (e.g., $R_2 = 2R_1$). This is reflected in the determinant being zero.
+
+$$\det(A) = (1)(4) - (2)(2) = 4 - 4 = 0$$
+
+**Linearly Independent Example:**
+
+$A = \begin{bmatrix} 3 & 2 \\ 1 & 4 \end{bmatrix}$
+
+$$\det(A) = (3)(4) - (2)(1) = 12 - 2 = 10$$
+
+Since $\det(A) \neq 0$, the rows are linearly independent.
+
+### 3×3 Determinant
+
+For a 3×3 matrix, the determinant is computed by **cofactor expansion** along the first row:
+
+$$\det(A) = \begin{vmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33} \end{vmatrix} = a_{11}\begin{vmatrix} a_{22} & a_{23} \\ a_{32} & a_{33} \end{vmatrix} - a_{12}\begin{vmatrix} a_{21} & a_{23} \\ a_{31} & a_{33} \end{vmatrix} + a_{13}\begin{vmatrix} a_{21} & a_{22} \\ a_{31} & a_{32} \end{vmatrix}$$
+
+Each 2×2 determinant (called a **minor**) is formed by deleting the row and column of the selected element. The alternating $+, -, +$ signs follow the [cofactor sign pattern](https://mathworld.wolfram.com/Cofactor.html). Expanding each minor using the 2×2 formula gives:
+
+$$\det(A) = a_{11}(a_{22}a_{33} - a_{23}a_{32}) - a_{12}(a_{21}a_{33} - a_{23}a_{31}) + a_{13}(a_{21}a_{32} - a_{22}a_{31})$$
+
+**Example:** $A = \begin{bmatrix} 1 & 2 & 3 \\ 0 & 1 & 4 \\ 2 & 5 & 10 \end{bmatrix}$, where $R_3 = 2R_1 + R_2$, so the rows are linearly dependent.
+
+$$\det(A) = 1\begin{vmatrix} 1 & 4 \\ 5 & 10 \end{vmatrix} - 2\begin{vmatrix} 0 & 4 \\ 2 & 10 \end{vmatrix} + 3\begin{vmatrix} 0 & 1 \\ 2 & 5 \end{vmatrix}$$
+
+$$= 1(10 - 20) - 2(0 - 8) + 3(0 - 2) = -10 + 16 - 6 = 0$$
+
+As expected, $\det(A) = 0$.
 
 ### Properties
 
@@ -222,7 +260,7 @@ $$\det\begin{pmatrix} a & b \\ c & d \end{pmatrix} = ad - bc$$
 
 ### Geometric Interpretation
 
-- scaling factor for  areas (2D) or volumes (3D): $|\det(A)|$
+- scaling factor for areas (2D) or volumes (3D): $\lvert\det(A)\rvert$
 - orientation preserved: $\det(A) > 0$
 - orientation reversed: $\det(A) < 0$
 
@@ -232,7 +270,7 @@ The [inverse](https://mathworld.wolfram.com/MatrixInverse.html) of a square matr
 
 In simple multiplication we can solve for $x$ in $ax = b$ by dividing both sides by $a$: $x = \frac{b}{a}$. In matrix multiplication, we want something equivalent to $\frac{b}{a}$, and this is where inverse matrices play a role. We can solve for $X$ in $AX = B$ by multiplying both sides by the inverse of $A$: $X = A^{-1}B$. This is only possible if $A$ is invertible.
 
-The matrix $A$ is invertible (non-singular) if and only if the $\det(A) \neq 0$. A matrix is [singular](https://mathworld.wolfram.com/SingularMatrix.html) (non-invertible) if $\det(A) = 0$.
+The matrix $A$ is invertible (nonsingular) if and only if $\det(A) \neq 0$. A matrix is [singular](https://mathworld.wolfram.com/SingularMatrix.html) if $\det(A) = 0$.
 
 ### Properties
 

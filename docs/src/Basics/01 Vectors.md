@@ -128,7 +128,7 @@ For geometric interpretation, see [Dot Product and Cosines](../Geometry/03 Vecto
 
 A [linear combination](https://mathworld.wolfram.com/LinearCombination.html) of vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_k$ is: $$c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \cdots + c_k\mathbf{v}_k$$ where $c_1, c_2, \ldots, c_k$ are scalars.
 
-### Linear Independence & Dependence
+### Linear Independence and Dependence
 
 The vectors $\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n \in \mathbb{R}^n$ are [_linearly independent_](https://mathworld.wolfram.com/LinearlyIndependentVectors.html) if and only if from:
 

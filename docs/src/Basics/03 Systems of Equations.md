@@ -285,7 +285,15 @@ During forward elimination (the phase common to both methods), the row operation
 
 These three outcomes can be read off from the augmented matrix in REF before any back-substitution or upward elimination takes place, making them detectable at the same intermediate stage regardless of which method is being used. See [Types of Solutions](#types-of-solutions) below for more detail.
 
-### Cramer's Rule Example
+### Cramer's Rule
+
+[Cramer's rule](https://mathworld.wolfram.com/CramersRule.html) gives an explicit formula for each unknown in a square $n \times n$ system $A\mathbf{x} = \mathbf{b}$, provided $\det(A) \neq 0$. For each unknown $x_i$, form the matrix $A_i$ by replacing column $i$ of $A$ with the right-hand side vector $\mathbf{b}$, then:
+
+$$x_i = \frac{\det(A_i)}{\det(A)}, \quad i = 1, 2, \ldots, n$$
+
+Because it requires computing $n + 1$ determinants, Cramer's rule is mainly useful for small systems (2×2 or 3×3) or for deriving theoretical results. For larger systems, Gaussian elimination is far more efficient. See [Determinants](02 Matrices.md#determinants) for how to compute determinants.
+
+#### Example
 
 Solve the system:
 
