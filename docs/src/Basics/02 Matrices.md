@@ -268,9 +268,21 @@ As expected, $\det(A) = 0$.
 
 The [inverse](https://mathworld.wolfram.com/MatrixInverse.html) of a square matrix $A$ (if it exists) is the matrix $A^{-1}$ such that: $$AA^{-1} = A^{-1}A = I$$
 
-In simple multiplication we can solve for $x$ in $ax = b$ by dividing both sides by $a$: $x = \frac{b}{a}$. In matrix multiplication, we want something equivalent to $\frac{b}{a}$, and this is where inverse matrices play a role. We can solve for $X$ in $AX = B$ by multiplying both sides by the inverse of $A$: $X = A^{-1}B$. This is only possible if $A$ is invertible.
+In simple multiplication we can solve for $x$ in $ax = b$ by dividing both sides by $a$: $x = \frac{b}{a}$. In matrix multiplication, we want something equivalent to $\frac{b}{a}$, and this is where inverse matrices play a role. We can solve for $X$ in $AX = b$ by multiplying both sides by the inverse of $A$: $X = A^{-1}b$. This is only possible if $A$ is invertible.
 
 The matrix $A$ is invertible (nonsingular) if and only if $\det(A) \neq 0$. A matrix is [singular](https://mathworld.wolfram.com/SingularMatrix.html) if $\det(A) = 0$.
+
+### Computing the Inverse
+
+For a $2 \times 2$ matrix $A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$, the inverse is:
+
+$$A^{-1} = \frac{1}{\det(A)} \begin{bmatrix} d & -b \\ -c & a \end{bmatrix} = \frac{1}{ad - bc} \begin{bmatrix} d & -b \\ -c & a \end{bmatrix}$$
+
+The entries of $A$ are swapped on the main diagonal and negated on the off-diagonal. This only exists when $\det(A) = ad - bc \neq 0$.
+
+For larger matrices, the general approach augments $A$ with the identity to form $\left\lbrack A \mid I \right\rbrack$, then applies Gauss-Jordan elimination to get $\left\lbrack I \mid A^{-1} \right\rbrack$. The key action is that every row operation is applied simultaneously to both sides: when the left block has been fully reduced to $I$, the right block has become $A^{-1}$. 
+
+The example in [Systems of Equations](03 Systems of Equations.md#Matrix-Inverse-Method) uses the closed-form 2×2 formula rather than this augmented approach; computing inverses in full generality is covered in later sections. You can get a sense of what needs to be done, by following the steps of the [Gauss-Jordan elimination method example](03 Systems of Equations.md#Gaussian-Elimination-and-Gauss-Jordan-Elimination).
 
 ### Properties
 

@@ -283,7 +283,7 @@ During forward elimination (the phase common to both methods), the row operation
 
 - **Infinitely many solutions:** One or more rows reduce to $\left\lbrack 0, 0, \ldots, 0 \mid 0 \right\rbrack$ (consistent but redundant equations). The number of pivots is less than $n$, leaving $n - \text{pivots}$ free variables. The solution is a family parameterised by those free variables.
 
-These three outcomes can be read off from the augmented matrix in REF before any back-substitution or upward elimination takes place, making them detectable at the same intermediate stage regardless of which method is being used. See [Types of Solutions](#types-of-solutions) below for more detail.
+These three outcomes can be read off from the augmented matrix in REF before any back-substitution or upward elimination takes place, making them detectable at the same intermediate stage regardless of which method is being used. See [Types of Systems](#Types-of-Systems) below for more detail.
 
 ### Cramer's Rule
 
@@ -318,7 +318,15 @@ $\det(A_y) = 2(1) - 5(1) = -3$
 
 **Solution:** $(x, y) = (2, 1)$
 
-### Matrix Inverse Method Example
+### Matrix Inverse Method
+
+When $A$ is invertible ($\det(A) \neq 0$), multiplying both sides of $A\mathbf{x} = \mathbf{b}$ on the left by $A^{-1}$ gives:
+
+$$A^{-1}A\mathbf{x} = A^{-1}\mathbf{b} \implies \mathbf{x} = A^{-1}\mathbf{b}$$
+
+In practice, computing $A^{-1}$ costs more than a single Gaussian elimination, so this method is mainly useful when the same coefficient matrix $A$ must be solved against many different right-hand sides $\mathbf{b}$. See [Matrix Inverse](02 Matrices.md#Matrix-Inverse) for how to compute $A^{-1}$.
+
+**Example**
 
 For the system $A\mathbf{x} = \mathbf{b}$ where $A = \begin{bmatrix} 2 & 1 \\ 1 & -1 \end{bmatrix}$, $\mathbf{b} = \begin{bmatrix} 5 \\ 1 \end{bmatrix}$
 
@@ -332,7 +340,44 @@ $$\mathbf{x} = \begin{bmatrix} \frac{1}{3} & \frac{1}{3} \\ \frac{1}{3} & -\frac
 
 **Solution:** $(x, y) = (2, 1)$
 
-## Types of Solutions
+## Rank and Nullity
+
+The concepts of rank and nullity formalize _why_ systems fall into the types described [below](#Types-of-Systems).
+
+### Rank
+
+The [rank](https://mathworld.wolfram.com/MatrixRank.html) of a matrix is:
+
+- The number of linearly independent rows (which by the _rank theorem_ equals the number of linearly independent columns)
+- The number of non-zero rows (pivots) in row echelon form
+
+The rank determines the nature of the solution: a system $A\mathbf{x} = \mathbf{b}$ with $n$ unknowns has a unique solution when $\text{rank}(A) = n$, infinitely many solutions when $\text{rank}(A) < n$, and no solution when the augmented matrix has higher rank than $A$.
+
+**Example:**
+
+For $A = \begin{bmatrix} 1 & 2 & -1 \\ 2 & 4 & -2 \\ 3 & 1 & 0 \end{bmatrix}$, row-reduce to REF ($R_2 - 2R_1$, then $R_3 - 3R_1$, then swap $R_2 \leftrightarrow R_3$):
+
+$$\begin{bmatrix} 1 & 2 & -1 \\ 0 & -5 & 3 \\ 0 & 0 & 0 \end{bmatrix}$$
+
+Two non-zero rows (two pivots), so $\text{rank}(A) = 2$.
+
+### Nullity
+
+The [nullity](https://mathworld.wolfram.com/Nullity.html) of a matrix is the number of free variables (non-pivot unknowns) in the solution.
+
+**Example:**
+
+Continuing from the rank example above: $A$ has $n = 3$ unknowns but only 2 pivots, so there is $3 - 2 = 1$ free variable, giving $\text{nullity}(A) = 1$.
+
+### Rank-Nullity Theorem
+
+For an $m \times n$ matrix $A$: $$\text{rank}(A) + \text{nullity}(A) = n$$
+
+This means: the number of pivot variables plus the number of free variables always equals the total number of unknowns.
+
+**Example:** For the matrix above: $\text{rank}(A) + \text{nullity}(A) = 2 + 1 = 3 = n$ ✓
+
+## Types of Systems
 
 ### Consistent Systems
 
@@ -377,30 +422,6 @@ x + 2y - z &= 0
 \end{aligned}$$
 
 Since all equations are equivalent, the solution space is: $$\mathbf{x} = \begin{bmatrix} -2s + t \\ s \\ t \end{bmatrix}$$ where $s$ and $t$ are free parameters.
-
-## Rank and Nullity
-
-The concepts of rank and nullity formalize _why_ systems have the solution types described above.
-
-### Rank
-
-The [rank](https://mathworld.wolfram.com/MatrixRank.html) of a matrix is:
-
-- The number of linearly independent rows (= number of linearly independent columns)
-- The dimension of the column space (image)
-- The number of non-zero rows (pivots) in row echelon form
-
-The rank determines the nature of the solution: a system $A\mathbf{x} = \mathbf{b}$ with $n$ unknowns has a unique solution when $\text{rank}(A) = n$, infinitely many solutions when $\text{rank}(A) < n$ and the system is consistent, and no solution when the augmented matrix has higher rank than $A$.
-
-### Nullity
-
-The [nullity](https://mathworld.wolfram.com/Nullity.html) is the dimension of the null space (kernel) — the number of free parameters in the solution.
-
-### Rank-Nullity Theorem
-
-For an $m \times n$ matrix $A$: $$\text{rank}(A) + \text{nullity}(A) = n$$
-
-This means: the number of pivot variables plus the number of free variables always equals the total number of unknowns.
 
 ## Applications
 
