@@ -128,7 +128,7 @@ a_{m1} & a_{m2} & \cdots & a_{mn} & b_m
 
 ### Row Operations
 
-[Elementary row operations](https://mathworld.wolfram.com/ElementaryRowOperation.html) are the fundamental tools for solving systems of linear equations. These operations transform the augmented matrix without changing the solution set of the system. There are three types:
+[Elementary row operations](https://mathworld.wolfram.com/ElementaryRowandColumnOperations.html) are the fundamental tools for solving systems of linear equations. These operations transform the augmented matrix without changing the solution set of the system. There are three types:
 
 1. **Row swapping:** $R_i \leftrightarrow R_j$ — exchange two rows
 2. **Row scaling:** $kR_i \rightarrow R_i$ (where $k \neq 0$) — multiply a row by a non-zero scalar
@@ -287,11 +287,13 @@ These three outcomes can be read off from the augmented matrix in REF before any
 
 ### Cramer's Rule
 
-[Cramer's rule](https://mathworld.wolfram.com/CramersRule.html) gives an explicit formula for each unknown in a square $n \times n$ system $A\mathbf{x} = \mathbf{b}$, provided $\det(A) \neq 0$. For each unknown $x_i$, form the matrix $A_i$ by replacing column $i$ of $A$ with the right-hand side vector $\mathbf{b}$, then:
+[Cramer's rule](https://mathworld.wolfram.com/CramersRule.html) gives an explicit formula for each unknown in a square $n \times n$ system $A\mathbf{x} = \mathbf{b}$, provided $\det(A) \neq 0$ (i.e. the matrix is invertible).
+
+For each unknown $x_i$, form the matrix $A_i$ by replacing column $i$ of $A$ with the right-hand side vector $\mathbf{b}$, then:
 
 $$x_i = \frac{\det(A_i)}{\det(A)}, \quad i = 1, 2, \ldots, n$$
 
-Because it requires computing $n + 1$ determinants, Cramer's rule is mainly useful for small systems (2×2 or 3×3) or for deriving theoretical results. For larger systems, Gaussian elimination is far more efficient. See [Determinants](02 Matrices.md#determinants) for how to compute determinants.
+Because it requires computing $n + 1$ determinants, Cramer's rule is mainly useful for small systems (2×2 or 3×3) or for deriving theoretical results. For larger systems, Gaussian elimination is far more efficient. See [Determinants](02 Matrices.md#Determinant) for how to compute determinants.
 
 #### Example
 
@@ -381,10 +383,10 @@ This means: the number of pivot variables plus the number of free variables alwa
 
 ### Consistent Systems
 
-A system is [consistent](https://mathworld.wolfram.com/ConsistentSystem.html) if it has at least one solution.
+A system is consistent if it has at least one solution.
 
 - **Unique solution:** Exactly one set of values satisfies all equations. For square systems, this occurs when the coefficient matrix has full rank ($\det(A) \neq 0$).
-- **Infinitely many solutions:** A family of solutions exists (often parameterized). This occurs when the system is underdetermined — there are free variables (fewer pivots than unknowns).
+- **Infinitely many solutions:** A family of solutions exists (often parameterized). This occurs when the system is underdetermined — there are free variables (fewer pivots than unknowns). For square $n \times n$ systems, this requires $\det(A) = 0$ but that does not provide the full picture. For that see the [Rouché–Capelli theorem](#Rank-and-the-Rouché-Capelli-Theorem) section below.
 
 **Example (Infinitely Many Solutions):**
 
@@ -397,13 +399,21 @@ The second equation is twice the first, so we have infinitely many solutions: $$
 
 ### Inconsistent Systems
 
-A system is [inconsistent](https://mathworld.wolfram.com/InconsistentSystem.html) if it has no solution. The equations contradict each other. In matrix terms, the augmented matrix has a row $\left\lbrack 0, 0, \ldots, 0 \mid c \right\rbrack$ where $c \neq 0$.
+A system is inconsistent if it has no solution. The equations contradict each other. In matrix terms, the augmented matrix has a row $\left\lbrack 0, 0, \ldots, 0 \mid c \right\rbrack$ where $c \neq 0$. For square systems, an inconsistent system can only occur when $\det(A) = 0$ (since $\det(A) \neq 0$ guarantees a unique solution). However, $\det(A) = 0$ alone does not tell you whether the system is inconsistent or has infinitely many solutions.
+
+### Rank and the Rouché-Capelli Theorem
+
+The **rank** resolves ambiguity between systems. By the [Rouché–Capelli theorem](https://mathworld.wolfram.com/Rouche-CapelliTheorem.html):
+
+- **inconsistent** (no solution): $\text{rank}(A) < \text{rank}(\left\lbrack A \mid \mathbf{b}\right\rbrack)$
+- **infinitely many solutions:** $\text{rank}(A) = \text{rank}(\left\lbrack A \mid \mathbf{b}\right\rbrack) < n$
+- **unique solution:** $\text{rank}(A) = \text{rank}(\left\lbrack A \mid \mathbf{b}\right\rbrack) = n$
 
 **Example:** The system $x + y = 3$ and $x + y = 5$ has no solution (parallel lines).
 
 ### Dependent Systems
 
-A system is **dependent** if the equations are not independent — one equation can be derived from the others. Such systems have infinitely many solutions.
+A system is **dependent** if the equations are not independent — one equation can be derived from the others. Such systems have infinitely many solutions. For square systems, dependence implies $\det(A) = 0$.
 
 **Example:** The system $x + y = 3$ and $2x + 2y = 6$ has infinitely many solutions (same line).
 
