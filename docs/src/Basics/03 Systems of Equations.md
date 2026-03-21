@@ -433,6 +433,30 @@ x + 2y - z &= 0
 
 Since all equations are equivalent, the solution space is: $$\mathbf{x} = \begin{bmatrix} -2s + t \\ s \\ t \end{bmatrix}$$ where $s$ and $t$ are free parameters.
 
+### Julia Best Practice: Check Rank Before Solving
+
+Julia's `\` operator **always returns a result without error**, regardless of whether the system is inconsistent, underdetermined, or has a unique solution. This means:
+
+- **Inconsistent system** → `\` silently returns the least-squares minimiser of $\|Ax - b\|$, not a true solution
+- **Underdetermined system** → `\` silently returns *one* of infinitely many solutions (the minimum-norm one)
+- **Unique solution** → `\` returns the correct answer
+
+The **recommended practice** is to check rank *before* calling `\`:
+
+```julia
+r_A  = rank(A)
+r_Ab = rank([A b])
+
+if r_Ab > r_A               # inconsistent — no solution
+elseif r_A < size(A, 2)     # underdetermined — infinite solutions
+else                        # unique solution
+end
+```
+
+> **`[A b]` vs `hcat(A, b)`**: These are identical — `[A b]` is syntactic sugar that Julia compiles to the same operation. `[A b]` is the preferred idiomatic style because it mirrors the mathematical augmented-matrix notation $\lbrack A \mid b \rbrack$ and is more concise. Use `hcat(arrays...)` only when building the concatenation programmatically from a variable-length collection.
+
+The cell above wraps this into a reusable helper function and demonstrates all three cases.
+
 ## Applications
 
 ### Physics
