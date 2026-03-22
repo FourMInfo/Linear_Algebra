@@ -435,27 +435,73 @@ Since all equations are equivalent, the solution space is: $$\mathbf{x} = \begin
 
 ### Julia Best Practice: Check Rank Before Solving
 
-Julia's `\` operator **always returns a result without error**, regardless of whether the system is inconsistent, underdetermined, or has a unique solution. This means:
+#### `\` vs `pinv` — What They Compute
 
-- **Inconsistent system** → `\` silently returns the least-squares minimiser of $\|Ax - b\|$, not a true solution
-- **Underdetermined system** → `\` silently returns *one* of infinitely many solutions (the minimum-norm one)
-- **Unique solution** → `\` returns the correct answer
+Both `A \ b` and `pinv(A) * b` aim to solve $A\mathbf{x} = \mathbf{b}$, but they use different algorithms and behave very differently on singular or rank-deficient systems.
 
-The **recommended practice** is to check rank *before* calling `\`:
+**`A \ b` (backslash)**
+
+Dispatches an algorithm based on the *shape* of `A`:
+
+- Square matrix → LU factorisation → exact solution, **or throws `SingularException` if singular**
+- Non-square matrix → QR factorisation → least-squares solution minimising $\|A\mathbf{x} - \mathbf{b}\|$
+
+It does not check for singularity first — it simply tries, and fails for square singular matrices.
+
+**`pinv(A) * b` (pseudoinverse)**
+
+Computes the Moore-Penrose pseudoinverse $A^+$ via **Singular Value Decomposition (SVD)**, then multiplies: $\mathbf{x} = A^+\mathbf{b}$.
+
+This always gives the **minimum-norm least-squares** solution — i.e. of all $\mathbf{x}$ that minimise $\|A\mathbf{x} - \mathbf{b}\|$, it returns the one with the smallest $\|\mathbf{x}\|$. It never throws.
+
+#### Comparison
+
+| Scenario | `A \ b` | `pinv(A) * b` |
+|---|---|---|
+| Unique solution (full-rank square) | ✅ Fast, exact | ✅ Same result, but slower |
+| Non-square, full column rank | ✅ Correct least-squares | ✅ Same result, slower |
+| Square, singular | ❌ Throws `SingularException` | ✅ Returns min-norm least-squares |
+| Underdetermined (infinite solutions) | ✅ Non-square only; ❌ square singular throws | ✅ Always gives minimum-norm solution |
+| Algorithm | LU or QR — fast, $O(n^3)$ | SVD — slower, $O(mn^2)$ or $O(m^2n)$ |
+| Numerical stability | Good for well-conditioned systems | Better for ill-conditioned / rank-deficient |
+| Multiple right-hand sides | `A \ B` handles matrix `B` directly | Must recompute or cache `pinv(A)` |
+
+#### Why Two Options Exist
+
+`\` is designed for **performance in the common case**: when the system is well-posed and full-rank (by far the most frequent case in practice), LU/QR is significantly faster than SVD. Julia's `\` dispatches the fastest correct algorithm for each matrix shape.
+
+`pinv` is designed for **robustness when rank is unknown or deficient**: SVD reveals the matrix's rank structure and handles all cases uniformly — square or non-square, full rank or rank-deficient, consistent or inconsistent — without throwing. The cost is roughly 3–10× slower.
+
+For an $n \times n$ system as a rough guide:
+
+$$\text{backslash (LU):} \approx \tfrac{2}{3}n^3 \text{ flops} \qquad \text{pinv (SVD):} \approx 6n^3 \text{ flops}$$
+
+#### The Recommended Pattern
+
+Check rank first, then choose the appropriate solver:
+
+- **Inconsistent** → use `pinv(A) * b` (least-squares minimiser of $\|A\mathbf{x} - \mathbf{b}\|$); confirm with residual `norm(A*x - b) > 0`
+- **Underdetermined** → use `pinv(A) * b` (minimum-norm solution: smallest $\|\mathbf{x}\|$ among all solutions)
+- **Unique** → use `A \ b`
 
 ```julia
-r_A  = rank(A)
-r_Ab = rank([A b])
+using LinearAlgebra
 
-if r_Ab > r_A               # inconsistent — no solution
+r_A  = rank(A)
+r_Ab = rank([A b])          # [A b] is idiomatic Julia for the augmented matrix
+
+if r_Ab > r_A               # inconsistent — no exact solution
+    x = pinv(A) * b
 elseif r_A < size(A, 2)     # underdetermined — infinite solutions
+    x = pinv(A) * b         # returns the minimum-norm solution
 else                        # unique solution
+    x = A \ b
 end
 ```
 
-> **`[A b]` vs `hcat(A, b)`**: These are identical — `[A b]` is syntactic sugar that Julia compiles to the same operation. `[A b]` is the preferred idiomatic style because it mirrors the mathematical augmented-matrix notation $\lbrack A \mid b \rbrack$ and is more concise. Use `hcat(arrays...)` only when building the concatenation programmatically from a variable-length collection.
+The `solve_linear_system(A, b)` function in this repository implements exactly this pattern and is available after `using Linear_Algebra`.
 
-The cell above wraps this into a reusable helper function and demonstrates all three cases.
+> **`[A b]` vs `hcat(A, b)`**: These are identical — `[A b]` is syntactic sugar that Julia compiles to the same operation. `[A b]` is the preferred idiomatic style because it mirrors the mathematical augmented-matrix notation $\lbrack A \mid b \rbrack$ and is more concise. Use `hcat(arrays...)` only when building the concatenation programmatically from a variable-length collection.
 
 ## Applications
 

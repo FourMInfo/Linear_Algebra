@@ -22,13 +22,14 @@ Diagnose and solve the linear system Ax = b.
 Checks the rank of A against the augmented matrix [A b] to determine the
 nature of the system before solving:
 - Inconsistent (no exact solution): returns the least-squares approximation
-  that minimises ‖Ax - b‖, and prints the residual to confirm inexactness.
+  via `pinv(A) * b` (minimises ‖Ax - b‖); works for both square and non-square
+  singular matrices. Prints the residual to confirm inexactness.
 - Underdetermined (infinite solutions): returns the minimum-norm solution
-  (the unique solution with smallest ‖x‖).
-- Unique solution: returns the exact solution.
+  via `pinv(A) * b` (smallest ‖x‖ among all solutions).
+- Unique solution: returns the exact solution via `A \\ b`.
 
-In all cases Julia's backslash operator is used; the rank check supplies the
-context that `\` silently omits.
+Using `pinv` for the non-unique cases avoids the `SingularException` that
+`A \\ b` throws when A is square and singular.
 """
 function solve_linear_system(A::Matrix, b::Vector)
     n = size(A, 2)
@@ -37,15 +38,15 @@ function solve_linear_system(A::Matrix, b::Vector)
 
     if r_Ab > r_A
         println("System is INCONSISTENT — no exact solution exists.")
-        println("Returning the least-squares approximation via A \\ b (minimises ‖Ax - b‖):")
-        x = A \ b
+        println("Returning the least-squares approximation via pinv(A)*b (minimises ‖Ax - b‖):")
+        x = pinv(A) * b
         println("Residual ‖Ax - b‖ = ", round(norm(A * x - b); digits=6),
                 " (non-zero confirms no exact solution)")
         return x
     elseif r_A < n
         println("System is UNDERDETERMINED — infinitely many solutions exist.")
-        println("Returning the minimum-norm solution via A \\ b (smallest ‖x‖ among all solutions):")
-        return A \ b
+        println("Returning the minimum-norm solution via pinv(A)*b (smallest ‖x‖ among all solutions):")
+        return pinv(A) * b
     else
         println("System has a UNIQUE solution.")
         return A \ b
