@@ -15,23 +15,6 @@ function lin_ind_vec(vectors::Vector{<:Number}...)
 end
 
 """
-    solve_linear_system(A::Matrix, b::Vector)
-
-Diagnose and solve the linear system Ax = b.
-
-Checks the rank of A against the augmented matrix [A b] to determine the
-nature of the system before solving:
-- Inconsistent (no exact solution): returns the least-squares approximation
-  via `pinv(A) * b` (minimises ‖Ax - b‖); works for both square and non-square
-  singular matrices. Prints the residual to confirm inexactness.
-- Underdetermined (infinite solutions): returns the minimum-norm solution
-  via `pinv(A) * b` (smallest ‖x‖ among all solutions).
-- Unique solution: returns the exact solution via `A \\ b`.
-
-Using `pinv` for the non-unique cases avoids the `SingularException` that
-`A \\ b` throws when A is square and singular.
-"""
-"""
     matrix_inverse(A::Matrix)
 
 Test if the square matrix `A` is invertible and return its inverse.
@@ -61,6 +44,23 @@ function matrix_inverse(A::Matrix)
     return inv(A)
 end
 
+"""
+    solve_linear_system(A::Matrix, b::Vector)
+
+Diagnose and solve the linear system Ax = b.
+
+Checks the rank of A against the augmented matrix [A b] to determine the
+nature of the system before solving:
+- Inconsistent (no exact solution): returns the least-squares approximation
+  via `pinv(A) * b` (minimises ‖Ax - b‖); works for both square and non-square
+  singular matrices. Prints the residual to confirm inexactness.
+- Underdetermined (infinite solutions): returns the minimum-norm solution
+  via `pinv(A) * b` (smallest ‖x‖ among all solutions).
+- Unique solution: returns the exact solution via `A \\ b`.
+
+Using `pinv` for the non-unique cases avoids the `SingularException` that
+`A \\ b` throws when A is square and singular.
+"""
 function solve_linear_system(A::Matrix, b::Vector)
     n = size(A, 2)
     r_A  = rank(A)
