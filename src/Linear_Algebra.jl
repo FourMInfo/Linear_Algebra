@@ -7,7 +7,7 @@ using Reexport
 
 # Exports...
 # Pure computational functions (no plotting dependencies)
-export lin_ind_vec, solve_linear_system
+export lin_ind_vec, solve_linear_system, matrix_inverse
 export calculate_param_line
 export distance_2_points, center_of_gravity, barycentric_coord
 export vector_angle_cos, is_orthogonal, polar_unit, orthproj, reflection, rotation

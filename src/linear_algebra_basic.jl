@@ -31,6 +31,36 @@ nature of the system before solving:
 Using `pinv` for the non-unique cases avoids the `SingularException` that
 `A \\ b` throws when A is square and singular.
 """
+"""
+    matrix_inverse(A::Matrix)
+
+Test if the square matrix `A` is invertible and return its inverse.
+
+A matrix is invertible if and only if ``\\det(A) \\neq 0``, equivalently if
+``\\operatorname{rank}(A) = n`` where `n` is the number of rows (and columns).
+
+Returns `inv(A)` if invertible, or `nothing` if the matrix is singular.
+
+# Examples
+```julia
+A = [2.0 1.0; 1.0 -1.0]
+matrix_inverse(A)  # returns the 2×2 inverse
+matrix_inverse([1.0 2.0; 2.0 4.0])  # singular — returns nothing
+```
+"""
+function matrix_inverse(A::Matrix)
+    if size(A, 1) != size(A, 2)
+        println("Matrix is not square and therefore not invertible.")
+        return nothing
+    end
+    if rank(A) < size(A, 1)
+        println("Matrix is SINGULAR (rank = ", rank(A), " < n = ", size(A, 1), ") — no inverse exists.")
+        return nothing
+    end
+    println("Matrix is INVERTIBLE (det = ", round(det(A); digits=10), ").")
+    return inv(A)
+end
+
 function solve_linear_system(A::Matrix, b::Vector)
     n = size(A, 2)
     r_A  = rank(A)
