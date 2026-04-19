@@ -285,6 +285,10 @@ During forward elimination (the phase common to both methods), the row operation
 
 These three outcomes can be read off from the augmented matrix in REF before any back-substitution or upward elimination takes place, making them detectable at the same intermediate stage regardless of which method is being used. See [Types of Systems](#Types-of-Systems) below for more detail.
 
+#### Computing Inverses Using Gauss-Jordan
+
+Let $A \in \mathbb{R}^{n \times n}$ be a matrix whose inverse $A^{-1}$ is to be computed. We combine $A$ and the identity matrix $I_n$ into one augmented matrix $\left\lbrack A \mid I_n \right\rbrack$ by writing $A$ in the left half and $I_n$ in the right half, then apply Gauss-Jordan elimination so that the left half is transformed into $I_n$. The inverse $A^{-1}$ then appears in the right half. If it is not possible to reduce the left half to $I_n$, then $A$ is not invertible.
+
 ### Cramer's Rule
 
 [Cramer's rule](https://mathworld.wolfram.com/CramersRule.html) gives an explicit formula for each unknown in a square $n \times n$ system $A\mathbf{x} = \mathbf{b}$, provided $\det(A) \neq 0$ (i.e. the matrix is invertible).
