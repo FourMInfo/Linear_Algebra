@@ -13,3 +13,72 @@ function lin_ind_vec(vectors::Vector{<:Number}...)
     # Return the boolean result
     is_independent
 end
+
+"""
+    matrix_inverse(A::Matrix)
+
+Test if the square matrix `A` is invertible and return its inverse.
+
+A matrix is invertible if and only if ``\\det(A) \\neq 0``, equivalently if
+``\\operatorname{rank}(A) = n`` where `n` is the number of rows (and columns).
+
+Returns `inv(A)` if invertible, or `nothing` if the matrix is singular.
+
+# Examples
+```julia
+A = [2.0 1.0; 1.0 -1.0]
+matrix_inverse(A)  # returns the 2×2 inverse
+matrix_inverse([1.0 2.0; 2.0 4.0])  # singular — returns nothing
+```
+"""
+function matrix_inverse(A::Matrix)
+    if size(A, 1) != size(A, 2)
+        println("Matrix is not square and therefore not invertible.")
+        return nothing
+    end
+    if rank(A) < size(A, 1)
+        println("Matrix is SINGULAR (rank = ", rank(A), " < n = ", size(A, 1), ") — no inverse exists.")
+        return nothing
+    end
+    println("Matrix is INVERTIBLE (det = ", round(det(A); digits=10), ").")
+    return inv(A)
+end
+
+"""
+    solve_linear_system(A::Matrix, b::Vector)
+
+Diagnose and solve the linear system Ax = b.
+
+Checks the rank of A against the augmented matrix [A b] to determine the
+nature of the system before solving:
+- Inconsistent (no exact solution): returns the least-squares approximation
+  via `pinv(A) * b` (minimises ‖Ax - b‖); works for both square and non-square
+  singular matrices. Prints the residual to confirm inexactness.
+- Underdetermined (infinite solutions): returns the minimum-norm solution
+  via `pinv(A) * b` (smallest ‖x‖ among all solutions).
+- Unique solution: returns the exact solution via `A \\ b`.
+
+Using `pinv` for the non-unique cases avoids the `SingularException` that
+`A \\ b` throws when A is square and singular.
+"""
+function solve_linear_system(A::Matrix, b::Vector)
+    n = size(A, 2)
+    r_A  = rank(A)
+    r_Ab = rank([A b])
+
+    if r_Ab > r_A
+        println("System is INCONSISTENT — no exact solution exists.")
+        println("Returning the least-squares approximation via pinv(A)*b (minimises ‖Ax - b‖):")
+        x = pinv(A) * b
+        println("Residual ‖Ax - b‖ = ", round(norm(A * x - b); digits=6),
+                " (non-zero confirms no exact solution)")
+        return x
+    elseif r_A < n
+        println("System is UNDERDETERMINED — infinitely many solutions exist.")
+        println("Returning the minimum-norm solution via pinv(A)*b (smallest ‖x‖ among all solutions):")
+        return pinv(A) * b
+    else
+        println("System has a UNIQUE solution.")
+        return A \ b
+    end
+end
