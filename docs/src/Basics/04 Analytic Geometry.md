@@ -1,30 +1,40 @@
 # Analytic Geometry
 
-[Analytic geometry](https://mathworld.wolfram.com/AnalyticGeometry.html) combines algebra and geometry by using coordinate systems to describe geometric objects with equations. This section covers the geometric interpretation of vectors in coordinate systems, equations for planes in three-dimensional space, and the linear transformations that operate on these geometric objects.
+[Analytic geometry](https://mathworld.wolfram.com/AnalyticGeometry.html) is the study of geometry in 2D and 3D space using coordinate systems and algebraic methods. It provides the geometric framework in which linear algebra operates, giving visual and spatial meaning to vectors, matrices, and linear transformations.
+
+In this section we will cover the more elementary aspects of analytic geometry in relation to the basic components of linear algebra (vectors and matrices). In particular, it covers the geometric interpretation of vectors in coordinate systems, equations for planes in three-dimensional space, and the linear transformations that operate on these geometric objects. A more detailed description of linear algebra in 2D and 3D space can be found in the next chapter entitled _Geometry_.
 
 ## Vectors in Coordinate Systems
 
 While [Vectors](01 Vectors.md) covers the algebraic properties of vectors, here we focus on their geometric interpretation in coordinate systems — vectors as directed distances between points.
 
-### Position Vectors
+### Vectors as Directed Distances
 
-The [position vector](https://mathworld.wolfram.com/PositionVector.html) (or _location vector_) of a point $A = (x_A, y_A)$ is the vector from the origin to $A$: $$\vec{OA} = \begin{pmatrix} x_A \\ y_A \end{pmatrix}$$
+A vector in a coordinate system represents a directed distance: starting from any point, move $a_1$ steps horizontally and $a_2$ steps vertically to reach the endpoint. The vector $\mathbf{a}$ records only these displacements — not the starting point: $$\mathbf{a} = \begin{pmatrix} a_1 \\ a_2 \end{pmatrix}$$
 
-The position vector has the same coordinates as the point itself — it describes how to travel from the origin to the given location.
+The same vector can be drawn anywhere in the plane; what matters is the direction and length, not where it starts.
 
-In $\mathbb{R}^3$, the position vector of $A = (x_A, y_A, z_A)$ is: $$\vec{OA} = \begin{pmatrix} x_A \\ y_A \\ z_A \end{pmatrix}$$
+In $\mathbb{R}^3$, a vector records displacements in three directions: $$\mathbf{a} = \begin{pmatrix} a_1 \\ a_2 \\ a_3 \end{pmatrix}$$
 
 ### Connecting Vectors
 
-The connecting vector from point $A$ to point $B$ is computed by subtracting the coordinates of $A$ from those of $B$.
-
-In $\mathbb{R}^2$, for $A = (x_A, y_A)$ and $B = (x_B, y_B)$: $$\vec{AB} = \begin{pmatrix} x_B - x_A \\ y_B - y_A \end{pmatrix}$$
+Given two points $A = (x_A, y_A)$ and $B = (x_B, y_B)$, the [connecting vector](https://mathworld.wolfram.com/Vector.html) $\vec{AB}$ is the displacement needed to travel from $A$ to $B$: $$\vec{AB} = \begin{pmatrix} x_B - x_A \\ y_B - y_A \end{pmatrix}$$
 
 In $\mathbb{R}^3$, for $A = (x_A, y_A, z_A)$ and $B = (x_B, y_B, z_B)$: $$\vec{AB} = \begin{pmatrix} x_B - x_A \\ y_B - y_A \\ z_B - z_A \end{pmatrix}$$
 
 **Example:** For $A = (1, 2)$ and $B = (3, 5)$, the connecting vector is $\vec{AB} = \begin{pmatrix} 2 \\ 3 \end{pmatrix}$ — move 2 steps horizontally and 3 steps vertically.
 
 The connecting vector describes direction and distance from $A$ to $B$. Its starting point does not matter: shifting both endpoints by the same amount yields the same vector (same direction and length). Only the relative displacement — not the absolute position — defines a vector.
+
+### Position Vectors
+
+A [position vector](https://mathworld.wolfram.com/PositionVector.html) (or _location vector_) is the special case where the starting point is the origin $O$. The position vector of a point $A = (x_A, y_A)$ is: $$\vec{OA} = \begin{pmatrix} x_A \\ y_A \end{pmatrix}$$
+
+The position vector has the same coordinates as the point itself — it describes how to travel from the origin to the given location.
+
+In $\mathbb{R}^3$, the position vector of $A = (x_A, y_A, z_A)$ is: $$\vec{OA} = \begin{pmatrix} x_A \\ y_A \\ z_A \end{pmatrix}$$
+
+Any connecting vector can be expressed as the difference of two position vectors: $\vec{AB} = \vec{OB} - \vec{OA}$.
 
 ### Geometric Interpretation of Operations
 
@@ -132,8 +142,8 @@ To find the matrix for a linear transformation:
 
 **Example in $\mathbb{R}^2$:**
 
-- $\mathbf{e}_1 = [1, 0]$ and $\mathbf{e}_2 = [0, 1]$
-- Matrix: $A = [T(\mathbf{e}_1) \mid T(\mathbf{e}_2)]$
+- $\mathbf{e}_1 = \lbrack 1, 0 \rbrack$ and $\mathbf{e}_2 = \lbrack 0, 1 \rbrack$
+- Matrix: $A = \lbrack T(\mathbf{e}_1) \mid T(\mathbf{e}_2) \rbrack$
 
 ### Common Transformations in 2D
 
@@ -152,8 +162,8 @@ $$R_\theta = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta
 
 **Derivation:** Apply rotation to basis vectors:
 
-- $R_\theta(\mathbf{e}_1) = [\cos\theta, \sin\theta]$
-- $R_\theta(\mathbf{e}_2) = [-\sin\theta, \cos\theta]$
+- $R_\theta(\mathbf{e}_1) = \lbrack \cos\theta, \sin\theta \rbrack$
+- $R_\theta(\mathbf{e}_2) = \lbrack -\sin\theta, \cos\theta \rbrack$
 
 #### Scaling (Stretch)
 
@@ -174,7 +184,7 @@ $$S_{\lambda_1, \lambda_2} = \begin{pmatrix} \lambda_1 & 0 \\ 0 & \lambda_2 \end
 
 #### Reflection
 
-[Reflection](https://mathworld.wolfram.com/Reflection.html) across a line through the origin with direction $\mathbf{u} = [\cos\phi, \sin\phi]$:
+[Reflection](https://mathworld.wolfram.com/Reflection.html) across a line through the origin with direction $\mathbf{u} = \lbrack \cos\phi, \sin\phi \rbrack$:
 
 $$M_\phi = \begin{pmatrix} \cos 2\phi & \sin 2\phi \\ \sin 2\phi & -\cos 2\phi \end{pmatrix}$$
 
@@ -192,7 +202,7 @@ $$M_\phi = \begin{pmatrix} \cos 2\phi & \sin 2\phi \\ \sin 2\phi & -\cos 2\phi \
 
 #### Orthogonal Projection
 
-[Projection](https://mathworld.wolfram.com/Projection.html) onto a line through the origin with unit direction $\mathbf{u} = [\cos\phi, \sin\phi]$:
+[Projection](https://mathworld.wolfram.com/Projection.html) onto a line through the origin with unit direction $\mathbf{u} = \lbrack \cos\phi, \sin\phi \rbrack$:
 
 $$P_\phi = \begin{pmatrix} \cos^2\phi & \cos\phi\sin\phi \\ \cos\phi\sin\phi & \sin^2\phi \end{pmatrix}$$
 

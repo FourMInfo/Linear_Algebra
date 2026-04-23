@@ -8,7 +8,7 @@ The code in this package is not meant to be a complete implementation of the mat
 
 Besides the package documentation, you will also find in the left navigation tab links to documents explaining topics from the source books. These often provide more details than covered in the books. Currently, there are two sections: Basics and Geometry.
 
-The Basics documentation section covers the algebraic foundations of linear algebra, including vectors, matrices, systems of equations and analytic geometry. The source of the documents in this section is the book [_Foundations of Mathematics: A Preparatory Course_](https://link.springer.com/book/10.1007/978-3-662-67809-1). by Guido Walz, Frank Zeilfelder and Thomas Rießinger. The earlier contents of this book cover basic mathematical concepts, and documentation and code for those topics can be found in the [Math_Foundations](https://study.fourm.info/math_foundations/dev/sites/) package. 
+The Basics documentation section covers the algebraic foundations of linear algebra, including vectors, matrices, systems of equations and analytic geometry. The source of the documents in this section is the book [_Foundations of Mathematics: A Preparatory Course_](https://link.springer.com/book/10.1007/978-3-662-67809-1). by Guido Walz, Frank Zeilfelder and Thomas Rießinger. The earlier contents of this book cover basic mathematical concepts, and documentation and code for those topics can be found in the [Math_Foundations](https://study.fourm.info/math_foundations/dev/sites/) package.
 
 All the documents in this section have been carefully reviewed for content and accuracy. You can check out the [Jupyter notebook](https://github.com/FourMInfo/Linear_Algebra/blob/d3093a0319925f524fdbc31eb9631e122440804b/notebooks/Linear_Algebra_Basics.ipynb) associated with this documentation to see worked out examples of concepts covered in the text. There is also a [Julia file](https://github.com/FourMInfo/Linear_Algebra/blob/d3093a0319925f524fdbc31eb9631e122440804b/src/linear_algebra_basic.jl) with a few simple, related functions exported by the [repository package](https://github.com/FourMInfo/Linear_Algebra/blob/d3093a0319925f524fdbc31eb9631e122440804b/src/Linear_Algebra.jl).
 
@@ -18,8 +18,8 @@ This section is still a work in progress. Firstly, the current versions of the d
 
 You can check out the [Jupyter notebook](https://github.com/FourMInfo/Linear_Algebra/blob/d3093a0319925f524fdbc31eb9631e122440804b/notebooks/Linear_Algebra_Geometry.ipynb) associated with this documentation to see worked out examples of concepts covered in the text. There are also a couple of Julia files:
 
-* [linear_algebra_geometry.jl](https://github.com/FourMInfo/Linear_Algebra/blob/d3093a0319925f524fdbc31eb9631e122440804b/src/linear_algebra_geometry.jl) and
-* [linear_algebra_transform.jl](https://github.com/FourMInfo/Linear_Algebra/blob/d3093a0319925f524fdbc31eb9631e122440804b/src/linear_algebra_transform.jl)
+* [linear\_algebra\_geometry.jl](https://github.com/FourMInfo/Linear_Algebra/blob/d3093a0319925f524fdbc31eb9631e122440804b/src/linear_algebra_geometry.jl) and
+* [linear\_algebra\_transform.jl](https://github.com/FourMInfo/Linear_Algebra/blob/d3093a0319925f524fdbc31eb9631e122440804b/src/linear_algebra_transform.jl)
   
 with related functions exported by the [repository package](https://github.com/FourMInfo/Linear_Algebra/blob/d3093a0319925f524fdbc31eb9631e122440804b/src/Linear_Algebra.jl).
 
