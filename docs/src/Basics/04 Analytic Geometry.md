@@ -10,21 +10,21 @@ While [Vectors](01 Vectors.md) covers the algebraic properties of vectors, here 
 
 ### Vectors as Directed Distances
 
-A vector in a coordinate system represents a directed distance: starting from any point, move $a_1$ steps horizontally and $a_2$ steps vertically to reach the endpoint. The vector $\mathbf{a}$ records only these displacements — not the starting point: $$\mathbf{a} = \begin{pmatrix} a_1 \\ a_2 \end{pmatrix}$$
+A vector in $\mathbb{R}^2$ represents a directed distance: starting from any point, move $a_1$ steps horizontally and $a_2$ steps vertically to reach the endpoint. The vector $\mathbf{a}$ can be drawn anywhere in the plane and records only these displacements — not the starting point: $$\mathbf{a} = \begin{pmatrix} a_1 \\ a_2 \end{pmatrix}$$
 
-The same vector can be drawn anywhere in the plane; what matters is the direction and length, not where it starts.
-
-In $\mathbb{R}^3$, a vector records displacements in three directions: $$\mathbf{a} = \begin{pmatrix} a_1 \\ a_2 \\ a_3 \end{pmatrix}$$
+In $\mathbb{R}^3$, starting from any point, move $a_1$ steps horizontally, $a_2$ steps vertically, and $a_3$ steps in depth to reach the endpoint. Here too, the vector can be drawn anywhere in space: $$\mathbf{a} = \begin{pmatrix} a_1 \\ a_2 \\ a_3 \end{pmatrix}$$
 
 ### Connecting Vectors
 
-Given two points $A = (x_A, y_A)$ and $B = (x_B, y_B)$, the [connecting vector](https://mathworld.wolfram.com/Vector.html) $\vec{AB}$ is the displacement needed to travel from $A$ to $B$: $$\vec{AB} = \begin{pmatrix} x_B - x_A \\ y_B - y_A \end{pmatrix}$$
+Given two points $A = (x_A, y_A)$ and $B = (x_B, y_B)$, the [connecting vector](https://mathworld.wolfram.com/Vector.html) $\vec{AB}$ is the displacement needed to travel from point $A$ to $B$: $$\vec{AB} = \begin{pmatrix} x_B - x_A \\ y_B - y_A \end{pmatrix}$$
 
-In $\mathbb{R}^3$, for $A = (x_A, y_A, z_A)$ and $B = (x_B, y_B, z_B)$: $$\vec{AB} = \begin{pmatrix} x_B - x_A \\ y_B - y_A \\ z_B - z_A \end{pmatrix}$$
+In $\mathbb{R}^3$, for points $A = (x_A, y_A, z_A)$ and $B = (x_B, y_B, z_B)$: $$\vec{AB} = \begin{pmatrix} x_B - x_A \\ y_B - y_A \\ z_B - z_A \end{pmatrix}$$
 
-**Example:** For $A = (1, 2)$ and $B = (3, 5)$, the connecting vector is $\vec{AB} = \begin{pmatrix} 2 \\ 3 \end{pmatrix}$ — move 2 steps horizontally and 3 steps vertically.
+**2D Example:** For $A = (1, 2)$ and $B = (3, 5)$, the connecting vector is $\vec{AB} = \begin{pmatrix} 2 \\ 3 \end{pmatrix}$ — move 2 steps horizontally and 3 steps vertically.
 
-The connecting vector describes direction and distance from $A$ to $B$. Its starting point does not matter: shifting both endpoints by the same amount yields the same vector (same direction and length). Only the relative displacement — not the absolute position — defines a vector.
+**3D Example:** For $A = (1, 2, 3)$ and $B = (4, 0, 1)$, the connecting vector is $\vec{AB} = \begin{pmatrix} 3 \\ -2 \\ -2 \end{pmatrix}$ — move 3 steps horizontally, 2 steps down, and 2 steps back in depth.
+
+The connecting vector depends on both $A$ and $B$ — choosing a different starting point gives a different displacement. What defines the vector is the relative displacement between the two points, not their absolute positions: shifting both $A$ and $B$ by the same amount leaves $\vec{AB}$ unchanged.
 
 ### Position Vectors
 
@@ -34,7 +34,7 @@ The position vector has the same coordinates as the point itself — it describe
 
 In $\mathbb{R}^3$, the position vector of $A = (x_A, y_A, z_A)$ is: $$\vec{OA} = \begin{pmatrix} x_A \\ y_A \\ z_A \end{pmatrix}$$
 
-Any connecting vector can be expressed as the difference of two position vectors: $\vec{AB} = \vec{OB} - \vec{OA}$.
+Any connecting vector can be expressed as the difference of two position vectors: $\vec{AB} = \vec{OB} - \vec{OA}$. We need to point out a subtle distinction — $A$ and $B$ are _points_ (locations in space), while $\vec{OA}$ and $\vec{OB}$ are _vectors_ (displacements from the origin). The statement above is referring to vector subtraction, not point subtraction: it is the vectors that carry the arithmetic, not the points themselves.
 
 ### Geometric Interpretation of Operations
 
@@ -43,6 +43,7 @@ Vector operations have direct geometric meaning in coordinate systems:
 - **Negation:** $-\mathbf{a}$ reverses the direction of $\mathbf{a}$. If $\mathbf{a} = \vec{AB}$ then $-\mathbf{a} = \vec{BA}$
 - **Scalar multiplication:** $\lambda \mathbf{a}$ stretches $\mathbf{a}$ by factor $\lvert \lambda \rvert$ in the same direction (if $\lambda > 0$) or the opposite direction (if $\lambda < 0$)
 - **Addition:** To compute $\mathbf{a} + \mathbf{b}$ geometrically, place the start of $\mathbf{b}$ at the end of $\mathbf{a}$; the sum is the vector from the start of $\mathbf{a}$ to the end of $\mathbf{b}$
+- **Subtraction:** $\mathbf{a} - \mathbf{b}$ is equivalent to adding the negation: $\mathbf{a} + (-\mathbf{b})$. Geometrically, reverse $\mathbf{b}$ and then add it to $\mathbf{a}$. This is how connecting vectors are computed: $\vec{AB} = \vec{OB} - \vec{OA}$ subtracts two position vectors to produce a displacement
 
 For the algebraic rules behind these operations, see [Vector Operations](01 Vectors.md#Vector-Operations).
 
