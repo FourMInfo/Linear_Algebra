@@ -53,16 +53,27 @@ A [plane](https://mathworld.wolfram.com/Plane.html) in three-dimensional space i
 
 ### Parameterized Form
 
+#### Definition
+
 Given three non-collinear points $A$, $B$, and $C$ in $\mathbb{R}^3$, any point $\mathbf{x}$ on the plane through them can be written as: $$\mathbf{x} = \mathbf{a} + \lambda \mathbf{b} + \mu \mathbf{c}$$ where:
 
-- The position vector of $A$ is $\mathbf{a}$
+- The position vector of $A$ is $\mathbf{a} = \vec{OA}$ where $O$ is the origin point $(0, 0, 0)$
 - The connecting vector from $A$ to $B$ is $\mathbf{b} = \vec{AB}$
 - The connecting vector from $A$ to $C$ is $\mathbf{c} = \vec{AC}$
 - The free parameters are $\lambda, \mu \in \mathbb{R}$
 
 The vectors $\mathbf{b}$ and $\mathbf{c}$ _span_ the plane — every point on the plane can be reached from $A$ by some linear combination of these two direction vectors.
 
-**Example:** For the plane through $A = (1, 2, 3)$, $B = (0, 1, 2)$, and $C = (-1, 2, 1)$:
+#### Derivation
+
+![Vectors in a plane](assets/image-1.png)
+
+In order to derive the parameterized form equation, let's look at the diagram above. First, we have the three points $A$, $B$ and $C$ which lie in the plane. And we want to define the vector from $O$ to any arbitrary point $P = (x, y, z)$ in the same plane as $A$. Using the origin $O = (0, 0, 0)$ we can write the equation $\vec{OP} = \vec{OA} + \vec{AP}$ that is we go from the origin to point A and from A we travel to the arbitrary point P on the same plane. Since $\vec{AB}$ and $\vec{AC}$ also lie on the same plane, $\vec{AP} = \lambda \vec{AB} + \mu \vec{AC}$. This directly leads to the equation defined in the previous section.
+
+
+#### Example
+
+For the plane through $A = (1, 2, 3)$, $B = (0, 1, 2)$, and $C = (-1, 2, 1)$:
 
 $$\begin{aligned}
 \mathbf{a} &= \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}, \quad
