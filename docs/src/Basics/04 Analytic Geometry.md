@@ -70,7 +70,6 @@ The vectors $\mathbf{b}$ and $\mathbf{c}$ _span_ the plane — every point on th
 
 In order to derive the parameterized form equation, let's look at the diagram above. First, we have the three points $A$, $B$ and $C$ which lie in the plane. And we want to define the vector from $O$ to any arbitrary point $P = (x, y, z)$ in the same plane as $A$. Using the origin $O = (0, 0, 0)$ we can write the equation $\vec{OP} = \vec{OA} + \vec{AP}$ that is we go from the origin to point A and from A we travel to the arbitrary point P on the same plane. Since $\vec{AB}$ and $\vec{AC}$ also lie on the same plane, $\vec{AP} = \lambda \vec{AB} + \mu \vec{AC}$. This directly leads to the equation defined in the previous section.
 
-
 #### Example
 
 For the plane through $A = (1, 2, 3)$, $B = (0, 1, 2)$, and $C = (-1, 2, 1)$:
@@ -85,15 +84,33 @@ The parameterized equation is: $$\begin{pmatrix} x \\ y \\ z \end{pmatrix} = \be
 
 Setting $\lambda = 0, \mu = 0$ gives the point $(1, 2, 3) = A$ itself.
 
-### Normal Vectors
+### Parameter-Free Form
 
-A [normal vector](https://mathworld.wolfram.com/NormalVector.html) $\mathbf{n}$ to a plane is a vector that is [perpendicular](https://mathworld.wolfram.com/Perpendicular.html) to every vector lying in the plane. Two vectors are perpendicular if and only if their [dot product](https://mathworld.wolfram.com/DotProduct.html) is zero: $$\mathbf{a} \cdot \mathbf{b} = 0$$
+#### Normal Vectors
 
-See [Orthogonal Vectors](01 Vectors.md#Orthogonal-and-Orthonormal-Vectors) for more on perpendicularity and the dot product.
+A [normal vector](https://mathworld.wolfram.com/NormalVector.html) $\mathbf{n}$ to a plane is a vector that is [perpendicular](01 Vectors.md#Orthogonal-and-Orthonormal-Vectors) to every vector lying in the plane.
 
-For a plane spanned by $\mathbf{b}$ and $\mathbf{c}$, the normal vector must satisfy both $\mathbf{n} \cdot \mathbf{b} = 0$ and $\mathbf{n} \cdot \mathbf{c} = 0$. This can be found by solving the resulting [system of linear equations](03 Systems of Equations.md), or more directly using the cross product.
+The normal vector can be found by solving a derived [system of linear equations](03 Systems of Equations.md) as shown in the example below. Or, more directly, by using the cross product described in the next section.
 
-### Cross Product
+**Example** Let's return to the example used in the Parameterized Form section [above](#Example). See the diagram in the [Derivation](#Derivation) section. We have two vectors in the plane from the example:
+
+$$\begin{aligned}
+\mathbf{b} = \vec{AB} = \begin{pmatrix} -1 \\ -1 \\ -1 \end{pmatrix}, \quad
+\mathbf{c} = \vec{AC} = \begin{pmatrix} -2 \\ 0 \\ -2 \end{pmatrix}
+\end{aligned}$$
+
+The diagram also indicates the normal vector $\mathbf{n} = \begin{pmatrix} n_1 \\ n_2 \\ n_3 \end{pmatrix}$.
+
+Recall that two vectors are perpendicular if and only if their [dot product](01 Vectors.md#Dot-Product) is zero ($\mathbf{a} \cdot \mathbf{b} = 0$) which holds in both $\mathbb{R}^2$ and $\mathbb{R}^3$. Hence, for the plane spanned by $\mathbf{b}$ and $\mathbf{c}$, the normal vector must satisfy both $\mathbf{n} \cdot \mathbf{b} = 0$ and $\mathbf{n} \cdot \mathbf{c} = 0$. Thus:
+
+$$\begin{aligned}
+0 = \mathbf{n} \cdot \mathbf{b} = \begin{pmatrix} n_1 \\ n_2 \\ n_3 \end{pmatrix} \cdot \begin{pmatrix} -1 \\ -1 \\ -1 \end{pmatrix} = -n_1-n_2-n_3 \\
+0 = \mathbf{n} \cdot \mathbf{c} = \begin{pmatrix} n_1 \\ n_2 \\ n_3 \end{pmatrix} \cdot \begin{pmatrix} -2 \\ 0 \\ -2 \end{pmatrix} = -2n_1-2n_3
+\end{aligned}$$
+
+This gives us a linear system of two equations in three unknowns and can be solved using the techniques described in the [System of Equations](03 Systems of Equations.md).
+
+#### Cross Product
 
 The [cross product](https://mathworld.wolfram.com/CrossProduct.html) (vector product) of two 3D vectors $\mathbf{b}$ and $\mathbf{c}$ gives a vector perpendicular to both: $$\mathbf{b} \times \mathbf{c} = \begin{pmatrix} b_2c_3 - b_3c_2 \\ b_3c_1 - b_1c_3 \\ b_1c_2 - b_2c_1 \end{pmatrix}$$
 
@@ -105,7 +122,7 @@ If the cross product yields the zero vector, the three points are [collinear](ht
 
 $$\mathbf{n} = \mathbf{b} \times \mathbf{c} = \begin{pmatrix} -1 \\ -1 \\ -1 \end{pmatrix} \times \begin{pmatrix} -2 \\ 0 \\ -2 \end{pmatrix} = \begin{pmatrix} (-1)(-2) - (-1)(0) \\ (-1)(-2) - (-1)(-2) \\ (-1)(0) - (-1)(-2) \end{pmatrix} = \begin{pmatrix} 2 \\ 0 \\ -2 \end{pmatrix}$$
 
-### Parameter-Free Plane Equation
+#### Parameter-Free Plane Equation
 
 Since the normal vector $\mathbf{n}$ is perpendicular to the entire plane, it is perpendicular to the connecting vector from any fixed plane point $A$ to any other plane point $(x, y, z)$. This gives: $$\mathbf{n} \cdot (\mathbf{x} - \mathbf{a}) = 0$$
 
@@ -119,7 +136,9 @@ Simplifying: $x - z = -2$
 
 Every point $(x, y, z)$ on this plane satisfies $x - z = -2$.
 
-**Summary of the procedure** for finding the parameter-free equation from three non-collinear points $A$, $B$, $C$:
+#### Summary of the procedure
+
+To find the parameter-free equation from three non-collinear points $A$, $B$, $C$:
 
 1. Compute direction vectors: $\mathbf{b} = \vec{AB}$ and $\mathbf{c} = \vec{AC}$
 2. Find the normal vector: $\mathbf{n} = \mathbf{b} \times \mathbf{c}$
