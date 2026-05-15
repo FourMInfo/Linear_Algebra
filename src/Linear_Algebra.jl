@@ -1,6 +1,7 @@
 module Linear_Algebra
 using Reexport
 @reexport using  GeometryBasics, Plots, LinearAlgebra, RationalRoots, Symbolics
+@reexport using BlockArrays, LAlatex
 
 # GR backend is set explicitly in plotting functions
 # For CI headless mode: set ENV["GKSwstype"] = "100" in test/runtests.jl BEFORE loading this module

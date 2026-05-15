@@ -122,6 +122,8 @@ If the cross product yields the zero vector, the three points are [collinear](ht
 
 $$\mathbf{n} = \mathbf{b} \times \mathbf{c} = \begin{pmatrix} -1 \\ -1 \\ -1 \end{pmatrix} \times \begin{pmatrix} -2 \\ 0 \\ -2 \end{pmatrix} = \begin{pmatrix} (-1)(-2) - (-1)(0) \\ (-1)(-2) - (-1)(-2) \\ (-1)(0) - (-1)(-2) \end{pmatrix} = \begin{pmatrix} 2 \\ 0 \\ -2 \end{pmatrix}$$
 
+If we calculate the dot product of $\mathbf{n}$ and $\mathbf{b}$ and $\mathbf{n}$ and $\mathbf{c}$ the result is 0 as expected and required for n to be the normal vector.
+
 #### Parameter-Free Plane Equation
 
 Since the normal vector $\mathbf{n}$ is perpendicular to the entire plane, it is perpendicular to the connecting vector from any fixed plane point $A$ to any other plane point $(x, y, z)$. This gives: $$\mathbf{n} \cdot (\mathbf{x} - \mathbf{a}) = 0$$

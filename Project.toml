@@ -2,10 +2,12 @@ name = "Linear_Algebra"
 authors = ["Aron T"]
 
 [deps]
+BlockArrays = "8e7c35d0-a365-5155-bbbb-fb81a777f24e"
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
 DrWatson = "634d3b9d-ee7a-5ddf-bec9-22491ea816e1"
 GeometryBasics = "5c1252a2-5f33-56bf-86c9-59e7332b4326"
 IJulia = "7073ff75-c697-5162-941a-fcdaad2a7d2a"
+LAlatex = "2feda2f4-7604-459e-bd73-51e960cd9dcb"
 LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
 Latexify = "23fbe1c1-3f47-55db-b15f-69d7ec21a316"
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
