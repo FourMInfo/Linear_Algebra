@@ -17,7 +17,7 @@ LAlatex.set_backend!(:symbolics)
 LAlatex.reset_display_defaults!()
 ```
 
-`LAlatex` and `BlockArrays` are re-exported by `Linear_Algebra`, so no separate `using` is needed.
+`LAlatex`, `BlockArrays`, and `LaTeXStrings` are re-exported by `Linear_Algebra`, so no separate `using` is needed. In particular, the `L"..."` string macro is available immediately after `using Linear_Algebra`.
 `set_backend!(:symbolics)` is required because this package uses Symbolics.jl; the default `:latexify` backend gives worse output for symbolic expressions.
 `reset_display_defaults!()` ensures a clean display state on every kernel restart.
 
