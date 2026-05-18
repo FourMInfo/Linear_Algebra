@@ -126,26 +126,42 @@ If we calculate the dot product of $\mathbf{n}$ and $\mathbf{b}$ and $\mathbf{n}
 
 #### Parameter-Free Plane Equation
 
-Since the normal vector $\mathbf{n}$ is perpendicular to the entire plane, it is perpendicular to the connecting vector from any fixed plane point $A$ to any other plane point $(x, y, z)$. This gives: $$\mathbf{n} \cdot (\mathbf{x} - \mathbf{a}) = 0$$
+Given three non-collinear points $A = (a_1, a_2, a_3)$, $B = (b_1, b_2, b_3)$, and $C = (c_1, c_2, c_3)$, the parameter-free equation of the plane through them is computed as follows:
 
-Expanding the dot product produces an equation of the form $ax + by + cz = d$, called the _parameter-free_ equation of the plane (it contains no parameters $\lambda$ or $\mu$, only coordinates).
+**Step 1** Determine the position vector $\mathbf{a}$ and the direction vectors $\mathbf{b} = \vec{AB}$ and $\mathbf{c} = \vec{AC}$:$$\mathbf{a} = \begin{pmatrix} a_1 \\ a_2 \\ a_3 \end{pmatrix}, \qquad \mathbf{b} = \begin{pmatrix} b_1 - a_1 \\ b_2 - a_2 \\ b_3 - a_3 \end{pmatrix}, \qquad \mathbf{c} = \begin{pmatrix} c_1 - a_1 \\ c_2 - a_2 \\ c_3 - a_3 \end{pmatrix}$$
+
+**Step 2** Calculate the normal vector using the cross product:$$\mathbf{n} = \mathbf{b} \times \mathbf{c} = \begin{pmatrix} b_2 c_3 - b_3 c_2 \\ b_3 c_1 - b_1 c_3 \\ b_1 c_2 - b_2 c_1 \end{pmatrix}$$
+
+**Step 3** For a plane point $(x, y, z)$, set up the dot product condition — since $\mathbf{n}$ is perpendicular to every vector in the plane, in particular to the connecting vector from $A$ to any plane point:$$\mathbf{n} \cdot \begin{pmatrix} x - a_1 \\ y - a_2 \\ z - a_3 \end{pmatrix} = 0$$
+
+**Step 4** Expand the dot product and simplify until the equation takes the form $ax + by + cz = d$. This is the _parameter-free_ equation of the plane.
+
+The equation is called parameter-free because it contains no free parameters $\lambda$ or $\mu$, only the coordinates $(x, y, z)$ of an arbitrary point on the plane. As noted earlier, we know the three points lie on a plane and not a straight line, when the vector product $\mathbf{b} \times \mathbf{c}$ is not the zero vector.
 
 **Example (continued):**
 
+Going back to our example, with points $A = (1, 2, 3)$, $B = (0, 1, 2)$, and $C = (-1, 2, 1)$:
+
+**Step 1** Determine the three vectors:
+$$\begin{aligned}
+\mathbf{a} &= \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}, \quad
+\mathbf{b} = \vec{AB} = \begin{pmatrix} -1 \\ -1 \\ -1 \end{pmatrix}, \quad
+\mathbf{c} = \vec{AC} = \begin{pmatrix} -2 \\ 0 \\ -2 \end{pmatrix}
+\end{aligned}$$
+
+**Step 2** Determine the normal vector:
+
+$$\mathbf{n} = \mathbf{b} \times \mathbf{c} = \begin{pmatrix} -1 \\ -1 \\ -1 \end{pmatrix} \times \begin{pmatrix} -2 \\ 0 \\ -2 \end{pmatrix} = \begin{pmatrix} (-1)(-2) - (-1)(0) \\ (-1)(-2) - (-1)(-2) \\ (-1)(0) - (-1)(-2) \end{pmatrix} = \begin{pmatrix} 2 \\ 0 \\ -2 \end{pmatrix}$$
+
+**Step 3** For a plane point $(x, y, z)$ set up dot product condition:
+
 $$\begin{pmatrix} 2 \\ 0 \\ -2 \end{pmatrix} \cdot \begin{pmatrix} x - 1 \\ y - 2 \\ z - 3 \end{pmatrix} = 2(x - 1) + 0(y - 2) - 2(z - 3) = 2x - 2z + 4 = 0$$
 
-Simplifying: $x - z = -2$
+**Step 4** Simplify:
+
+$x - z = -2$
 
 Every point $(x, y, z)$ on this plane satisfies $x - z = -2$.
-
-#### Summary of the procedure
-
-To find the parameter-free equation from three non-collinear points $A$, $B$, $C$:
-
-1. Compute direction vectors: $\mathbf{b} = \vec{AB}$ and $\mathbf{c} = \vec{AC}$
-2. Find the normal vector: $\mathbf{n} = \mathbf{b} \times \mathbf{c}$
-3. Form the equation: $\mathbf{n} \cdot (\mathbf{x} - \mathbf{a}) = 0$
-4. Expand and simplify to get $ax + by + cz = d$
 
 ## Linear Transformations
 
