@@ -49,6 +49,7 @@ julia --project=. docs/make.jl
   - ❌ Avoid: `feature/update-content`, `fix/stuff`, `branch1`
 
 ### Pull Request Creation
+- **ALWAYS check all commits on the branch first**: Run `git log main..HEAD --oneline` before writing the PR description to capture every commit, not just the most recent one. A PR includes the entire branch history since it diverged from `main`.
 - **ALWAYS push changes first**: Use `git push origin BRANCH_NAME` before creating PR
 - **Do NOT use `gh pr create`** - The GitHub CLI command doesn't work properly in this environment
 - **Use GitHub web interface with URL parameters**: Create links with embedded title and description for auto-fill
