@@ -76,7 +76,7 @@ Every issue has exactly one Topic label, one Area label, and one Scope label.
 - Issues triggered by a change in another repo get the `Cross-Project` Origin label and the Topic label of the repo where the work will land (e.g. `Linear Algebra`). They must be linked to the originating issue, and the issue description must record which repo triggered it.
 - Issues in this repo should always be assigned to the user 'Aron T'
 - Issues in this repo should always be added to the Linear Project 'Math & Tech Study'
-- Issues should be added to the current active milestone for their topic unless told to add them to a specific milestone or to a `Cross-Project Propagation` milestone.
+- Issues should be added to the current active milestone for their topic unless told to add them to a specific milestone.
 
 ---
 
@@ -93,7 +93,7 @@ When a change in one topic should be reflected in others:
    - Title: `Replicate [change description] from [source topic]`
    - Description must state: which repo triggered this, a link to the originating issue, and any adaptations needed for the target repo
 3. Link each new issue to the originating closed issue.
-4. Add to the current active milestone in each target repo, or to a `Cross-Project Propagation` milestone if none exists.
+4. Add to the current active milestone in each target repo.
 
 ---
 
@@ -166,5 +166,5 @@ When asked to migrate a markdown workplan to Linear:
 3. Expand terse checklist items — use context from the surrounding section to write a description clear to someone reading the issue months later.
 4. Done items `[x]` → create as closed issues.
 5. Not-done items `[ ]` → create as open issues in `Todo`.
-6. Identify cross-project items and create them with the `Cross-Project` Topic label, linking back to the source issue.
+6. Identify cross-project items and create them with the `Cross-Project` Origin label, using the target repo as the Topic label, and link back to the source issue.
 7. After creating all issues, report a count summary: total issues created, how many closed, how many open, how many cross-project, and any ambiguous items that needed a judgment call. Verify this count against the number of checklist items in the source document before reporting. If the counts do not match, identify and resolve the discrepancy before declaring the migration complete.
