@@ -202,6 +202,33 @@ Calculus Repo Setup (Calculus)             ← new repo built from scratch in ne
 
 ---
 
+## Planning Workflow: Markdown First, Linear for Execution
+
+Use this default workflow for non-trivial work:
+
+1. Draft a markdown workplan first (goal, scope, phases, dependencies, acceptance criteria).
+2. Refine the markdown plan until the structure is stable.
+3. Create/update the Linear milestone and issues from that markdown plan.
+4. Use Linear as the execution source of truth (status transitions, dependencies, progress tracking).
+5. Reconcile issue status in Linear after each delivery batch (PR merge or direct push).
+
+Use markdown-first when:
+
+- Work spans multiple repositories or topics
+- The change has multiple phases or meaningful dependencies
+- Tradeoffs need to be discussed before implementation
+- Expected issue count is high enough that direct issue drafting would be noisy
+
+Use direct Linear issue creation when:
+
+- The work is small, local, and immediately executable
+- The outcome can be represented as a short set of atomic issues
+- No broad planning document is needed
+
+Markdown is for the full-picture plan; Linear is for day-to-day execution and tracking.
+
+---
+
 ## Creating Issues from Markdown Workplans
 
 **NB:** This section is only relevant until we have migrated all current Markdown Workplans.
