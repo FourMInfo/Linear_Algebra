@@ -164,8 +164,19 @@ When asked to copy a completed milestone from one topic to another (e.g. applyin
 When writing or reviewing a PR description for work that closes Linear issues:
 
 - Reference every Linear issue closed by the PR using magic words in the PR description: `Closes FOU-12, FOU-13, FOU-14`
-- When a PR covers an entire milestone, list all open issues in that milestone in the closes list so Linear marks them all done on merge
-- If asked to generate a PR description, include the closes list automatically based on the issues in the active milestone
+- When a PR covers an entire milestone, still enumerate the individual issue IDs in the PR `Closes ...` list. Do not rely on milestone linkage alone.
+- If asked to generate a PR description, include the closes list automatically based on the open issues in the active milestone.
+- After merge (and deployment where applicable), explicitly reconcile milestone issue state in Linear:
+    - verify which issues auto-closed from PR keywords
+    - manually close any remaining issues that were completed by the milestone PR
+    - keep genuinely incomplete follow-up work open (or move it to a new issue/milestone)
+
+When work is delivered by direct commit and push (without a PR):
+
+- Do not wait for PR auto-close behavior; it will not apply.
+- After each push (and deployment where applicable), manually close every issue completed by that pushed change set.
+- If a push only partially completes an issue, leave the issue open and update its description or comments with remaining work.
+- For milestone execution using commit-and-push batches (for example, phase-by-phase delivery), reconcile issue states after each pushed batch so Linear always reflects real progress.
 
 ---
 
