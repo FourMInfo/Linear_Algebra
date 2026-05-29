@@ -83,6 +83,12 @@ When issues belong to a phased workplan, add exactly one Phase label.
 - Issues in this repo should always be added to the Linear Project 'Math & Tech Study'
 - Issues should be added to the current active milestone for their topic unless told to add them to a specific milestone.
 
+## Branch Naming (Milestone Work)
+
+- In nearly all cases, branch names should be related to the active milestone name.
+- For phased execution, include the phase in the branch name when helpful (for example: `milestone/workspace-restructure-math-foundations-phase-1`).
+- Smaller scoped branches are acceptable when not implementing a full milestone (for example: `feature/workspace-restructure-lockfile-policy`).
+
 ---
 
 ## Ordering Within a Phase
