@@ -44,9 +44,10 @@ julia --project=. docs/make.jl
 
 - **Never use `git add .`** - Always stage files explicitly by name to avoid accidentally committing development files, notebooks, or temporary files
 - Use `git add <specific-file-path>` to stage only the intended files for commit
-- **Feature branch naming**: Use descriptive, purpose-driven names that enable GitHub auto-suggestions:
-  - ✅ Good: `feature/add-fourm-site-explanation`, `fix/sidebar-center-alignment`, `docs/add-copilot-instructions`
-  - ❌ Avoid: `feature/update-content`, `fix/stuff`, `branch1`
+- **Branch naming should follow milestone context by default**: In nearly all cases, branch names should be clearly related to the active milestone name, optionally with a phase or focus suffix.
+    - ✅ Good: `milestone/workspace-restructure-math-foundations`, `milestone/workspace-restructure-math-foundations-phase-1`, `milestone/latex-restructure-linear-algebra`
+    - ✅ Also acceptable (if needed for a smaller scoped change): `feature/workspace-restructure-lockfile-policy`
+    - ❌ Avoid: `feature/update-content`, `fix/stuff`, `branch1`
 
 ### Pull Request Creation
 - **ALWAYS check all commits on the branch first**: Run `git log main..HEAD --oneline` before writing the PR description to capture every commit, not just the most recent one. A PR includes the entire branch history since it diverged from `main`.
