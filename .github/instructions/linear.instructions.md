@@ -10,11 +10,12 @@ applyTo: '**'
 | Project | Single container for all study hub work: "Math & Tech Study" |
 | Milestone | Bounded workplan with a clear completion point (e.g. Workspace Restructure) |
 | Issue | Atomic unit of work |
-| Label | Topic + Area + Scope + Type + Origin classification |
+| Label | Topic + Area + Scope + Type + Origin + optional Phase classification |
 
 ### Labels
 
-Every issue has exactly one Topic label, one Area label, and one Scope label.
+Every issue has exactly one Topic label, one Area label, one Scope label, one Type label, and one Origin label.
+When issues belong to a phased workplan, add exactly one Phase label.
 
 **Topic:** `Math Foundations` · `Linear Algebra` · `Calculus` · `Study Website`
 
@@ -23,6 +24,8 @@ Every issue has exactly one Topic label, one Area label, and one Scope label.
 **Type:** `Feature` · `Refactor` · `Bug` · `Chore` · `Question`
 
 **Origin:** `Local` · `Cross-Project` — whether this issue was triggered by work in this repo (`Local`) or is a propagation of a change from another repo (`Cross-Project`)
+
+**Phase:** `Phase 1` · `Phase 2` · `Phase 3` · `Phase 4` (add more labels if needed for longer plans)
 
 **Scope by Area:**
 
@@ -73,10 +76,24 @@ Every issue has exactly one Topic label, one Area label, and one Scope label.
 - Issues are atomic: completable in one focused session or at most one day. Split anything larger.
 - Issue titles must be self-explanatory without opening the issue. Never use terse checklist-style titles.
 - Every issue must have exactly one Topic label, one Area label, one Scope label, one Type label, and one Origin label.
+- For phased milestones, do not encode phase in the issue title (`[Phase X]`). Use a dedicated `Phase X` label instead.
+- If required phase labels do not exist yet, create them first (for example `Phase 1` through `Phase N`) and then assign them to issues.
 - Issues triggered by a change in another repo get the `Cross-Project` Origin label and the Topic label of the repo where the work will land (e.g. `Linear Algebra`). They must be linked to the originating issue, and the issue description must record which repo triggered it.
 - Issues in this repo should always be assigned to the user 'Aron T'
 - Issues in this repo should always be added to the Linear Project 'Math & Tech Study'
 - Issues should be added to the current active milestone for their topic unless told to add them to a specific milestone.
+
+---
+
+## Ordering Within a Phase
+
+Use these rules to express execution order inside a single phase:
+
+1. Use `blocked by` / `blocks` links for hard prerequisites where one issue cannot start before another.
+2. Use issue `priority` to indicate urgency/value when there is no hard dependency:
+    - Higher priority = minimally necessary
+    - Lower priority = nice-to-have
+3. Keep title wording clean and descriptive; ordering signals belong in relationships and metadata, not title prefixes.
 
 ---
 ## Propagating Changes Across Projects
@@ -175,9 +192,10 @@ Calculus Repo Setup (Calculus)             ← new repo built from scratch in ne
 When asked to migrate a markdown workplan to Linear:
 
 1. Read the full document first to understand the overall goal before creating any issues.
-2. Map phases to issue title prefixes: `[Phase 1]`, `[Phase 2]` etc. where the phase structure is meaningful.
-3. Expand terse checklist items — use context from the surrounding section to write a description clear to someone reading the issue months later.
-4. Done items `[x]` → create as closed issues.
-5. Not-done items `[ ]` → create as open issues in `Todo`.
-6. Identify cross-project items and create them with the `Cross-Project` Origin label, using the target repo as the Topic label, and link back to the source issue.
-7. After creating all issues, report a count summary: total issues created, how many closed, how many open, how many cross-project, and any ambiguous items that needed a judgment call. Verify this count against the number of checklist items in the source document before reporting. If the counts do not match, identify and resolve the discrepancy before declaring the migration complete.
+2. Map phases to `Phase` labels (`Phase 1`, `Phase 2`, etc.) where the phase structure is meaningful.
+3. Create missing `Phase` labels before creating/updating issues if the workplan requires phases.
+4. Expand terse checklist items — use context from the surrounding section to write a description clear to someone reading the issue months later.
+5. Done items `[x]` → create as closed issues.
+6. Not-done items `[ ]` → create as open issues in `Todo`.
+7. Identify cross-project items and create them with the `Cross-Project` Origin label, using the target repo as the Topic label, and link back to the source issue.
+8. After creating all issues, report a count summary: total issues created, how many closed, how many open, how many cross-project, and any ambiguous items that needed a judgment call. Verify this count against the number of checklist items in the source document before reporting. If the counts do not match, identify and resolve the discrepancy before declaring the migration complete.
