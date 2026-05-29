@@ -79,10 +79,9 @@ Every issue has exactly one Topic label, one Area label, and one Scope label.
 - Issues should be added to the current active milestone for their topic unless told to add them to a specific milestone.
 
 ---
-
 ## Propagating Changes Across Projects
 
-When a change in one topic should be reflected in others:
+When a single issue in one topic should be reflected in other topics:
 
 1. Complete the originating issue and close it.
 2. For each target repo, create a new issue with:
@@ -93,7 +92,21 @@ When a change in one topic should be reflected in others:
    - Title: `Replicate [change description] from [source topic]`
    - Description must state: which repo triggered this, a link to the originating issue, and any adaptations needed for the target repo
 3. Link each new issue to the originating closed issue.
-4. Add to the current active milestone in each target repo.
+4. Add each new issue to `Todo` (backlog) unless explicitly told to place it in a specific milestone.
+
+When an entire milestone needs to be propagated across topics:
+
+1. Create a dedicated cross-project milestone in the target topic before creating propagated issues.
+2. Use this naming convention:
+    - `Cross-Project: [Source Milestone] ([Source Topic] -> [Target Topic])`
+    - Example: `Cross-Project: Workspace Restructure (Math Foundations -> Linear Algebra)`
+3. In the milestone description, include explicit source and target markers:
+    - `Source Topic: ...`
+    - `Target Topic: ...`
+    - `Source Milestone: ...`
+4. Create and link propagated issues following the single-issue rules above (Origin = `Cross-Project`, Topic = target repo).
+5. Attach all propagated issues for that source milestone to the new cross-project milestone.
+
 
 ---
 
@@ -123,8 +136,8 @@ When asked to copy a completed milestone from one topic to another (e.g. applyin
 
 1. Read all closed issues in the source milestone via MCP to understand what was done.
 2. Identify which issues are identical, which need adaptation, and which are already done in the target topic.
-3. Create the new milestone.
-4. Create adapted issues — do not mechanically copy titles, adjust for the target topic's specifics (package name, UUIDs, file paths).
+3. Create the new milestone using the cross-project naming convention from `Propagating Changes Across Projects`.
+4. Create adapted issues — do not mechanically copy titles, adjust for the target topic's specifics (package name, UUIDs, file paths), and attach them to the new cross-project milestone.
 5. Present a count summary of proposed issues to the user for review before creating anything.
 
 ---
