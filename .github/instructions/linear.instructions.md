@@ -161,7 +161,9 @@ When asked to copy a completed milestone from one topic to another (e.g. applyin
 2. Identify which issues are identical, which need adaptation, and which are already done in the target topic.
 3. Create the new milestone using the cross-project naming convention from `Propagating Changes Across Projects`.
 4. Create adapted issues — do not mechanically copy titles, adjust for the target topic's specifics (package name, UUIDs, file paths), and attach them to the new cross-project milestone.
-5. Present a count summary of proposed issues to the user for review before creating anything.
+5. **Preserve the dependency structure.** Replicate all `blocked by` / `blocks` relationships from the source milestone onto the new issues. At minimum, cross-phase ordering must be preserved: the last issue(s) of each phase must block the first issue(s) of the next phase. Intra-phase hard prerequisites (e.g. workspace declaration must precede workspace member files) must also be expressed as blocking links. Never express execution order only in titles or comments — use blocking relationships and priority.
+6. If cross-project issues for the target topic were already created before this milestone was defined (e.g. FOU-43 for a CI upgrade), add them to the new milestone rather than duplicating them.
+7. Present a count summary of proposed issues to the user for review before creating anything.
 
 ---
 
