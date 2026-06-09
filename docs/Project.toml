@@ -1,0 +1,8 @@
+[deps]
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+Linear_Algebra = "3561693b-e867-4865-8168-321e504a4e51"
+
+[compat]
+Documenter = "1"
+julia = "1.10"
