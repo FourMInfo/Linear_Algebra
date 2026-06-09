@@ -5,12 +5,10 @@ applyTo: 'notebooks/**'
 
 ## Setup Pattern
 
-All notebooks should start with the standard DrWatson activation, followed by LAlatex initialisation:
+All notebooks should start with the standard setup cell:
 
 ```julia
 using Revise
-using DrWatson
-quickactivate(@__DIR__, "Linear_Algebra")
 using Linear_Algebra
 
 LAlatex.set_backend!(:symbolics)
@@ -24,6 +22,14 @@ LAlatex.reset_display_defaults!()
 ## Notebook Guidelines
 
 - Notebooks are for exploration and study, not tested in CI
+- The `notebooks/` environment is **not** a workspace member. After cloning (or removing `notebooks/Manifest.toml`), run once in the `notebooks/` directory to set it up:
+  ```julia-repl
+  julia --project=./notebooks
+  # then in Pkg mode (press ]):
+  pkg> dev ..
+  pkg> instantiate
+  ```
+  This creates `notebooks/Manifest.toml` (gitignored) that resolves `Linear_Algebra` from local source. Do not commit `notebooks/Manifest.toml`.
 - Use `println()` for output to make results clear when re-running cells
 - Include explanatory markdown cells between code cells
 - Use Unicode variable names consistent with the source code (e.g., `v₁`, `θ`, `λ`)
