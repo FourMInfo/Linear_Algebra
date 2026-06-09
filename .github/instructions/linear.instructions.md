@@ -204,6 +204,16 @@ Calculus Repo Setup (Calculus)             ← new repo built from scratch in ne
 
 ---
 
+## Execution Pacing
+
+When executing a multi-phase milestone or any multi-step task:
+
+- Complete one phase (or major step), then **stop and check in** before proceeding to the next.
+- A major step is a phase boundary, a completed issue group, or any point where a meaningful verification just passed (e.g. tests green, docs build clean).
+- Do not chain phases together automatically — wait for explicit user confirmation to continue.
+
+---
+
 ## Planning Workflow: Markdown First, Linear for Execution
 
 Use this default workflow for non-trivial work:
