@@ -1,7 +1,6 @@
 using Test
 
 using Linear_Algebra
-using GeometryBasics, LinearAlgebra
 
 @testset "linear_algebra_basic.jl Tests" begin
     @testset "lin_ind_vec" begin

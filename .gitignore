@@ -420,6 +420,7 @@ $RECYCLE.BIN/
 #                              Miscellaneous                                   #
 ################################################################################
 /Manifest.toml
+notebooks/Manifest.toml
 .CondaPkg/
 docs/src/Linear\ Algebra\ Extra/
 docs/src/Linear Algebra Capacities/

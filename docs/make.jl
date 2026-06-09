@@ -1,5 +1,5 @@
 CI = get(ENV, "CI", nothing) == "true" || get(ENV, "GITHUB_TOKEN", nothing) !== nothing
-using DrWatson, Documenter, Dates
+using Documenter, Dates
 using Linear_Algebra
 
 @info "Building Documentation"

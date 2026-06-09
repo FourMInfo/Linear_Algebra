@@ -4,7 +4,6 @@ using Test
 ENV["GKSwstype"] = "100"  # Set GKS to use headless mode
 
 using Linear_Algebra
-using GeometryBasics, LinearAlgebra
 
 # Ensure plots directory exists for plotting tests
 if !isdir("plots")

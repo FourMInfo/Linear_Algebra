@@ -1,0 +1,7 @@
+[deps]
+IJulia = "7073ff75-c697-5162-941a-fcdaad2a7d2a"
+Linear_Algebra = "3561693b-e867-4865-8168-321e504a4e51"
+Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
+
+[compat]
+julia = "1.10"

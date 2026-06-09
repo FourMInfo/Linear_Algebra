@@ -1,5 +1,4 @@
-using DrWatson, Test
-@quickactivate "Linear_Algebra"
+using Test
 
 # Set headless mode for CI before loading module
 ENV["GKSwstype"] = "100"
