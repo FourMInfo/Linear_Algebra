@@ -40,8 +40,9 @@ function matrix_inverse(A::Matrix)
         println("Matrix is SINGULAR (rank = ", rank(A), " < n = ", size(A, 1), ") — no inverse exists.")
         return nothing
     end
-    println("Matrix is INVERTIBLE (det = ", round(det(A); digits=10), ").")
-    return inv(A)
+    Af = float.(A)
+    println("Matrix is INVERTIBLE (det = ", round(det(Af); digits=10), ").")
+    return inv(Af)
 end
 
 """
@@ -62,23 +63,25 @@ Using `pinv` for the non-unique cases avoids the `SingularException` that
 `A \\ b` throws when A is square and singular.
 """
 function solve_linear_system(A::Matrix, b::Vector)
-    n = size(A, 2)
-    r_A  = rank(A)
-    r_Ab = rank([A b])
+    Af = float.(A)
+    bf = float.(b)
+    n  = size(Af, 2)
+    r_A  = rank(Af)
+    r_Ab = rank([Af bf])
 
     if r_Ab > r_A
         println("System is INCONSISTENT — no exact solution exists.")
         println("Returning the least-squares approximation via pinv(A)*b (minimises ‖Ax - b‖):")
-        x = pinv(A) * b
-        println("Residual ‖Ax - b‖ = ", round(norm(A * x - b); digits=6),
+        x = pinv(Af) * bf
+        println("Residual ‖Ax - b‖ = ", round(norm(Af * x - bf); digits=6),
                 " (non-zero confirms no exact solution)")
         return x
     elseif r_A < n
         println("System is UNDERDETERMINED — infinitely many solutions exist.")
         println("Returning the minimum-norm solution via pinv(A)*b (smallest ‖x‖ among all solutions):")
-        return pinv(A) * b
+        return pinv(Af) * bf
     else
         println("System has a UNIQUE solution.")
-        return A \ b
+        return Af \ bf
     end
 end
