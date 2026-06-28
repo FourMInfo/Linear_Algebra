@@ -19,19 +19,9 @@ export calculate_param_line
 export distance_2_points, center_of_gravity, barycentric_coord, plot_param_line
 ```
 
-## Automatic CI/Interactive Detection
+## CI/Interactive Detection
 
-Module auto-configures at load time — no manual intervention needed:
-
-```julia
-# src/Linear_Algebra.jl - Runs on module load
-if haskey(ENV, "CI") || get(ENV, "GKSwstype", "") == "100"
-    ENV["GKSwstype"] = "100"  # Headless plotting
-    gr(show=false)
-else
-    gr()  # Interactive plotting
-end
-```
+Module auto-configures at load time using `GKSwstype`. See the `julia-coding-conventions` skill for the canonical pattern. The check goes in the main module file (`Linear_Algebra.jl`) after the `@reexport` block.
 
 ## Julia Coding Standards
 

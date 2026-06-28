@@ -8,14 +8,7 @@ applyTo: 'test/**'
 The CI testing strategy consists of three components:
 
 ### 1. Module-Level Headless Detection
-Configure plotting environment in the main module (`Linear_Algebra.jl`) at load time:
-```julia
-# Automatic CI detection and headless configuration
-if haskey(ENV, "CI") || get(ENV, "GKSwstype", "") == "100"
-    ENV["GKSwstype"] = "100"  # Force headless mode
-    gr(show=false)           # Disable plot display
-end
-```
+Configured in the main module (`Linear_Algebra.jl`) at load time. See `julia-coding-conventions` skill for the canonical GKSwstype pattern.
 
 ### 2. Manual GKS Configuration in Tests
 Set `ENV["GKSwstype"] = "100"` in test files before loading the module:
