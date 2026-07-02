@@ -61,3 +61,5 @@ julia --project=. docs/make.jl
 ```
 
 **IMPORTANT**: Always run `julia --project=. docs/make.jl` after making changes to documentation files in `docs/src/`. This allows the user to preview changes in the browser immediately without running the build manually.
+
+For a live, auto-refreshing preview served from `docs/build/`, use `LiveServer` (declared in `docs/Project.toml`). See the `documenter-jl-conventions` skill for the exact `serve` command.
