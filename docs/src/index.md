@@ -56,6 +56,6 @@ Pages   = ["linear_algebra_transform.jl"]
 
 ## LaTeX Display
 
-This package re-exports [LAlatex.jl](https://github.com/ea42gh/LAlatex.jl) (by [ea42gh](https://github.com/ea42gh)) and [BlockArrays.jl](https://github.com/JuliaArrays/BlockArrays.jl) for clean LaTeX rendering of linear algebra objects in notebooks. LAlatex provides display helpers for matrices, vectors, symbolic expressions, aligned derivations, piecewise functions, and block-partitioned matrices.
+The notebooks use [LAlatex.jl](https://github.com/ea42gh/LAlatex.jl) (by [ea42gh](https://github.com/ea42gh)) together with [BlockArrays.jl](https://github.com/JuliaArrays/BlockArrays.jl) for clean LaTeX rendering of linear algebra objects. LAlatex provides display helpers for matrices, vectors, symbolic expressions, aligned derivations, piecewise functions, and block-partitioned matrices. These are declared in `notebooks/Project.toml` and loaded explicitly in the notebooks (`using LAlatex, BlockArrays`); they are not part of the `Linear_Algebra` module's public API.
 
 See the [LAlatex demo notebook](https://github.com/ea42gh/LAlatex.jl/blob/main/notebooks/LAlatex_demo.ipynb) in the original repository for a live tour of the main constructs, or run it interactively via the [Binder demo](https://mybinder.org/v2/gh/ea42gh/LAlatex.jl/main?filepath=notebooks%2FLAlatex_demo.ipynb).
