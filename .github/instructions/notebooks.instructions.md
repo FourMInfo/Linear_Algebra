@@ -10,12 +10,13 @@ All notebooks should start with the standard setup cell:
 ```julia
 using Revise
 using Linear_Algebra
+using LAlatex, BlockArrays
 
 LAlatex.set_backend!(:symbolics)
 LAlatex.reset_display_defaults!()
 ```
 
-`LAlatex`, `BlockArrays`, and `LaTeXStrings` are re-exported by `Linear_Algebra`, so no separate `using` is needed. In particular, the `L"..."` string macro is available immediately after `using Linear_Algebra`.
+`using Linear_Algebra` provides everything the module reexports, including `LaTeXStrings` (the `L"..."` macro). `LAlatex` and `BlockArrays` are **notebooks-environment dependencies only** (in `notebooks/Project.toml`, not the root project), so they need their own `using` line — they are *not* re-exported by the module.
 `set_backend!(:symbolics)` is required because this package uses Symbolics.jl; the default `:latexify` backend gives worse output for symbolic expressions.
 `reset_display_defaults!()` ensures a clean display state on every kernel restart.
 
@@ -36,7 +37,7 @@ LAlatex.reset_display_defaults!()
 
 ## LAlatex Display
 
-[LAlatex.jl](https://github.com/ea42gh/LAlatex.jl) (by ea42gh) is re-exported by `Linear_Algebra` and provides clean LaTeX rendering of linear algebra objects in notebooks. Use it instead of raw `println` or `display` whenever presenting mathematical results.
+[LAlatex.jl](https://github.com/ea42gh/LAlatex.jl) (by ea42gh) is available in the notebooks environment (`using LAlatex` in the setup cell) and provides clean LaTeX rendering of linear algebra objects in notebooks. Use it instead of raw `println` or `display` whenever presenting mathematical results.
 
 ### Core functions
 
