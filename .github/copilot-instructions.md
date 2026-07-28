@@ -13,7 +13,7 @@
 - **`src/linear_algebra_geometry.jl`**: Points, lines, analytic geometry
 - **`src/linear_algebra_transform.jl`**: Linear transformations
 - **`test/`**: Tests using `Linear_Algebra` and `Test` only — `GeometryBasics`/`LinearAlgebra` names are available via `@reexport`, no explicit `using` needed in test files
-- **`docs/`**: Documenter.jl deploying to `https://study.fourm.info/linear_algebra/` (cross-repo to `math_tech_study`)
+- **`docs/`**: Documenter.jl deploying to `https://fourm.info/linear_algebra/` (cross-repo to `math_tech_study`)
 - **`notebooks/`**: Jupyter notebooks for exploration (not tested in CI)
 
 ## Julia Workspace Layout

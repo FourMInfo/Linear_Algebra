@@ -56,7 +56,7 @@ if CI
     deploydocs(
         # `repo` MUST be set correctly. Once your GitHub name is set
         # the auto-generated documentation will be hosted at:
-        # https://study.fourm.info/linear_algebra/
+        # https://fourm.info/linear_algebra/
         # (assuming you have enabled `gh-pages` deployment)
         repo = "github.com/FourMInfo/math_tech_study.git",
         target = "build",

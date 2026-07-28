@@ -121,7 +121,7 @@ CI=true julia --project=. test/runtests.jl
 
 - **Tests**: Run on all PRs (`.github/workflows/CI.yml`)
 - **Docs Build**: Test on PR (no deploy)
-- **Docs Deploy**: Auto-deploy to `https://study.fourm.info/linear_algebra/` on merge to `main`
+- **Docs Deploy**: Auto-deploy to `https://fourm.info/linear_algebra/` on merge to `main`
 - **Cross-Repo**: Deploys to `FourMInfo/math_tech_study` subdirectory
 
 ## CI Considerations
