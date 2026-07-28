@@ -54,4 +54,4 @@ package. Subsequent `julia --project=./notebooks` invocations will resolve
 
 Documentation is deployed cross-repo to the Math & Tech Study Hub:
 
-<https://study.fourm.info/linear_algebra/dev/>
+<https://fourm.info/linear_algebra/dev/>

@@ -79,7 +79,7 @@ julia --project=. -e "using LiveServer; serve(dir=\"docs/build\")"
 
 ### **Documentation Deployment**
 
-- **Automatic**: Documentation deploys to https://study.fourm.info/linear_algebra/ after PR merge
+- **Automatic**: Documentation deploys to https://fourm.info/linear_algebra/ after PR merge
 - **Cross-Repository**: This repo deploys to a subdirectory of the main study site
 - **Manual Trigger**: Maintainers can trigger manual documentation builds if needed
 
