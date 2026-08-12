@@ -71,13 +71,9 @@ $$A(\mathbf{e}_2) = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix}
 
 We can derive transformation matrices by computing what happens to the basis vectors. For orthogonal projection onto a line along vector $\lbrack u, v \rbrack$:
 
-```julia
-function projection_matrix_symbolic()
-    @variables u v
-    [orthproj([u, v], [1, 0])[1] orthproj([u, v], [0, 1])[1];
-     orthproj([u, v], [1, 0])[2] orthproj([u, v], [0, 1])[2]]
-end
+See [`projection_matrix_symbolic`](@ref) for the implementation.
 
+```julia
 julia> projection_matrix_symbolic()
 2×2 Matrix{Num}:
  (u^2) / (u^2 + v^2)  (u*v) / (u^2 + v^2)
@@ -86,13 +82,9 @@ julia> projection_matrix_symbolic()
 
 Substituting specific values:
 
-```julia
-function projection_matrix(x::Vector)
-    @variables u v
-    Symbolics.value.(substitute.(projection_matrix_symbolic(), 
-                                  (Dict(u => x[1], v => x[2]),)))
-end
+See [`projection_matrix`](@ref) for the implementation.
 
+```julia
 julia> x = [2, 5]
 julia> P = projection_matrix(x)
 2×2 Matrix{Float64}:
@@ -116,22 +108,13 @@ julia> P * [1, 2]
 
 Using a unit vector $\lbrack \cos\theta, \sin\theta \rbrack$:
 
-```julia
-function projection_matrix_symbolic_polar()
-    @variables u v θ
-    simplify.(substitute.(projection_matrix_symbolic(),
-                          (Dict(u => cos(θ), v => sin(θ)),)))
-end
+See [`projection_matrix_symbolic_polar`](@ref) and [`projection_matrix_polar`](@ref) for the implementations.
 
+```julia
 julia> projection_matrix_symbolic_polar()
 2×2 Matrix{Num}:
        cos(θ)^2  (1//2)*sin(2θ)
  (1//2)*sin(2θ)        sin(θ)^2
-
-function projection_matrix_polar(n::Number)
-    @variables u v θ
-    Symbolics.value.(substitute.(projection_matrix_symbolic_polar(), θ => deg2rad(n)))
-end
 
 julia> P = projection_matrix_polar(45)
 2×2 Matrix{Float64}:
@@ -154,27 +137,13 @@ julia> round.(P * [3, 7], digits = 2)
 
 For a rotation by angle $\theta$ (see [Linear Transformations](06 Transformations.md) for the rotation formula):
 
-```julia
-function rotation_matrix_symbolic()
-    @variables θ
-    # Calculate for e₁ = [1, 0]
-    x′ = (cos(θ) * 1) - (sin(θ) * 0)
-    y′ = (sin(θ) * 1) + (cos(θ) * 0)
-    # Calculate for e₂ = [0, 1]
-    x′′ = (cos(θ) * 0) - (sin(θ) * 1)
-    y′′ = (sin(θ) * 0) + (cos(θ) * 1)
-    [x′ x′′; y′ y′′]
-end
+See [`rotation_matrix_symbolic`](@ref) and [`rotation_matrix`](@ref) for the implementations.
 
+```julia
 julia> rotation_matrix_symbolic()
 2×2 Matrix{Num}:
  cos(θ)  -sin(θ)
  sin(θ)   cos(θ)
-
-function rotation_matrix(d::Number)
-    @variables θ
-    Symbolics.value.(substitute.(rotation_matrix_symbolic(), θ => deg2rad(d)))
-end
 
 julia> R = rotation_matrix(45)
 2×2 Matrix{Float64}:

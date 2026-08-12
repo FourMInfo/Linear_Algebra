@@ -145,14 +145,7 @@ Thus $\mathbf{u}^{\perp}$ is formed by subtracting from $\mathbf{w}$ its compone
 
 ### Julia Implementation
 
-```julia
-using LinearAlgebra
-
-function orthproj(v::Vector, w::Vector)
-    u = (dot(v, w) / norm(v)^2) * v
-    [round(Int, x) for x in u]
-end
-```
+See [`orthproj`](@ref) for the implementation.
 
 **Example:**
 
@@ -202,11 +195,7 @@ This _dyadic matrix_ has rank 1, reflecting that projections reduce dimensionali
 
 A projection matrix is _idempotent_: $A = AA$. Geometrically, once a vector has been projected onto a line, applying the same projection leaves the result unchanged.
 
-```julia
-function projection_matrix(u::Vector)
-    u * transpose(u) ./ (transpose(u) * u)
-end
-```
+See [`projection_matrix`](@ref) for the implementation.
 
 ```julia
 julia> u = [1, 2]
@@ -261,13 +250,7 @@ $$\cos(\alpha) = \frac{\mathbf{v} \cdot \mathbf{w}}{\lVert\mathbf{v}\rVert\lVert
 
 ![Distance using parametric form](assets/image-39.png)
 
-```julia
-function distance_to_parametric_line(p::Point, v::Vector, r::Point)
-    w = Vector(r - p)
-    cosα = dot(v, w) / (norm(v) * norm(w))
-    d = norm(w) * sqrt(1 - cosα^2)
-end
-```
+See [`distance_to_parametric_line`](@ref) for the implementation.
 
 ```julia
 julia> p = Point(0, 4)
@@ -304,12 +287,7 @@ From the right triangle geometry, $\cos(\theta) = d / \lVert\mathbf{w}\rVert$, s
 
 $$v = \lVert\mathbf{a}\rVert d \implies d = \frac{v}{\lVert\mathbf{a}\rVert}$$
 
-```julia
-function distance_to_implicit_line(a::Number, b::Number, c::Number, r::Point)
-    v = [a, b]
-    d = ((a * r[1]) + (b * r[2]) + c) / norm(v)
-end
-```
+See [`distance_to_implicit_line`](@ref) for the implementation.
 
 ```julia
 julia> a, b, c = 4, 2, -8
@@ -325,13 +303,7 @@ When checking many points against a line, it's efficient to store the line in _p
 
 $$\frac{ax_1 + bx_2 + c}{\lVert\mathbf{a}\rVert} = 0$$
 
-```julia
-function implicit_line_point_normal_form(a::Number, b::Number, c::Number)
-    v = [a, b]
-    n = norm(v)
-    (a/n, b/n, c/n)
-end
-```
+See [`implicit_line_point_normal_form`](@ref) for the implementation.
 
 ## Foot of a Point on a Line
 
@@ -359,13 +331,7 @@ $$t = \frac{\mathbf{v} \cdot \mathbf{w}}{\lVert\mathbf{v}\rVert^2}$$
 
 ![Foot of a point](assets/image-40.png)
 
-```julia
-function foot_of_line(p::Point, v::Vector, r::Point)
-    w = Vector(r - p)
-    t = dot(v, w) / norm(v)^2
-    q = Point(p + t * v)
-end
-```
+See [`foot_of_line`](@ref) for the implementation.
 
 ```julia
 julia> p = Point(0, 1)
@@ -390,15 +356,7 @@ In some applications, the signed distance from $\mathbf{q}$ to $\mathbf{p}$ is n
 
 $$\lVert\mathbf{q} - \mathbf{p}\rVert = \lVert t\mathbf{v}\rVert = t\lVert\mathbf{v}\rVert = \frac{\mathbf{v} \cdot \mathbf{w}}{\lVert\mathbf{v}\rVert}$$
 
-```julia
-function foot_of_line(p::Point, v::Vector, r::Point)
-    w = Vector(r - p)
-    t = dot(v, w) / norm(v)^2
-    q = Point(p + t * v)
-    d = dot(v, w) / norm(v)
-    (q, d)
-end
-```
+See [`foot_of_line`](@ref) for the complete implementation (returning both the foot point and the signed distance).
 
 ```julia
 julia> r = Point(3, 4)

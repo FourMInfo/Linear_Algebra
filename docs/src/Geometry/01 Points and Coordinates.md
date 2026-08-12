@@ -224,15 +224,9 @@ $$\lVert\mathbf{q}-\mathbf{p}\rVert=\sqrt{(-2)^2+2^2}=\sqrt{8} \approx 2.83$$
 
 ![Distance between two points](assets/image-7.png)
 
+See [`distance_2_points`](@ref) for the implementation.
+
 ```julia
-using GeometryBasics
-using LinearAlgebra
-
-function distance_2_points(p::Point, q::Point)
-    v = q - p
-    norm(v)
-end
-
 julia> p = Point(1, 0)
 julia> q = Point(-1, 2)
 julia> distance_2_points(p, q)
@@ -330,16 +324,9 @@ The barycentric coordinate $t$ is also called a _parameter_. This parameter is d
 
 $$t=\frac{\lVert\mathbf{r}-\mathbf{p}\rVert}{\lVert\mathbf{q}-\mathbf{p}\rVert}$$
 
+See [`center_of_gravity`](@ref) and [`barycentric_coord`](@ref) for the implementations.
+
 ```julia
-function center_of_gravity(p::Point, q::Point, t::Float64)
-    v = q - p
-    r = p + (t * v)
-end
-
-function barycentric_coord(p::Point, q::Point, r::Point)
-    t = norm(r - p) / norm(q - r)
-end
-
 julia> p = Point(2, 2)
 julia> q = Point(6, 4)
 julia> r = center_of_gravity(p, q, 2.0)

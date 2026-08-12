@@ -106,11 +106,9 @@ This representation as a positive scalar multiple of a unit vector is called the
 - If $\mathbf{X} = \lbrack 3, 0 \rbrack^T$, we have $\mathbf{X} = 3\mathbf{e}_1$, where $\mathbf{e}_1 = \lbrack \cos(0), \sin(0) \rbrack^T$
 - If $\mathbf{X} = \lbrack 1, 1 \rbrack^T$, then $\mathbf{X} = \sqrt{2}\lbrack 1/\sqrt{2}, 1/\sqrt{2} \rbrack^T = \sqrt{2}\lbrack \cos\theta, \sin\theta \rbrack^T$, where $\theta = 45^\circ = \pi/4$
 
-```julia
-function polar_unit(y::Vector)
-    [(y[1]/norm(y)), (y[2]/norm(y))]
-end
+See [`polar_unit`](@ref) for the implementation.
 
+```julia
 julia> y = [1, 1]
 julia> z = polar_unit(y)
 2-element Vector{Float64}:
@@ -272,11 +270,9 @@ To calculate the actual angle $\theta$, use the [arccosine](https://mathworld.wo
 
 $$s = \frac{\mathbf{v} \cdot \mathbf{w}}{\lVert\mathbf{v}\rVert\lVert\mathbf{w}\rVert}, \quad \theta = \arccos(s)$$
 
-```julia
-function vector_angle_cos(p::Point, q::Point)
-    s = dot(p, q) / (norm(p) * norm(q))
-end
+See [`vector_angle_cos`](@ref) for the implementation.
 
+```julia
 julia> v = Point(2, 1)
 julia> w = Point(-1, 0)
 julia> s = vector_angle_cos(v, w)
@@ -311,11 +307,9 @@ Thus, the slope $v/u$ of the line to $\mathbf{U}$ is the negative reciprocal of 
 
 ![Orthogonal vectors](assets/image-21.png)
 
-```julia
-function is_orthogonal(p::Point, q::Point)
-    dot(p, q) == 0
-end
+See [`is_orthogonal`](@ref) for the implementation.
 
+```julia
 julia> u = Point(-1, 1)
 julia> x = Point(2, 2)
 julia> is_orthogonal(x, u)

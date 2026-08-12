@@ -1,6 +1,6 @@
 # the additional package needed for this file is Symbolics
 """
-    function projection_matrix_symbolic() -> Matrix
+    projection_matrix_symbolic() -> Matrix
 Create symbolic matrix for projection on [u, v] using E₁ = [1,0] and E₂ =[0,1] to get first and second row
 """
 function projection_matrix_symbolic()
@@ -9,7 +9,7 @@ function projection_matrix_symbolic()
     [permutedims(orthproj([u,v], [1,0])); permutedims(orthproj([u,v], [0,1]))]
 end
 """
-    function projection_matrix_symbolic_polar() -> Matrix
+    projection_matrix_symbolic_polar() -> Matrix
 Create symbolic matrix for projection on [cos θ, sin θ] 
 """
 function projection_matrix_symbolic_polar()
@@ -17,7 +17,7 @@ function projection_matrix_symbolic_polar()
     simplify.(substitute.(projection_matrix_symbolic(),(Dict(u => cos(θ), v => sin(θ)),)))
 end
 """
-    function projection_matrix(x::Vector) -> Matrix
+    projection_matrix(x::Vector) -> Matrix
 value of Matrix with an actual vector x  
 """
 function projection_matrix(x::Vector)
@@ -25,7 +25,7 @@ function projection_matrix(x::Vector)
     Float64.(Symbolics.value.(substitute.(projection_matrix_symbolic(), (Dict(u =>x[1], v=> x[2]), ); fold=Val{true}())))
 end
 """
-    function projection_matrix_polar(θ::Number) -> Matrix
+    projection_matrix_polar(n::Number) -> Matrix
 value of projection polar matrix with an actual value for the angle of the vector
 """
 function projection_matrix_polar(n::Number)
@@ -33,7 +33,7 @@ function projection_matrix_polar(n::Number)
     Float64.(Symbolics.value.(substitute.(projection_matrix_symbolic_polar(), θ => deg2rad(n); fold=Val{true}())))
 end
 """
-    function projection_matrix_transpose(u::Vector) ->  Matrix
+    projection_matrix_transpose(u::Vector) ->  Matrix
 See 
 """
 function projection_matrix_transpose(u::Vector)
@@ -42,7 +42,7 @@ function projection_matrix_transpose(u::Vector)
     # which is equivalent to: v * transpose(v) ./norm(v)^2
 end
 """
-    function rotation_matrix_symbolic() -> Matrix
+    rotation_matrix_symbolic() -> Matrix
 Create symbolic matrix for rotation θ degrees,  using E₁ = [1,0] and E₂ =[0,1] to get first and second column
 """
 function rotation_matrix_symbolic()
@@ -57,7 +57,7 @@ function rotation_matrix_symbolic()
 end
 
 """
-    function rotation_matrix(d::Number) -> Matrix
+    rotation_matrix(d::Number) -> Matrix
 value of rotation Matrix with an actual value for the rotation angle
 """
 function rotation_matrix(d::Number)
@@ -66,7 +66,7 @@ function rotation_matrix(d::Number)
 end
 
 """
-    function rotation_matrix_ns(θ::Number) -> Matrix
+    rotation_matrix_ns(θ::Number) -> Matrix
 value of rotation Matrix with an actual value for the rotation angle - non symbolic version
 """
 function rotation_matrix_ns(θ::Number)
@@ -76,7 +76,7 @@ function rotation_matrix_ns(θ::Number)
 end
 
 """
-    function stretch_matrix_symbolic() -> Matrix
+    stretch_matrix_symbolic() -> Matrix
 Create symbolic matrix for stretch λ₁, using E₁ = [1,0] and E₂ =[0,1] to get first and second column
 """
 function stretch_matrix_symbolic()
@@ -84,7 +84,7 @@ function stretch_matrix_symbolic()
     [permutedims(λ₁ * [1,0]); permutedims(λ₁ * [0,1])]
 end
 """
-    function stretch_matrix_symbolic(n::Number) -> Matrix
+    stretch_matrix(n::Number) -> Matrix
 value of stretch Matrix with an actual value for the stretch factor
 """
 function stretch_matrix(n::Number)
@@ -92,15 +92,15 @@ function stretch_matrix(n::Number)
     Float64.(Symbolics.value.(substitute.(stretch_matrix_symbolic(), λ₁ => n; fold=Val{true}())))
 end
 """
-    function reflection_matrix_symbolic() -> Matrix
-Create symbolic matrix for reflection on [u, v] using E₁ = [1,0] and E₂ =[0,1] to get first and second colomn
+    reflection_matrix_symbolic() -> Matrix
+Create symbolic matrix for reflection on [u, v] using E₁ = [1,0] and E₂ =[0,1] to get first and second column
 """
 function reflection_matrix_symbolic()
     @variables u v
     simplify.([permutedims(reflection([1,0],[u,v])); permutedims(reflection([0,1], [u,v]))])
 end
 """
-    function reflection_matrix(U::Vector) -> Matrix
+    reflection_matrix(U::Vector) -> Matrix
 value of reflection Matrix with an actual vector U
 """        
 function reflection_matrix(U::Vector)
@@ -108,7 +108,7 @@ function reflection_matrix(U::Vector)
     Float64.(Symbolics.value.(substitute.(reflection_matrix_symbolic(), (Dict(u => U[1], v => U[2]), ); fold=Val{true}())))
 end
 """
-    function reflection_matrix_rational(U::Vector) -> Matrix
+    reflection_matrix_rational(U::Vector) -> Matrix
 value of reflection Matrix with an actual vector U in rational form
 """
 function reflection_matrix_rational(U::Vector)
