@@ -75,7 +75,7 @@ function is_orthogonal(p::Point, q::Point)
 end
 
 """
-    function polar_unit(y::Vector) -> Vector{Float64}
+    polar_unit(y::Vector) -> Vector{Float64}
 Return unit vector in polar form for vector `y`
 """
 function polar_unit(y::Vector)
@@ -91,7 +91,7 @@ function orthproj(v::Vector, w::Vector)
 end
 
 """
-    function reflection(v::Vector, w::Vector) -> Vector
+    reflection(v::Vector, w::Vector) -> Vector
 The midpoint of the segment from `v` to the reflection of `v` around 'w', is the projection P from 'v'  to the line along 'w' 
 """
 function reflection(v::Vector,w::Vector)
@@ -239,7 +239,7 @@ function foot_of_line(P::Point, v::Vector, R::Point,  r::Bool = false )
 end
 
 """
-    function foot_of_line(A::Point, B::Point) -> Tuple(Point, Float64, Float64,Tuple(Point,Point,Point,Point))
+    foot_of_line(A::Point, B::Point) -> Tuple(Point, Float64, Float64,Tuple(Point,Point,Point,Point))
 Definition of the line:
    l = P + tv
 where v is the vector from P to B
@@ -267,7 +267,7 @@ function foot_of_line(A::Point, B::Point, r::Bool = false)
 end
 
 """
-    function intersection_2_parametric_lines(v::Vector, w::Vector, p::Point, q::Point) -> Vector
+    intersection_2_parametric_lines(v::Vector, w::Vector, p::Point, q::Point) -> Vector
 l₁ = p + tv
 l₂ = q + sw
 intersection: p + t̂v = q + ŝw
@@ -284,7 +284,7 @@ function intersection_2_parametric_lines(v::Vector, w::Vector, p::Point, q::Poin
 end
 
 """
-    function intersection_2_implicit_lines(a₁::Number, b₁::Number, c₁::Number, a₂::Number, b₂::Number, c₂::Number) -> Vector
+    intersection_2_implicit_lines(a₁::Number, b₁::Number, c₁::Number, a₂::Number, b₂::Number, c₂::Number) -> Vector
 l₁: a₁x̂₁ + b₁x̂₂ + c₁ = 0
 l₂: a₂x̂₁ + b₂x̂₂ + c₂ = 0
 Solve for x̂₁ and x̂₂ which is the intersection point
@@ -298,7 +298,7 @@ function intersection_2_implicit_lines(a₁::Number, b₁::Number, c₁::Number,
     A\b
 end
 """
-    function rationalize(x::Number; sigdigits=16) -> Rational(Number)
+    rationalize(x::Number; sigdigits=16) -> Rational(Number)
 Rationalize a number to a rational number
 """
 function rationalize(x; sigdigits=16)
