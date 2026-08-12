@@ -25,7 +25,7 @@ function projection_matrix(x::Vector)
     Float64.(Symbolics.value.(substitute.(projection_matrix_symbolic(), (Dict(u =>x[1], v=> x[2]), ); fold=Val{true}())))
 end
 """
-    function projection_matrix_polar(θ::Number) -> Matrix
+    function projection_matrix_polar(n::Number) -> Matrix
 value of projection polar matrix with an actual value for the angle of the vector
 """
 function projection_matrix_polar(n::Number)
@@ -84,7 +84,7 @@ function stretch_matrix_symbolic()
     [permutedims(λ₁ * [1,0]); permutedims(λ₁ * [0,1])]
 end
 """
-    function stretch_matrix_symbolic(n::Number) -> Matrix
+    function stretch_matrix(n::Number) -> Matrix
 value of stretch Matrix with an actual value for the stretch factor
 """
 function stretch_matrix(n::Number)
@@ -93,7 +93,7 @@ function stretch_matrix(n::Number)
 end
 """
     function reflection_matrix_symbolic() -> Matrix
-Create symbolic matrix for reflection on [u, v] using E₁ = [1,0] and E₂ =[0,1] to get first and second colomn
+Create symbolic matrix for reflection on [u, v] using E₁ = [1,0] and E₂ =[0,1] to get first and second column
 """
 function reflection_matrix_symbolic()
     @variables u v

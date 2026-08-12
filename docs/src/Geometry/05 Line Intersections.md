@@ -145,18 +145,7 @@ If the direction vectors $\mathbf{v}$ and $\mathbf{w}$ are [linearly dependent](
 
 ### Julia Implementation
 
-```julia
-using GeometryBasics
-
-function intersection_2_parametric_lines(v, w, p, q)
-    # Calculate the vector for RHS of the solution equation
-    b = Vector(q - p)
-    # Build the coefficient matrix from direction vectors
-    A = [v[1] -w[1]; v[2] -w[2]]
-    # Solve the system using left division
-    A \ b
-end
-```
+See [`intersection_2_parametric_lines`](@ref) for the implementation.
 
 ### Worked Example
 
@@ -243,17 +232,7 @@ If the normal vectors $\mathbf{a} = \lbrack a, b \rbrack^T$ and $\bar{\mathbf{a}
 
 ### Julia Implementation
 
-```julia
-function intersection_2_implicit_lines(a₁::Number, b₁::Number, c₁::Number, 
-                                        a₂::Number, b₂::Number, c₂::Number)
-    # Build the right-hand side vector
-    b = [-c₁, -c₂]
-    # Build the coefficient matrix from normal vector components
-    A = [a₁ b₁; a₂ b₂]
-    # Solve the system using left division
-    A \ b
-end
-```
+See [`intersection_2_implicit_lines`](@ref) for the implementation.
 
 ### Worked Example
 

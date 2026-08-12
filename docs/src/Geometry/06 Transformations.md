@@ -113,12 +113,9 @@ $$S(\mathbf{X}) = 2P_{\mathbf{U}}(\mathbf{X}) - \mathbf{X}$$
 
 where $P_{\mathbf{U}}(\mathbf{X})$ is the projection of $\mathbf{X}$ onto $\mathbf{U}$.
 
-```julia
-function reflection(X::Vector, U::Vector)
-    P = orthproj(U, X)  # Project X onto U
-    2 * P - X
-end
+See [`reflection`](@ref) for the implementation.
 
+```julia
 julia> X = [0, 10]
 2-element Vector{Int64}:
   0
@@ -193,13 +190,9 @@ $$\begin{aligned}
 
 ### Julia Implementation
 
-```julia
-function rotation(θ::Number, v::Vector)
-    x′ = cos(deg2rad(θ)) * v[1] - sin(deg2rad(θ)) * v[2]
-    y′ = sin(deg2rad(θ)) * v[1] + cos(deg2rad(θ)) * v[2]
-    [round(x′), round(y′)]
-end
+See [`rotation`](@ref) for the implementation.
 
+```julia
 julia> v = [5, 0]
 2-element Vector{Int64}:
  5
@@ -296,11 +289,9 @@ This matches the projection formula from [Projections and Distance](04 Projectio
 
 ### Julia Implementation
 
-```julia
-function projection_matrix(u::Vector)
-    u * transpose(u) ./ (transpose(u) * u)
-end
+See [`projection_matrix`](@ref) for the implementation.
 
+```julia
 julia> u = [1, 2]
 2-element Vector{Int64}:
  1

@@ -78,24 +78,9 @@ Equally spaced parameter values correspond to equally spaced points.
 
 **Example:** Compute ten points on the line defined by the points $\mathbf{p} = \lbrack 1, 2 \rbrack^T$ and $\mathbf{q} = \lbrack 6, 4 \rbrack^T$:
 
+See [`plot_param_line`](@ref) for the implementation.
+
 ```julia
-using GeometryBasics
-using Plots
-using LinearAlgebra
-
-function plot_param_line(p::Point, q::Point, n::Int64)
-    Ps = Point[]
-    for i = 1:n
-        t = i / n
-        r = center_of_gravity(p, q, t)
-        s = scatter!(r, legend=false)
-        push!(Ps, r)
-    end
-    s = plot!(Ps, legend=false)
-    display(s)
-    Ps
-end
-
 p = Point(2, 2)
 q = Point(6, 4)
 plot_param_line(p, q, 10)
@@ -161,16 +146,9 @@ reflects the true distance of $\mathbf{x}$ to the line. Now the tolerance has a 
 
 The sign of $d$ indicates on which side of the line the point lies. This sign depends on the definition of $\mathbf{a}$. A positive $d$ corresponds to the point on the side of the line to which $\mathbf{a}$ points.
 
+See [`point_in_implicit_line`](@ref) for the implementation.
+
 ```julia
-using LinearAlgebra
-
-function point_in_implicit_line(p::Point, q::Point, x::Point)
-    a = q[2] - p[2]
-    b = p[1] - q[1]
-    c = -(a * p[1]) - (b * p[2])
-    (a * x[1] + b * x[2] + c) / norm([a, b])
-end
-
 p = Point(2, 2)
 q = Point(6, 4)
 
@@ -240,16 +218,7 @@ A significant drawback of the explicit form is apparent when the "run" is zeroâ€
 
 The primary popularity of the explicit form comes from the study of calculus. Additionally, in computer graphics, this form is popular when pixel calculations are necessary.
 
-```julia
-function explicit_line(p::Point, q::Point)
-    a = q[2] - p[2]
-    b = p[1] - q[1]
-    c = -(a * p[1]) - (b * p[2])
-    slope = -a / b
-    intercept = -c / b
-    (slope, intercept)
-end
-```
+See [`explicit_line`](@ref) for the implementation.
 
 ## Converting Between Forms
 
@@ -265,14 +234,9 @@ $$ax_1 + bx_2 + c = 0$$
 
 **Solution:** The normal vector $\mathbf{a}$ must be perpendicular to the direction vector $\mathbf{v}$. If $\mathbf{v} = \lbrack v_1, v_2 \rbrack^T$, then $\mathbf{a} = \lbrack -v_2, v_1 \rbrack^T$ is perpendicular.
 
-```julia
-function parametric_to_implicit_line(p::Point, v::Vector)
-    a = -v[2]
-    b = v[1]
-    c = -(a * p[1]) - (b * p[2])
-    (a, b, c)
-end
+See [`parametric_to_implicit_line`](@ref) for the implementation.
 
+```julia
 p = Point(2, 2)
 v = [4, 2]
 parametric_to_implicit_line(p, v)  # Returns (-2, 4, -4)
@@ -300,17 +264,9 @@ $$\begin{bmatrix} -c/a \\ 0 \end{bmatrix} \quad \text{or} \quad \begin{bmatrix} 
 
 For numerical stability, choose the intersection closest to the origin. Thus, choose the former if $\lvert a \rvert > \lvert b \rvert$, and the latter otherwise.
 
-```julia
-function implicit_to_parametric_line(a::Int64, b::Int64, c::Int64)
-    v = [b, -a]
-    if abs(a) > abs(b)
-        p = Point(-c/a, 0)
-    else
-        p = Point(0, -c/b)    
-    end
-    (v, p)
-end
+See [`implicit_to_parametric_line`](@ref) for the implementation.
 
+```julia
 implicit_to_parametric_line(-2, 4, -4)  # Returns ([4, 2], [0.0, 1.0])
 ```
 

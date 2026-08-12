@@ -100,7 +100,7 @@ function reflection(v::Vector,w::Vector)
 end
 
 """
-function rotation(θ::Number, v::Vector) -> Vector
+    rotation(θ::Number, v::Vector) -> Vector
     θ : degrees to rotate v
 """
 function rotation(θ::Number, v::Vector)
@@ -120,7 +120,7 @@ The implicit equation of the line is:
     b = α[2]
     c = -(a * p[1]) - (b * p[2])
 Then calculate the distance of point `x` from the line using the formula:
-    (a * x[1] + b * x[2] + c) / norm([a, b]
+    (a * x[1] + b * x[2] + c) / norm([a, b])
 If 0 the point is in the line!
 """
 function point_in_implicit_line(p::Point, q::Point, x::Point)
@@ -146,7 +146,7 @@ function parametric_to_implicit_line(p::Point, v::Vector)
 end
 
 """
-   implicit_to_parametric line(a::Number, b::Number, c::Number) -> Tuple(Vector, Point)
+    implicit_to_parametric_line(a::Number, b::Number, c::Number) -> Tuple(Vector, Point)
 """
 function implicit_to_parametric_line(a::Number, b::Number, c::Number)
     v = [b, -a]
@@ -176,7 +176,7 @@ function explicit_line(p::Point, q::Point)
 end
 
 """
-   distance_to_implicit_line(a::Number, b::Number, c::Number, r::Point) -> Float64
+    distance_to_implicit_line(a::Number, b::Number, c::Number, r::Point) -> Float64
 """
 function distance_to_implicit_line(a::Number, b::Number, c::Number, r::Point)
     v = [a, b]
@@ -184,7 +184,7 @@ function distance_to_implicit_line(a::Number, b::Number, c::Number, r::Point)
 end
 
 """
-   implicit_line_point_normal_form(a::Number, b::Number, c::Number) -> Tuple(RationalRoot, RationalRoot, RationalRoot)
+    implicit_line_point_normal_form(a::Number, b::Number, c::Number) -> Tuple(RationalRoot, RationalRoot, RationalRoot)
 """
 function implicit_line_point_normal_form(a::Number, b::Number, c::Number)
     v = [a, b]
@@ -195,14 +195,14 @@ function implicit_line_point_normal_form(a::Number, b::Number, c::Number)
 end
 
 """
-   distance_to_pnf_implicit_line(â::RationalRoot, b̂::RationalRoot, ĉ::RationalRoot, r::Point) -> Float64
+    distance_to_pnf_implicit_line(â::RationalRoot, b̂::RationalRoot, ĉ::RationalRoot, r::Point) -> Float64
 """
 function distance_to_pnf_implicit_line(â::RationalRoot, b̂::RationalRoot, ĉ::RationalRoot, r::Vector)
     d = ((â * r[1]) + (b̂ * r[2]) + ĉ)
 end
 
 """
-   distance_to_parametric_line(p::Point, v::Vector, r::Point) -> Float64
+    distance_to_parametric_line(p::Point, v::Vector, r::Point) -> Float64
 Definition of the line:
    l = p + tv
 """
@@ -217,7 +217,7 @@ function distance_to_parametric_line(p::Point, v::Vector, r::Point)
 end
 
 """
-function foot_of_line(P::Point, v::Vector, R::Point) -> Tuple(Point, Float64)
+    foot_of_line(P::Point, v::Vector, R::Point) -> Tuple(Point, Float64)
 Definition of the line:
    l = P + tv
 Return point Q on l closest to R
@@ -243,7 +243,7 @@ end
 Definition of the line:
    l = P + tv
 where v is the vector from P to B
-Using original foot_of_line and some additional calculations
+Using original `foot_of_line` and some additional calculations
 Return point on l closest to A == t[1]
 Return distance from t[1] to A (foot of the line) == t[2]
 Return area of parallelogram defined by A and B
@@ -272,7 +272,7 @@ l₁ = p + tv
 l₂ = q + sw
 intersection: p + t̂v = q + ŝw
 The solution is a system of 2 equations in two unknowns expressed in equation:
-    t̂*v - ŝ*w  = q - p
+    `t̂*v - ŝ*w  = q - p`
 """
 function intersection_2_parametric_lines(v::Vector, w::Vector, p::Point, q::Point)
     # calculate the vector of RHS of the solution equation
