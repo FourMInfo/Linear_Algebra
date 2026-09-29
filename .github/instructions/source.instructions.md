@@ -3,136 +3,81 @@ applyTo: 'src/**'
 ---
 # Source Code Conventions
 
+This file is **shared**: copied unchanged into every math study repo from the hub
+(`FourMInfo/math_tech_study`, `project_resources/instructions/`) and byte-identical everywhere.
+This repo's module name, file layout, dependencies, function catalogue and conventions specific
+to its subject are in `project.instructions.md` — read it before editing `src/`.
+
 ## Module Structure & Exports
 
-All code uses `@reexport` pattern and exports both computational + plotting functions:
+The main module (`src/<Package>.jl`) uses `@reexport`, so that `using <Package>` alone gives
+notebooks, tests and docs everything they need, and it exports every public function:
 
 ```julia
-# Main module uses @reexport for clean interface
+module MyPackage
 using Reexport
-@reexport using GeometryBasics, Plots, LinearAlgebra, RationalRoots, Symbolics
+@reexport using Plots, Symbolics, LaTeXStrings   # this repo's list: project.instructions.md
 
-# Comprehensive exports for all functions
 # Pure computational functions (no plotting dependencies)
-export calculate_param_line
+export calculate_something
 # Integrated plotting functions (computation + visualization)
-export distance_2_points, center_of_gravity, barycentric_coord, plot_param_line
+export plot_something
+
+include("mypackage_basic.jl")
+end
 ```
 
-## CI/Interactive Detection
+- **Always export new public functions** from the main module.
+- Keep `export` lines grouped by the two categories below, with a comment heading each.
 
-Module auto-configures at load time using `GKSwstype`. See the `julia-coding-conventions` skill for the canonical pattern. The check goes in the main module file (`Linear_Algebra.jl`) after the `@reexport` block.
+## Headless Plotting
 
-## Julia Coding Standards
+Tests set `ENV["GKSwstype"] = "100"` **before** loading the package (see
+`testing.instructions.md`). Where a module configures the GR backend itself at load time, it
+follows the canonical pattern in the `julia-coding-conventions` skill;
+`project.instructions.md` says which applies here.
 
-### Linear Algebra Functions
-1. Use GeometryBasics.Point2f for 2D points consistently
-2. Use regular Arrays ([Float64]) for vectors in calculations
-3. Handle both symbolic and numeric matrix operations
-4. Degrees vs radians: `rotation_matrix(d)` takes degrees, `rotation_matrix_ns(θ)` takes radians
-5. Matrix functions return 2x2 matrices for 2D transformations
-6. Always export new functions in main module
-7. Use clear parameter naming (θ for angles, v/w for vectors, p/q for points)
+## Separate Computation from Plotting
 
-### Function Categories
-- **Basic Operations**: Distance, center of gravity, barycentric coordinates
-- **Vector Operations**: Angle calculations, orthogonality, projections, reflections
-- **Line Geometry**: Parametric/implicit conversions, distance calculations, intersections
-- **Matrix Transformations**: Projection, rotation, stretch, reflection matrices
-- **Symbolic Functions**: Provide both symbolic and numeric versions
-
-### Function Design Pattern
+Every plotted result has a pure computational function underneath it:
 
 ```julia
 # Pure computational function (no plotting dependencies)
-function calculate_param_line(p::Point2f, q::Point2f, n::Int64)
-    points = Vector{Point2f}(undef, n)
-    for i in 1:n
-        t = (i - 1) / (n - 1)
-        points[i] = Point2f(p .+ t .* (q .- p))
-    end
-    return points
+function calculate_something(args...)
+    # ... mathematics only; errors here are real errors
+    return result
 end
 
 # Integrated plotting function (computation + visualization)
-function plot_param_line(p::Point2f, q::Point2f, n::Int64)
-    points = calculate_param_line(p, q, n)
+function plot_something(args...)
+    result = calculate_something(args...)
     try
-        scatter!(Tuple.(points), markersize=5)
+        plot!(result)
     catch e
         !haskey(ENV, "CI") && @warn "Plotting failed: $e"
     end
-    return points
+    return result
 end
 ```
 
-### Documentation & Comments
-- Include detailed comments explaining geometric concepts
-- Use clear variable names (e.g., `p1`, `p2` for points, `v`, `w` for vectors)
-- Document angle conventions (degrees vs radians) in function comments
-- Explain mathematical formulas in comments
-- Maintain consistency with mathematical notation
+- `calculate_*` functions have no plotting dependency and are tested directly.
+- `plot_*` functions call the computational function, wrap only the plotting in `try`/`catch`,
+  and return the computed result so tests can check it.
+- How a plotting function should return and display its figure is covered by the
+  `julia-figure-authoring` skill.
 
-### Code Organization
-- **Two-File Structure**: Basic operations in `linear_algebra_basic.jl`, matrices in `linear_algebra_transform.jl`
-- **Consistent Naming**: Functions end with descriptive suffixes (`_matrix`, `_line`, `_coord`)
-- **Symbolic Variants**: Provide `_symbolic` versions for algebraic manipulation
-- **Export Everything**: All public functions exported from main module
-- **Follow Math_Foundations Pattern**: Separate computational logic from plotting
+## Naming
 
-## Dependencies & Libraries
+- **Computational**: `calculate_*`; **plotting**: `plot_*`
+- Descriptive suffixes for families of functions (e.g. `_matrix`, `_line`, `_roots`)
+- `_symbolic` variants where a function has both a symbolic and a numeric form
+- Parameter names follow standard mathematical notation (`θ` for angles, `v`/`w` for vectors,
+  `p`/`q` for points, `f` for functions); Unicode names are welcome
 
-**Main Dependencies**: GeometryBasics, Plots, LinearAlgebra, RationalRoots, Symbolics
+## Documentation & Comments
 
-### Mathematical Libraries Used
-- **GeometryBasics.jl**: For Point2f types and geometric primitives
-- **LinearAlgebra.jl**: For `norm()`, `dot()`, matrix operations
-- **Symbolics.jl**: For `@variables` in symbolic matrix functions
-  - Pattern: `@variables θ`, `@variables λ₁` for symbolic parameters
-  - Use `Symbolics.value.(substitute.(expr, var => value))` for evaluation
-- **Plots.jl**: For visualization functions (`scatter!`, `plot!`, `display`)
-- **RationalRoots.jl**: For rational approximations
-
-## Project-Specific Conventions
-
-### Mathematical Operations
-- **Point Types**: Use `Point2f(x, y)` for 2D points consistently
-- **Vector Types**: Use `[Float64]` arrays for vector calculations
-- **Angle Conventions**: Document whether functions expect degrees or radians
-- **Matrix Size**: All 2D transformation matrices are 2x2
-- **Coordinate Systems**: Standard mathematical coordinate system (not screen coordinates)
-
-### Function Naming Patterns
-- **Distance Functions**: `distance_*` (e.g., `distance_2_points`, `distance_to_implicit_line`)
-- **Matrix Functions**: `*_matrix` (e.g., `rotation_matrix`, `projection_matrix`)
-- **Line Functions**: `*_line` (e.g., `explicit_line`, `parametric_to_implicit_line`)
-- **Coordinate Functions**: `*_coord` (e.g., `barycentric_coord`)
-
-## Function Signature Patterns
-
-### Basic Linear Algebra
-```julia
-distance_2_points(p::Point, q::Point) -> Float64
-center_of_gravity(p::Point, q::Point, t) -> Point
-vector_angle_cos(p::Vector, q::Vector) -> Float64
-orthproj(v::Vector, w::Vector) -> Vector
-# Pure computational functions (no plotting dependencies)
-calculate_param_line(p::Point, q::Point, n::Int64) -> Vector{Point2f}
-# Integrated plotting functions (computation + visualization)
-plot_param_line(p::Point, q::Point, n::Int64) -> Vector{Point2f}
-```
-
-### Matrix Transformations
-```julia
-rotation_matrix(d::Number) -> Matrix      # Takes degrees
-rotation_matrix_ns(θ::Number) -> Matrix   # Takes radians
-projection_matrix(x::Vector) -> Matrix
-reflection_matrix(U::Vector) -> Matrix
-```
-
-### Line Operations
-```julia
-parametric_to_implicit_line(p::Point, v::Vector) -> (Float64, Float64, Float64)
-distance_to_implicit_line(a::Number, b::Number, c::Number, r::Point) -> Float64
-foot_of_line(P::Point, v::Vector, R::Point) -> Tuple(Point, Float64)
-```
+- Every exported function has a docstring; the `documenter-jl-conventions` skill covers
+  signature lines, LaTeX in docstrings and `@autodocs`
+- Explain the mathematics in comments: the concept, the formula, and any convention a caller
+  could get wrong (degrees vs radians, orientation, domain restrictions)
+- Keep notation consistent with the repo's `docs/src/` pages
