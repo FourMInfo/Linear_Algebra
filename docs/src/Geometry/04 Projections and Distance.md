@@ -434,32 +434,22 @@ This expression $\lvert ad - bc\rvert$ is the absolute value of the [determinant
 
 ### Using Foot of Point
 
-A more elegant approach uses the foot-of-point calculation:
+The foot-of-point calculation gives the height directly. The [foot](#Foot-of-a-Point-on-a-Line) $\mathbf{q}$ of $\mathbf{A}$ on the line along $\mathbf{B}$ is where the perpendicular from $\mathbf{A}$ meets the base, so the height is $h = \lVert\mathbf{A} - \mathbf{q}\rVert$ and
 
-```julia
-function parallelogram_area(P::Point, A::Point, B::Point)
-    v = Vector(B - P)
-    w = Vector(A - P)
-    t = dot(v, w) / norm(v)^2
-    q = Point(P + t * v)
-    d = dot(v, w) / norm(v)
-    area = d * norm(v)
-    (q, d, area)
-end
-```
+$$\text{Area} = \lVert\mathbf{A} - \mathbf{q}\rVert \, \lVert\mathbf{B}\rVert$$
+
+The height must be this perpendicular distance. The [signed distance](#Distance-from-Foot-to-Line-Point) $\frac{\mathbf{v} \cdot \mathbf{w}}{\lVert\mathbf{v}\rVert}$ is measured _along_ the base, and multiplying it by the base length gives the dot product $\mathbf{A} \cdot \mathbf{B}$, not the area.
+
+See [`foot_of_line`](@ref): its two-point form `foot_of_line(A, B)` returns the foot, the height, the area and the four vertices of the parallelogram.
 
 ```julia
 julia> A = Point(3, 1)
 julia> B = Point(1, 3)
-julia> P = Point(0, 0)
 
-julia> parallelogram_area(P, A, B)
-([0.6, 1.8], 1.897..., 6.0)
+julia> foot_of_line(A, B, true)
+([0.6, 1.8], 2.53, 8.0, ([0, 0], [3, 1], [1, 3], [4.0, 4.0]))
 
-# Verify with determinant formula
-julia> (A[1] * B[2]) - (B[1] * A[2])
-8
-
+# Verify with the determinant formula
 julia> abs((A[1] * B[2]) - (B[1] * A[2]))
 8
 ```

@@ -217,11 +217,12 @@ function distance_to_parametric_line(p::Point, v::Vector, r::Point)
 end
 
 """
-    foot_of_line(P::Point, v::Vector, R::Point) -> Tuple(Point, Float64)
+    foot_of_line(P::Point, v::Vector, R::Point, r::Bool = false) -> Tuple(Point, Float64)
 Definition of the line:
    l = P + tv
-Return point Q on l closest to R
-Calculate distance from Q to A (foot of the line)
+Return the foot Q: the point on l closest to R
+Return the signed distance from P to Q along l, `(v ⋅ (R - P)) / ‖v‖`
+If `r` is `true`, both are rounded to 3 digits
 """
 function foot_of_line(P::Point, v::Vector, R::Point,  r::Bool = false )
     # calculate the vector from P to R
@@ -229,7 +230,7 @@ function foot_of_line(P::Point, v::Vector, R::Point,  r::Bool = false )
     t = dot(v, w) / norm(v)^2
     # calculate foot
     Q = Point(P + t*v)
-    # calculate distance
+    # calculate signed distance from P to the foot
     d = dot(v, w) / norm(v)
     if r
         (round.(Q, digits = 3), round(d, digits=3))
@@ -239,30 +240,35 @@ function foot_of_line(P::Point, v::Vector, R::Point,  r::Bool = false )
 end
 
 """
-    foot_of_line(A::Point, B::Point) -> Tuple(Point, Float64, Float64,Tuple(Point,Point,Point,Point))
-Definition of the line:
-   l = P + tv
-where v is the vector from P to B
-Using original `foot_of_line` and some additional calculations
-Return point on l closest to A == t[1]
-Return distance from t[1] to A (foot of the line) == t[2]
-Return area of parallelogram defined by A and B
-Return points on the parallelogram
+    foot_of_line(A::Point, B::Point, r::Bool = false) -> Tuple(Point, Float64, Float64, Tuple(Point,Point,Point,Point))
+The parallelogram with one vertex at the origin and sides A and B.
+Its base is the line through the origin along B:
+   l = tB
+Using the original `foot_of_line` and some additional calculations
+Return the foot of A on l (the point on l closest to A) == t[1]
+Return the perpendicular distance from A to l (the height) == t[2]
+Return the area of the parallelogram, height * ‖B‖ == |det(A, B)| == t[3]
+Return the vertices of the parallelogram (origin, A, B, A + B) == t[4]
+If `r` is `true`, the foot, height and area are rounded to 3 digits
 """
 function foot_of_line(A::Point, B::Point, r::Bool = false)
-    # calculate the vector from P to A
-    v = Vector(B - P)
     Z = Point{2,Int64}(0,0)
-    t = foot_of_line(Z, v, A, false)
-    # calculate area of parallelogram - distance * base
-    a = t[2] * norm(v)
+    # the base: the vector from the origin to B
+    v = Vector(B - Z)
+    # the other side: the vector from the origin to A
+    w = Vector(A - Z)
+    # foot of A on the base line
+    Q, _ = foot_of_line(Z, v, A, false)
+    # height: perpendicular distance from A to its foot
+    h = norm(Vector(A - Q))
+    # calculate area of parallelogram - height * base
+    a = h * norm(v)
     # calculate points of Parallelogram
-    w = Vector(A - P)
     PL = (Z, A, B, Point{2,Float64}(v + w))
     if r
-        (round.(t[1], digits = 3), round(t[2], digits = 3), round(a, digits = 3), PL)
+        (round.(Q, digits = 3), round(h, digits = 3), round(a, digits = 3), PL)
     else
-        (t[1], t[2], a, PL)
+        (Q, h, a, PL)
     end
 end
 

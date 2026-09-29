@@ -194,6 +194,17 @@ end
         # Test foot_of_line with boolean parameter
         result = foot_of_line(P, v, R, false)
         @test isa(result, Point2f) || isa(result, Tuple)
+
+        # Parallelogram form: vertex at the origin, sides A and B
+        A = Point(3, 1)
+        B = Point(1, 3)
+        foot, height, area, vertices = foot_of_line(A, B)
+        @test foot ≈ Point(0.6, 1.8) atol=1e-10
+        @test height ≈ sqrt(6.4) atol=1e-10                    # |A - foot|, perpendicular
+        @test area ≈ abs(A[1] * B[2] - A[2] * B[1]) atol=1e-10  # |det(A, B)| = 8
+        @test area ≈ 8.0 atol=1e-10
+        @test vertices[4] ≈ Point(4.0, 4.0) atol=1e-10         # A + B
+        @test foot_of_line(A, B, true)[1:3] == (Point(0.6, 1.8), 2.53, 8.0)
     end
     
     @testset "Advanced Line Functions" begin
