@@ -20,6 +20,7 @@ Vectors can be represented in different notations:
 
 - **Column vector:** $\begin{pmatrix} v_1 \\ v_2 \end{pmatrix}$
 - **Row vector:** $\lbrack v_1, v_2 \rbrack$
+- **Angle-bracket notation:** $\langle v_1, v_2 \rangle$, used in many calculus texts
 - **Boldface notation:** $\mathbf{v}$ or $\mathbf{u}$ for vectors
 - **Hat notation:** $\hat{\mathbf{v}}$ for unit vectors (magnitude 1)
 - **Arrow notation:** $\vec{v}$ to denote vectors
@@ -87,7 +88,7 @@ $$\begin{aligned}
 &= \lbrack u_1 - v_1, u_2 - v_2 \rbrack
 \end{aligned}$$
 
-### Generalizing Vector Operations to $\mathbb{R}^n$
+### [Generalizing Vector Operations to $\mathbb{R}^n$](@id Generalizing-Vector-Operations-to-Rn)
 
 All the above operations extend naturally to n-dimensional vectors in $\mathbb{R}^n$:
 - **Addition:** $$\mathbf{u} + \mathbf{v} = \lbrack u_1 + v_1, u_2 + v_2, \ldots, u_n + v_n \rbrack$$
