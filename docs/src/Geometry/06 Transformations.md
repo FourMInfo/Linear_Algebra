@@ -226,7 +226,7 @@ $$R_{45°} = \begin{bmatrix} \frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \\ \frac{\
 
 A [shear](https://mathworld.wolfram.com/Shear.html) transformation maps rectangles to parallelograms while preserving one coordinate axis.
 
-### Shear Along the $\mathbf{e}_1$-Axis
+### [Shear Along the $\mathbf{e}_1$-Axis](@id Shear-Along-the-e1-Axis)
 
 The [shear matrix](https://mathworld.wolfram.com/ShearMatrix.html):
 
@@ -234,7 +234,7 @@ $$\mathbf{v}' = \begin{bmatrix} 1 & d_1 \\ 0 & 1 \end{bmatrix} \begin{bmatrix} v
 
 This shifts points horizontally by an amount proportional to their vertical position. The $v_2$-coordinate remains unchanged.
 
-### Shear Along the $\mathbf{e}_2$-Axis
+### [Shear Along the $\mathbf{e}_2$-Axis](@id Shear-Along-the-e2-Axis)
 
 $$\mathbf{v}' = \begin{bmatrix} 1 & 0 \\ d_2 & 1 \end{bmatrix} \begin{bmatrix} v_1 \\ v_2 \end{bmatrix} = \begin{bmatrix} v_1 \\ v_1 d_2 + v_2 \end{bmatrix}$$
 
@@ -269,7 +269,7 @@ A [projection](https://mathworld.wolfram.com/ProjectionMatrix.html) (specificall
 
 Orthogonal projections are fundamental in linear algebra—they provide the _best approximation_ in a subspace (see [Projections and Distance](04 Projections and Distance.md) for details).
 
-### Projection onto the $\mathbf{e}_1$-Axis
+### [Projection onto the $\mathbf{e}_1$-Axis](@id Projection-onto-the-e1-Axis)
 
 $$\mathbf{v}' = \begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix} \mathbf{v} = \begin{bmatrix} v_1 \\ 0 \end{bmatrix}$$
 

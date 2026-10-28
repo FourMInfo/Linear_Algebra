@@ -124,6 +124,38 @@ julia> round(acosd(z[1]))
 45.0
 ```
 
+### Recovering the Angle
+
+Going the other way, from a vector $\mathbf{X} = \lbrack x, y \rbrack^T$ to its polar angle $\theta$, means solving $x = \lvert\mathbf{X}\rvert \cos\theta$ and $y = \lvert\mathbf{X}\rvert \sin\theta$ for $\theta$. Dividing the second by the first gives $\tan\theta = y/x$, which is how many calculus texts state it. Neither inverse function on its own recovers $\theta$ around the whole circle:
+
+- The [inverse cosine](https://mathworld.wolfram.com/InverseCosine.html) returns angles between $0^\circ$ and $180^\circ$ only, so `acosd(z[1])` in the example above is correct only when $y \geq 0$
+- The [inverse tangent](https://mathworld.wolfram.com/InverseTangent.html) of the quotient returns angles between $-90^\circ$ and $90^\circ$ only; dividing $y$ by $x$ loses both signs, so it is correct only when $x > 0$
+
+The _two-argument_ inverse tangent `atan(y, x)` (`atand` for degrees) takes $y$ and $x$ separately, sees both signs, and returns the correct angle, between $-180^\circ$ and $180^\circ$, for every non-zero vector:
+
+| $\mathbf{X}$ | `acosd(x / norm(X))` | `atand(y / x)` | `atand(y, x)` |
+| :-- | :-- | :-- | :-- |
+| $\lbrack 1, 1 \rbrack^T$ | 45 | 45 | 45 |
+| $\lbrack 1, -1 \rbrack^T$ | 45 (wrong) | -45 | -45 |
+| $\lbrack -1, 1 \rbrack^T$ | 135 | -45 (wrong) | 135 |
+| $\lbrack -1, -1 \rbrack^T$ | 135 (wrong) | 45 (wrong) | -135 |
+
+A negative result is a clockwise angle; `mod(θ, 360)` gives the same direction as an angle between $0^\circ$ and $360^\circ$. With the angle and the length, the polar form gives the vector back (up to rounding):
+
+```julia
+julia> y = [-1, -1]
+julia> θ = atand(y[2], y[1])
+-135.0
+
+julia> mod(θ, 360)
+225.0
+
+julia> norm(y) * [cosd(θ), sind(θ)]
+2-element Vector{Float64}:
+ -1.0000000000000002
+ -1.0000000000000002
+```
+
 ## Dot Product (Algebraic Definition)
 
 Given two vectors $\mathbf{v}$ and $\mathbf{w}$, we might ask:
